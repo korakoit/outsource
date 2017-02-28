@@ -6,11 +6,4 @@ class MY_Controller extends CI_Controller{
 
 	}
 
-	/**
-	 * [validateLogin  校验登录]
-	 * @return [type] [description]
-	 */
-	public function validateLogin(){
-		
-	}
 }
