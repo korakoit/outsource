@@ -1,0 +1,16 @@
+.margin_left_90{
+    margin-left:-90px;
+}
+.page-content > .container-fluid{
+    margin-top:20px;
+}
+.page-content > .container-fluid > .row-fluid{
+    margin-top:20px;
+
+}
+.page-title,.color-panel.hidden-phone{
+    display:none;
+}
+.breadcrumb{
+    margin:0 !important;
+}

@@ -1,0 +1,13 @@
+.q_upload{
+  width :700px;
+  height : 200px;
+  margin-bottom:10px;
+  border-radius:10px;
+  border:1px solid #000;;
+}
+.q_upload img{
+ width :700px;
+ height :200px;
+ overflow:none;
+
+}
