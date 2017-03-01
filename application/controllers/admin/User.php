@@ -6,7 +6,7 @@
  * Date: 2017/3/1
  * Time: 上午7:16
  */
-class User
+class User extends CI_Controller
 {
 
 }

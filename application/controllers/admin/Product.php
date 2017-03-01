@@ -6,7 +6,7 @@
  * Date: 2017/3/1
  * Time: 上午7:16
  */
-class Product
+class Product extends CI_Controller
 {
 
 }

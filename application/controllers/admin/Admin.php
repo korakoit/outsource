@@ -10,10 +10,12 @@ class Admin extends MY_Controller   {
 
     public function login()
     {
-
+        echo 'helloworld';
     }
 
     public function  logout(){
 
     }
+
+
 }
