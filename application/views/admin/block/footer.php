@@ -8,7 +8,7 @@
 
 		<div class="footer-inner">
 
-			2015 &copy; Metronic by keenthemes.Collect from <a href="#" title="懒猫后台管理" target="_blank">懒猫旅行</a> - More Templates <a href="#" target="_blank" title="懒猫旅游">懒猫旅游</a>
+			2017 &copy;  from <a href="#" title="shop后台管理" target="_blank">CLEAD</a> - More Templates <a href="#" target="_blank" title="CLEAD">CLEAD</a>
 
 		</div>
 
@@ -89,97 +89,7 @@
 
 	<!-- END PAGE LEVEL SCRIPTS -->
 
-	<script>
 
-		jQuery(document).ready(function() {
-
-		   App.init(); // initlayout and core plugins
-
-		   Index.init();
-
-		   Index.initCalendar(); // init index page's custom scripts
-
-		   Index.initCharts(); // init index page's custom scripts
-
-		   Index.initChat();
-
-		   Index.initMiniCharts();
-
-		   Index.initDashboardDaterange();
-
-		  // Index.initIntro();
-		   //验证金额输入框
-	        $('.power_insert_price .mianzhi .yuanman').keyup(function(evt){
-	        	  if(!this.value.match(/^\d*?\.?\d*?$/)){
-	                    this.value=this.t_value;
-	                }else{
-	                    this.t_value=this.value;
-	                }
-	                if(this.value.match(/^(?:\d+(?:\.\d+)?)?$/)){
-	                    this.o_value=this.value;
-	                    return;
-	                }
-	                if(this.t_value=='undefined'){
-	                    this.t_value='';
-	                }
-	                if(this.o_value=='undefined'){
-	                    this.o_value='';
-	                }
-	                if(this.value=='undefined'){
-	                    this.value='';
-	                }
-	        });
-	        //验证数字输入框
-	        $('.power_insert_number').keyup(function(evt){
-	        	this.value=this.value.replace(/\D/g,'');
-	        });
-
-		});
-		<?php 
-			//设置选中状态
-			$directory 	= substr($this->router->fetch_directory(),0,-1);
-			if(isset($active_menu) && !empty($active_menu)){
-				$active = $active_menu;
-			}else{
-				$controller = $this->router->fetch_class();
-				$function 	= $this->router->fetch_method();
-				$active 	= "";
-				if(!empty($directory)){
-					$active .= $directory . "-";
-				}
-				$active .= $controller ."-" . $function;
-			}
-		?>
-			$(function(){
-				var str_url = "<?=$active?>";
-				var active = $("#" + str_url);
-				var level 	= $(active).attr("level");
-				if(level == 2){
-					active.addClass("active");
-					active.parent().parent().addClass("active").find(".arrow").addClass("open").parent().append('<span class="selected"></span>');
-				}else if(level == 3){
-					active.addClass("active");
-					active.parent().parent().addClass("open active");
-					active.parent().parent().parent().parent().addClass("active").find(".arrow").addClass("open").parent().append('<span class="selected"></span>');
-				}
-
-			});
-
-		//将json转换成name=1&number=2格式字符串
-        function parseParamSearch(param, key){
-    	    var paramStr="";
-    	    if(param instanceof String||param instanceof Number||param instanceof Boolean){
-    	        paramStr+="&"+key+"="+encodeURIComponent(param);
-    	    }else{
-    	        $.each(param,function(i){
-    	            var k=key==null?i:key+(param instanceof Array?"["+i+"]":"."+i);
-    	            paramStr+='&'+parseParamSearch(this, k);
-    	        });
-    	    }
-    	    return paramStr.substr(1);
-    	};
-
-	</script>
 
 	<!-- END JAVASCRIPTS -->
 
