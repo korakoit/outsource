@@ -72,15 +72,15 @@
 
     <!-- BEGIN LOGIN FORM -->
 
-    <form class="form-vertical login-form" action="<?=base_url('admin/admin/login')?>">
+    <form class="form-vertical login-form" method="post" action="<?=base_url('admin/admin/login')?>">
 
         <h3 class="form-title">Login to your account</h3>
 
-        <div class="alert alert-error hide">
+        <div class="alert alert-error hide" id="alert">
 
             <button class="close" data-dismiss="alert"></button>
 
-            <span>Enter any username and password.</span>
+            <span id="spanalert"></span>
 
         </div>
 
@@ -96,7 +96,7 @@
 
                     <i class="icon-user"></i>
 
-                    <input class="m-wrap placeholder-no-fix" type="text" placeholder="Username" name="username"/>
+                    <input class="m-wrap placeholder-no-fix" type="text" placeholder="Username" />
 
                 </div>
 
@@ -156,9 +156,6 @@
     2017 &copy; CLEAD. Admin Dashboard .
 
 </div>
-<script type="application/javascript">
-    var base_url = <?=STATIC_FILE_HOST?>;
-</script>
 
 <!-- END COPYRIGHT -->
 
@@ -215,6 +212,7 @@
         App.init();
 
         Login.init();
+
 
     });
 

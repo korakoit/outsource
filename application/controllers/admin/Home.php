@@ -1,4 +1,4 @@
-<?php
+<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 /**
  * Created by cheye.
@@ -6,7 +6,7 @@
  * Date: 2017/3/1
  * Time: 上午7:15
  */
-class Home extends CI_Controller
+class Home extends MY_Controller
 {
 
 }
