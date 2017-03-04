@@ -3,10 +3,17 @@
 class MY_Controller extends CI_Controller{
 
 	protected $error;
+    public $admin;
+    public $user;
+    protected $page_size = 10;
 
     public function __construct(){
         parent::__construct();
+        $this->load->library('session');
+        $this->admin = $this->session->userdata(ADMIN_SESS);
 	}
+
+
 
 	public function errorLog($code,$message='') {
 	    error_log("code[{$code}] message[{$message}]");

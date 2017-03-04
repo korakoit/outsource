@@ -5,7 +5,7 @@
 <!-- 开始头部 -->
 <head>
 	<meta charset="utf-8" />
-	<title>manager<?php $arr = explode(".",$_SERVER['SERVER_NAME']); $judge = $arr[1]; if($judge == "cattrip"){echo "-预上线";}else if($judge =="cattour"){echo "-正式";}?></title>
+	<title>manager</title>
 	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
 	<meta content="" name="description" />
 	<meta content="" name="author" />
@@ -39,6 +39,6 @@
 	<script type="text/javascript">
 		//全局的JS路径
 		var base_url = "<?=STATIC_FILE_HOST?>";
-		var image_url = "<?=IMAGE_FILE_HOST?>";
+		var image_url = "<?=STATIC_FILE_HOST?>";
 	</script>
 </head>

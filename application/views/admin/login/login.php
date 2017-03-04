@@ -76,11 +76,11 @@
 
         <h3 class="form-title">Login to your account</h3>
 
-        <div class="alert alert-error hide" id="alert">
+        <div class="alert alert-error <?=isset($err_msg)?'':' hide'?>" id="alert" >
 
             <button class="close" data-dismiss="alert"></button>
 
-            <span id="spanalert"></span>
+            <span ><?=isset($err_msg)?$err_msg:'Empty Username Or Password'?></span>
 
         </div>
 
@@ -96,7 +96,7 @@
 
                     <i class="icon-user"></i>
 
-                    <input class="m-wrap placeholder-no-fix" type="text" placeholder="Username" />
+                    <input class="m-wrap placeholder-no-fix" type="text" placeholder="Username" name="username"/>
 
                 </div>
 
@@ -212,7 +212,6 @@
         App.init();
 
         Login.init();
-
 
     });
 

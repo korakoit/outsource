@@ -23,15 +23,9 @@
         						<ul class="nav nav-top-list sub-menu">
         							<li>
         								<a href="/" style='font-size:14px'>首页<span class="selected"></span><i class="icon-remove"></i></a>
-        							</li> 
-                                    <?php if(!empty($this->user['role_id']) && !empty($this->get_top_menu)):
-                                        foreach ($this->get_top_menu as $one):
-                                    ?>
-        							<li class="<?= $one['active']==1? 'active':'' ;?>" id="<?=$one['id'];?>">
-        							 <a href="<?=$one['href'];?>"><?=$one['name']?><span class="selected"></span><i class="icon-remove nav-top-del"></i></a>
-        							</li> 
-        							<?php endforeach;?>
-        							<?php endif;?>
+        							</li>
+
+
         						</ul>
         					</div>
         				</div>
@@ -49,7 +43,7 @@
 
 						<!--<img alt="" src="<?=STATIC_FILE_HOST?>assets/image/avatar1_small.jpg" /> -->
 
-						<span class="username"><?=$this->user['username']?></span>
+						<span class="username"><?=$this->admin['username']?></span>
 
 						<i class="icon-angle-down"></i>
 
@@ -67,8 +61,8 @@
 							<li class="divider"></li>
 
 							-->
-							<li><a href="<?=base_url("user_manage/editPwd/".$this->user['id'])?>"><i class="icon-lock"></i>修改密码</a></li>
-							<li><a href="<?=base_url("/user/logout")?>"><i class="icon-key"></i>登出</a></li>
+							<li><a href="<?=base_url("/admin/")?>>"<i class="icon-lock"></i>reset password</a></li>
+							<li><a href="<?=base_url("admin/admin/logout")?>"><i class="icon-key"></i>logout</a></li>
 						</ul>
 
 					</li>
