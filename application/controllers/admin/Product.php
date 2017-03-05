@@ -110,6 +110,7 @@ class Product extends MY_Controller
         $seo_content = $this->input->post('seo_content');
         $seo_desc = $this->input->post('seo_desc');
         $image = $this->input->post('image');
+        $link_list = $this->input->post('link_list');
 
         $this->db->insert('product',['name'=>$name,
         'title'=>$title,
@@ -122,6 +123,15 @@ class Product extends MY_Controller
         'seo_desc'=>$seo_desc,
         'image'=>$image,
         'pcode'=>'P'.time()]);
+
+        $product_id = $this->db->insert_id();
+        $link_list = $this->input->post('link_list');
+        $this->db->where('product',$product_id)->delete('product_image');
+        foreach ($link_list as $value){
+            $images[] = ['product_id'=>$product_id,
+                'link'=>$value];
+        }
+        $this->db->insert_batch('product_image',$images);
 
         redirect(base_url('/admin/product/detail'),'',301);
 
@@ -156,32 +166,6 @@ class Product extends MY_Controller
             'image'=>$image]);
         $this->jsonOutput(['err_code'=>'0000','err_msg'=>'OK']);
     }
-
-    /**
-     * User: cheye
-     * Desc: 商品图片列表
-     */
-    public function imageList(){
-        $product_id = $this->input->get('product_id');
-        $image_list = $this->db->where('product_id',$product_id)->order_by('id','asc')->get('product_image')->result_array();
-        $this->load->view('admin/product/images',$image_list);
-    }
-
-    /**
-     * User: cheye
-     * Desc: 修改商品图片
-     */
-    public function editImage(){
-        $product_id = $this->input->post('product_id');
-        $link_list = $this->input->post('link_list');
-        $this->db->where('product',$product_id)->delete('product_image');
-        foreach ($link_list as $value){
-            $images[] = ['product_id'=>$product_id,
-            'link'=>$value];
-        }
-        $this->db->insert_batch('product_image',$images);
-    }
-
 
     public function downShelf(){
         $product_id = $this->input->post('product_id');
