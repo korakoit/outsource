@@ -23,7 +23,7 @@ class MY_Controller extends CI_Controller{
     public function jsonOutput($data){
         header('content-type:application/json');
         echo json_encode($data);
-        exit();
+        exit;
     }
 
 }
