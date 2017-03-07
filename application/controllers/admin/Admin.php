@@ -7,6 +7,7 @@ class Admin extends MY_Controller
     public function __construct()
     {
         parent::__construct();
+        $this->load->database('default');
     }
 
 
@@ -46,7 +47,7 @@ class Admin extends MY_Controller
             ->get('seller')->row_array();
         if (empty($admin)) {
             $data['err_msg'] = 'Username Or Password Wrong';
-            $this->load->view('admin/login/login',$data);
+            $this->load->view('admin/login/login', $data);
             return;
         } else {
             $this->session->set_userdata([ADMIN_SESS => $admin]);
@@ -58,6 +59,30 @@ class Admin extends MY_Controller
     {
         $this->session->set_userdata([ADMIN_SESS => '']);
 
+    }
+
+    public function getSellerInfo()
+    {
+        $seller = $this->db->where('id',$this->admin['id'])->get('seller')->row_array();
+        $this->load->view('admin/admin/edit', $seller);
+    }
+
+    public function edit()
+    {
+        $email_address = $this->input->post('email_address',true);
+        $location = $this->input->post('location',true);
+        $business_phone = $this->input->post('business_phone',true);
+        $logo = $this->input->post('logo',true);
+        $two_dimensional_code = $this->input->post('two_dimensional_code',true);
+        $update_info = ['email_address' => $email_address,
+            'location' => $location,
+            'business_phone' => $business_phone,
+            'logo' => $logo,
+            'two_dimensional_code' => $two_dimensional_code];
+        $this->db->where('id', $this->admin['id'])->update('seller',$update_info);
+        $this->admin = array_merge($this->admin,$update_info);
+        $this->session->set_userdata(ADMIN_SESS,$this->admin);
+        $this->jsonOutput(['err_code' => '0000', 'err_msg' => 'OK']);
     }
 
 

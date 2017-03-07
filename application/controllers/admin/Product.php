@@ -9,8 +9,6 @@
 class Product extends MY_Controller
 {
 
-    const STATUS_ON_SHELF = 1;
-    const STATUS_DOWN_SHELF = 2;
 
     public function __construct()
     {
@@ -18,14 +16,14 @@ class Product extends MY_Controller
         $this->load->database('default');
     }
 
-    public function list(){
+    public function index(){
         $name = $this->input->get('name',true);
         $pcode = $this->input->get('pcode',true);
         $category_id = $this->input->get('category_id',true);
         $status = $this->input->get('status',true);
 
         $page = $this->input->get('page',true);
-        $page = cell($page)>0?cell($page):0;
+        $page = $page>0?$page:0;
         $start = $page>0?($this->page_size)*($page-1):0;
 
         $search = array();
@@ -60,12 +58,12 @@ class Product extends MY_Controller
             if (!empty($where)){
                 $this->db->where($where);
             }
-            $this->db->limit($this->page_size,$start)->order_by('id','desc')->get('product')->result_array();
-            $result = $this->db->limit($this->page_size,$start)->get('product')->result_array();
+            $result = $this->db->limit($this->page_size,$start)->order_by('id','desc')->get('product')->result_array();
+            $data['result'] = $result;
         }
 
-        $config['page_query_string'] = ture;
-        $config['base_url'] = base_url('admin/admin/list?');
+        $config['page_query_string'] = true;
+        $config['base_url'] = base_url('admin/admin/index?');
         $config['total_rows'] = $total;
         $config['per_page'] = $this->page_size;
         $config['uri_segment'] = 7;
@@ -76,12 +74,8 @@ class Product extends MY_Controller
 
         $data['search'] = $search;
         $data['active_menu'] = 'product-list';
-        $data['result'] = $result;
         $data['category_list'] = $category_list;
         $this->load->view('admin/product/list',$data);
-
-
-
     }
 
     /**
@@ -100,17 +94,17 @@ class Product extends MY_Controller
      */
     public function add(){
 
-        $name = $this->input->post('name');
-        $title = $this->input->post('title');
-        $price = $this->input->post('price');
-        $detail = $this->input->post('detail');
-        $star = $this->input->post('start');
-        $category_id = $this->input->post('category_id');
-        $seo_title = $this->input->post('seo_title');
-        $seo_content = $this->input->post('seo_content');
-        $seo_desc = $this->input->post('seo_desc');
-        $image = $this->input->post('image');
-        $link_list = $this->input->post('link_list');
+        $name = $this->input->post('name',true);
+        $title = $this->input->post('title',true);
+        $price = $this->input->post('price',true);
+        $detail = $this->input->post('detail',true);
+        $star = $this->input->post('start',true);
+        $category_id = $this->input->post('category_id',true);
+        $seo_title = $this->input->post('seo_title',true);
+        $seo_content = $this->input->post('seo_content',true);
+        $seo_desc = $this->input->post('seo_desc',true);
+        $image = $this->input->post('image',true);
+        $link_list = $this->input->post('link_list',true);
 
         $this->db->insert('product',['name'=>$name,
         'title'=>$title,
@@ -125,15 +119,16 @@ class Product extends MY_Controller
         'pcode'=>'P'.time()]);
 
         $product_id = $this->db->insert_id();
-        $link_list = $this->input->post('link_list');
         $this->db->where('product',$product_id)->delete('product_image');
+
+        if (!empty($link_list)&&is_array($link_list))
         foreach ($link_list as $value){
             $images[] = ['product_id'=>$product_id,
                 'link'=>$value];
         }
         $this->db->insert_batch('product_image',$images);
 
-        redirect(base_url('/admin/product/detail'),'',301);
+        redirect(base_url('/admin/product/detail?product_id='.$product_id),'',301);
 
     }
 
@@ -165,6 +160,13 @@ class Product extends MY_Controller
             'seo_desc'=>$seo_desc,
             'image'=>$image]);
         $this->jsonOutput(['err_code'=>'0000','err_msg'=>'OK']);
+    }
+
+    public function delete(){
+        $product_id = $this->input->post('id',true);
+        $this->db->where('id',$product_id)->delete('product');
+        $this->db->where('product_id',$product_id)->delete('product_image');
+        redirect($_SERVER['HTTP_REFERER'],'local',301);
     }
 
     public function downShelf(){
