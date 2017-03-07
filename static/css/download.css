@@ -1,0 +1,45 @@
+.wrapper .main {
+  padding: 0 7px;
+  background-color: #fff;
+  padding-top: 20px; }
+  .wrapper .main .twolist {
+    margin-bottom: 20px; }
+    .wrapper .main .twolist ul {
+      background-color: #fff;
+      border: 1px solid #aaa;
+      height: 205px; }
+      .wrapper .main .twolist ul li {
+        display: inline-block;
+        zoom: 1;
+        _display: inline;
+        width: 49%;
+        position: relative;
+        overflow: hidden;
+        height: 100%; }
+        .wrapper .main .twolist ul li:after {
+          clear: both; }
+        .wrapper .main .twolist ul li .l, .wrapper .main .twolist ul li .r {
+          float: left;
+          height: 100%; }
+        .wrapper .main .twolist ul li .l {
+          width: 220px;
+          background: url(/public/images/list0.png) center center no-repeat; }
+        .wrapper .main .twolist ul li .r {
+          width: 230px;
+          padding: 0 3px; }
+          .wrapper .main .twolist ul li .r p {
+            line-height: 1.2; }
+          .wrapper .main .twolist ul li .r .p0 {
+            margin-top: 40px;
+            margin-bottom: 10px;
+            font-size: 18px;
+            font-weight: bold; }
+          .wrapper .main .twolist ul li .r .p1 {
+            font-size: 13px; }
+        .wrapper .main .twolist ul li .hr {
+          position: absolute;
+          top: 15px;
+          right: 0;
+          width: 1px;
+          height: 100%;
+          background: url(/public/images/line.png) no-repeat; }

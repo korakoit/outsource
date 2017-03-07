@@ -1,0 +1,27 @@
+@mixin clamp($num){
+    overflow : hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: $num;
+    -webkit-box-orient: vertical;
+}
+
+@mixin boxshadow($x, $y, $r, $color){
+    -webkit-box-shadow: $x $y $r $color;
+    -moz-box-shadow: $x $y $r $color;
+    box-shadow: $x $y $r $color;
+}
+
+
+$rem:192;
+@function px2rem($px){
+    @return ($px/$rem)*1rem;
+}
+
+$em:192;
+@function px2em($px){
+    @return ($px/$em)*1em;
+}
+@function px2px($px){
+    @return $px*1px;
+}

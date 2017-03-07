@@ -1,0 +1,119 @@
+.wrapper{
+	.showinfo{
+		background-color: #fff;
+		margin-bottom:10px;
+		padding-bottom:40px;
+		.banner{
+			height:299px;
+			background:url(/public/images/showimg.png) no-repeat center center;
+			margin-bottom:40px;
+		}
+		h2{
+			font-size:25px;
+			font-weight:bold;
+			color:#000;
+			text-align:center;
+		}
+		p.p0{
+			font-size:16px;
+			text-align:center;
+			line-height:40px;
+		}
+		ul{
+			text-align: center;
+			margin: 20px 0 0;
+			li{
+				display: inline-block;
+				zoom:1;
+				width:245px;
+				height:262px;
+				_display:inline;
+				background-color: #f9e0e0;
+				vertical-align: top;
+				div{
+					height:160px;
+					background:url(/public/images/addr.png) 88px center no-repeat;
+				}
+				p.lip{
+					font-size:16px;
+					line-height:1.2;
+				}
+				&.sec{
+					background-color: #ddf2f4;
+					margin:0 45px;
+					div{
+						background-position: -205px center;
+					}
+				}
+				&.third{
+					background-color: #ebf3ba;
+					div{
+						background-position: -496px center;
+					}
+				}
+			}
+		}
+	}
+	//writeinfo
+	.writeinfo{
+		padding: 40px 0px;
+		background-color: #fff;
+		.inputinfo{
+			.subinfo{
+				overflow:hidden;
+				padding-left:100px;
+				margin-top: 30px;
+				&:first-child{
+					margin-top:0;
+				}
+				div{
+					float:left;
+					&.left{
+						width:108px;
+						text-align: right;
+						margin-right:5px;
+						font-size:20px;
+					}
+					&.right{
+						width:237px;
+						height:30px;
+						border:1px solid #aaa;
+						input{
+							text-indent: 5px;
+							outline:none;
+						}
+					}
+				}
+			}
+		}
+		.hr{
+			border-top:1px dashed #7f7f7f;
+			width:940px;
+			margin: 18px auto 28px;
+		}
+		p{
+			text-align: center;
+			font-size:15px;
+		}
+		#submit{
+			width:170px;
+			margin:25px auto -10px;
+			height:43px;
+			color:#fff;
+			font-size:20px;
+			font-weight:bold;
+			text-align: center;
+			line-height:43px;
+			background-color:#047aff;
+		}
+	}
+	.index_footer{
+		margin-top:82px;
+	}
+	.third{
+	    display:none!important;
+	}
+	.about{
+	    display:block!important;
+	}
+}
