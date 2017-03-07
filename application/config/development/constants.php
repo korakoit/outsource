@@ -1,7 +1,7 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 //静态文件服务器
-define('STATIC_FILE_HOST','http://'.$_SERVER['SERVER_NAME'].':'.$_SERVER["SERVER_PORT"].'/');
+define('STATIC_FILE_HOST','http://'.$_SERVER['SERVER_NAME'].'/');
 
 define('ADMIN_SESS','ADMIN_SESS');
 
@@ -11,7 +11,7 @@ define('ADMIN_SESS','ADMIN_SESS');
 define('STATUS_ON_SHELF',1);
 define('STATUS_DOWN_SHELF',2);
 define('UPLOAD_PATH',$_SERVER['DOCUMENT_ROOT'].'/uploads');
-define('IMAGE_HOST',STATIC_FILE_HOST.'uploads');
+define('IMAGE_HOST',STATIC_FILE_HOST.'uploads/');
 
 
 //mail

@@ -63,8 +63,8 @@ class Admin extends MY_Controller
 
     public function getSellerInfo()
     {
-
-        $this->load->view('admin/admin/edit', $this->admin);
+        $seller = $this->db->where('id',$this->admin['id'])->get('seller')->row_array();
+        $this->load->view('admin/admin/edit', $seller);
     }
 
     public function edit()
@@ -79,7 +79,6 @@ class Admin extends MY_Controller
             'business_phone' => $business_phone,
             'logo' => $logo,
             'two_dimensional_code' => $two_dimensional_code];
-
         $this->db->where('id', $this->admin['id'])->update('seller',$update_info);
         $this->admin = array_merge($this->admin,$update_info);
         $this->session->set_userdata(ADMIN_SESS,$this->admin);

@@ -220,6 +220,7 @@ DROP TABLE IF EXISTS `product_category`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `product_category` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `pid` int(11) DEFAULT '0' COMMENT '父id',
   `title` char(255) COLLATE utf8mb4_bin DEFAULT '' COMMENT '分类标题',
   `ctime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `mtime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -320,7 +321,7 @@ CREATE TABLE `seller` (
 
 LOCK TABLES `seller` WRITE;
 /*!40000 ALTER TABLE `seller` DISABLE KEYS */;
-INSERT INTO `seller` VALUES (1,'admin','admin','','','',NULL,'','2017-03-04 06:23:30','2017-03-05 23:58:18');
+INSERT INTO `seller` VALUES (1,'admin','admin','abc','abc','abc','41/4160bfc78465fa6bf9fead5d3b54d23f.png','abc','2017-03-04 06:23:30','2017-03-06 18:22:38');
 /*!40000 ALTER TABLE `seller` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -420,4 +421,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-03-06 22:13:16
+-- Dump completed on 2017-03-07  8:27:26

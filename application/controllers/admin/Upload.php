@@ -15,9 +15,6 @@ class Upload extends MY_Controller{
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('Upload_model', 'uppic');
-        $this->load->helper('public_helper');
-        $this->load->library('api_service');
     }
 
     private function getExt($file_name){
@@ -30,24 +27,25 @@ class Upload extends MY_Controller{
     public function uploadImage(){
 
         $md5_str = md5_file($_FILES['Filedata']['tmp_name']);
-        $upload_path = UPLOAD_FILE_PATH.substr($md5_str,0,2).'/';
+        $upload_path = UPLOAD_PATH.'/'.substr($md5_str,0,2).'/';
         $config['file_name'] = $md5_str.'.'.$this->getExt($_FILES['Filedata']['name']);
         $config['upload_path'] = $upload_path;
         $config['allowed_types'] = 'gif|jpg|png|jpeg';
         $config['overwrite'] = true;
-        $config['max_size'] = '100';
+        $config['max_size'] = '2000';
         $this->load->library('upload',$config);
         $this->checkDir($config['upload_path']);
 
         if ($this->upload->do_upload('Filedata')) {
             $upload_data = $this->upload->data();
-            $arr_return['path'] = substr($upload_data['file_name'],0,2).'/'.$upload_data['file_name'];
-            $arr_return['raw_name'] = $upload_data['file_name'];
+            $data['path'] = substr($upload_data['file_name'],0,2).'/'.$upload_data['file_name'];
+            $data['err_code'] = '0000';
+            $data['err_msg'] = 'OK';
         }else{
-            $arr_return['error_code'] = 1;
-            $arr_return['error_msg'] =  $this->upload->display_errors();
+            $data['err_code'] = 1;
+            $data['err_msg'] =  $this->upload->display_errors();
         }
-
+        $this->jsonOutput($data);
     }
 
 

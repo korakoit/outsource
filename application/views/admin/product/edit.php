@@ -4,9 +4,8 @@
 
 <?php $this->load->view('admin/block/nav_bar.php'); ?>
 
-<link rel="stylesheet" type="text/css" href="<?= STATIC_FILE_HOST ?>assets/css/select2_metro.css"/>
+<link rel="stylesheet" type="text/css" href="<?=STATIC_FILE_HOST?>assets/css/select2_metro.css"/>
 
-<link>
 <!-- BEGIN PAGE -->
 <style type="text/css">
     .table th, .table td {
@@ -78,66 +77,192 @@
                         <!-- END BREADCRUMB -->
                     </div>
                 </div>
-                <form class="form-horizontal" method="post" name="product-form" id="product-form" action="">
+                <form class="form-horizontal" method="post" name="product-form" id="seller_form" action="<?=$action?>">
                     <h3 class="form-section">Seller Info</h3>
                     <div class="row-fluid">
                         <div class="span12">
 
+                            <?php if (isset($product)):?>
+                                <input type="hidden" name="id" value="<?=$product['id']?>"/>
+                            <?php endif;?>
+
                             <div class="control-group">
-                                <label class="control-label"><?= T('商品名称') ?>：<span class="required">*</span></label>
+                                <label class="control-label">Name:<span class="required">*</span></label>
                                 <div class="controls">
-                                    <input type="text" placeholder="<?= T('输入商品名称') ?>" class="" name="name">
+                                    <input type="text" placeholder="Input Name" name="name" value="<?=isset($product)?$product['name']:''?>">
                                     <span class="help-inline" for="name"></span>
                                 </div>
                             </div>
 
+                            <?php if (isset($product)):?>
+                                <div class="control-group">
+                                    <label class="control-label">Pcode:<span class="required">*</span></label>
+                                    <div class="controls">
+                                        <input type="text"  name="pcode" value="<?=isset($product)?$product['pcode']:''?>">
+                                        <span class="help-inline" for="pcode"></span>
+                                    </div>
+                                </div>
+                            <?php endif;?>
 
+                            <div class="control-group">
+                                <label class="control-label">Title:<span class="required">*</span></label>
+                                <div class="controls">
+                                    <input type="text" placeholder="Input Title" name="title" value="<?=isset($product)?$product['title']:''?>">
+                                    <span class="help-inline" for="title"></span>
+                                </div>
+                            </div>
 
+                            <div class="control-group">
+                                <label class="control-label">Price<span class="required">*</span></label>
+                                <div class="controls">
+                                    <input type="text" placeholder="Input Price" name="price" value="<?=isset($product)?$product['price']:''?>">
+                                    <span class="help-inline" for="price"></span>
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <label class="control-label">Star:<span class="required">*</span></label>
+                                <div class="controls">
+                                    <select name="star">
+                                        <option value="1" <?php if(isset($product)&&$product['star']==1) echo "selected";?>>One</option>
+                                        <option value="2" <?php if(isset($product)&&$product['star']==2) echo "selected";?>>Two</option>
+                                        <option value="3" <?php if(isset($product)&&$product['star']==3) echo "selected";?>>Three</option>
+                                        <option value="4" <?php if(isset($product)&&$product['star']==4) echo "selected";?>>Four</option>
+                                        <option value="5" <?php if(isset($product)&&$product['star']==5) echo "selected";?>>Five</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <label class="control-label">Detail<span class="required">*</span></label>
+                                <div class="controls">
+                                    <textarea name="detail"><?=isset($product)?$product['detail']:''?></textarea>
+                                    <span class="help-inline" for="detail"></span>
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <label class="control-label">Main Category:<span class="required">*</span></label>
+                                <div class="controls">
+                                    <select name="main_category"></select>
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <label class="control-label">Sub Category:<span class="required">*</span></label>
+                                <div class="controls">
+                                    <select name="sub_category"></select>
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <label class="control-label">Seo Title:<span class="required">*</span></label>
+                                <div class="controls">
+                                    <input type="text" placeholder="Input Seo Title" name="seo_title" value="<?=isset($product)?$product['price']:''?>">
+                                    <span class="help-inline" for="seo_title"></span>
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <label class="control-label">Seo Content:<span class="required">*</span></label>
+                                <div class="controls">
+                                    <input type="text" placeholder="Input Seo Content" name="seo_content" value="<?=isset($product)?$product['seo_content']:''?>">
+                                    <span class="help-inline" for="seo_content"></span>
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <label class="control-label">Seo Desc:<span class="required">*</span></label>
+                                <div class="controls">
+                                    <textarea name="detail"><?=isset($product)?$product['seo_desc']:''?></textarea>
+                                    <span class="help-inline" for="detail"></span>
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <label class="control-label">First Image:<span class="required">*</span></label>
+                                <div class="controls" id="imageDiv">
+                                    <div id="image">Upload</div>
+                                    <?php if (empty($product['image'])):?>
+                                        <img id="showImage" src="" style="width:30%;height:100px;display:none"/>
+                                    <?php else:?>
+                                        <img id="showImage" src="<?=IMAGE_HOST.$logo?>" style="width:30%;height:100px;"/>
+                                    <?php endif;?>
+                                    <input type="hidden" name="image" id="logo" value="<?=isset($product)?$product['image']:''?>"/>
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <label class="control-label">Images:<span class="required">*</span></label>
+                                <div class="controls" id="imageDiv">
+                                    <div id="image">Upload</div>
+                                    <?php if (empty($product['image'])):?>
+                                        <img id="showImage" src="" style="width:30%;height:100px;display:none"/>
+                                    <?php else:?>
+                                        <img id="showImage" src="<?=IMAGE_HOST.$logo?>" style="width:30%;height:100px;"/>
+                                    <?php endif;?>
+                                    <input type="hidden" name="image" id="logo" value="<?=isset($product)?$product['image']:''?>"/>
+                                </div>
+                            </div>
 
                         </div>
                     </div>
 
+                    <div class="form-actions">
+
+                        <button class="btn green" type="submit">Save</button>
+
+                    </div>
+                </form>
             </div>
         </div>
-        </form>
-    </div>
-</div>
 
-</div>
+    </div>
 
 </div>
 
 <!-- END PAGE -->
 
-<!-- BEGIN DIALOG -->
-<!-- 模态框（Modal） -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
-     aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close"
-                        data-dismiss="modal" aria-hidden="true">
-                </button>
-                <h4 class="modal-title" id="myModalLabel">
-
-                </h4>
-            </div>
-            <div class="modal-body" id="validate_tip">
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default"
-                        data-dismiss="modal"><?= T('关闭') ?>
-                </button>
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal -->
-</div>
-
-
 <?php $this->load->view('admin/block/footer.php') ?>
+<script src="<?=STATIC_FILE_HOST?>assets/plugin/uploadify/jquery.uploadify.min.js" type="text/javascript"></script>
+<script src="<?=STATIC_FILE_HOST?>assets/plugin/layer/layer.js"></script>
+<script src="<?=STATIC_FILE_HOST?>assets/js/jquery.form.js"></script>
 
 <script type="text/javascript">
+    $(document).ready(function(){
 
+        $('#seller_form').ajaxForm(function(data){
+            if (data.err_code=='0000'){
+                layer.msg('Save Success');
+            }
+        });
+
+        $("#image").uploadify({
+            height        : 27,
+            width         : 80,
+            fileName      : "image",               //提交到服务器的文件名
+            maxFileCount: 1,                //上传文件个数（多个时修改此处
+            returnType    : 'json',              //服务返回数据
+            allowedTypes: 'jpg,jpeg,png,gif',  //允许上传的文件式
+            showDone: false,                     //是否显示"Done"(完成)按钮
+            showDelete: false,
+            buttonText   : 'Select Image',
+            fileSizeLimit : '2048KB',
+            swf           : '<?=STATIC_FILE_HOST?>assets/plugin/uploadify/uploadify.swf',
+            uploader      : '/admin/upload/uploadImage',
+            onUploadSuccess:function(file,data,response){
+                $('#image-queue').remove();
+                var result = JSON.parse(data);
+                if (result.err_code=='0000'){
+                    $('#showImage').attr('src','<?=IMAGE_HOST?>'+result.path);
+                    $('#showImage').show();
+                    $('#logo').val(result.path)
+                }else{
+                    layer.msg(result.err_msg);
+                }
+            }
+        });
+        $('#image-queue').remove();
+
+    });
 </script>
