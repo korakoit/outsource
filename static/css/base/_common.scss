@@ -1,0 +1,64 @@
+@import "variable.scss";
+@import "topography.scss";
+
+
+img[src=""]{
+  opacity: 0;
+}
+a {
+    text-decoration: none;
+    color:$title;
+}
+
+img, embed, object, video, iframe {
+    max-width:100% !important;
+}
+
+input:-ms-input-placeholder,textarea:-ms-input-placeholder{
+    color:#8fa0b1;
+}
+input::-webkit-input-placeholder,textarea::-webkit-input-placeholder{
+    color:#8fa0b1;
+}
+input::-moz-placeholder,textarea::-moz-placeholder{
+    color: #8fa0b1;
+}
+
+.underline{
+  &:hover{
+    text-decoration:underline !important;
+  }
+
+}
+.font_gray{
+  color:$text !important;
+}
+.font_black{
+  color:#232326 !important;
+}
+.box{
+    display: flex;
+    .box_item{
+       flex: 1;
+    }
+}
+.box_center{
+    justify-content:center;/*水平居中*/
+    align-items: center;/*垂直居中*/
+}
+.box_v_center{
+  align-items: center;/*垂直居中*/
+}
+.box_v_bottom{
+  align-items: flex-end;/*垂直距底*/
+}
+.table{
+    display: table;
+    width: 100%;
+    .table_cell{
+        display:table-cell;
+    }
+}
+
+
+

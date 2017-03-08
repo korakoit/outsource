@@ -1,0 +1,96 @@
+.wrapper .showinfo {
+  background-color: #fff;
+  margin-bottom: 10px;
+  padding-bottom: 40px; }
+  .wrapper .showinfo .banner {
+    height: 299px;
+    background: url(/static/images/showimg.png) no-repeat center center;
+    margin-bottom: 40px; }
+  .wrapper .showinfo h2 {
+    font-size: 25px;
+    font-weight: bold;
+    color: #000;
+    text-align: center; }
+  .wrapper .showinfo p.p0 {
+    font-size: 16px;
+    text-align: center;
+    line-height: 40px; }
+  .wrapper .showinfo ul {
+    text-align: center;
+    margin: 20px 0 0; }
+    .wrapper .showinfo ul li {
+      display: inline-block;
+      zoom: 1;
+      width: 245px;
+      height: 262px;
+      _display: inline;
+      background-color: #f9e0e0;
+      vertical-align: top; }
+      .wrapper .showinfo ul li div {
+        height: 160px;
+        background: url(/static/images/addr.png) 88px center no-repeat; }
+      .wrapper .showinfo ul li p.lip {
+        font-size: 16px;
+        line-height: 1.2; }
+      .wrapper .showinfo ul li.sec {
+        background-color: #ddf2f4;
+        margin: 0 45px; }
+        .wrapper .showinfo ul li.sec div {
+          background-position: -205px center; }
+      .wrapper .showinfo ul li.thirds {
+        background-color: #ebf3ba; }
+        .wrapper .showinfo ul li.thirds div {
+          background-position: -496px center; }
+
+.wrapper .writeinfo {
+  padding: 40px 0px;
+  background-color: #fff; }
+  .wrapper .writeinfo .inputinfo .subinfo {
+    overflow: hidden;
+    padding-left: 100px;
+    margin-top: 30px; }
+    .wrapper .writeinfo .inputinfo .subinfo:first-child {
+      margin-top: 0; }
+    .wrapper .writeinfo .inputinfo .subinfo div {
+      float: left; }
+      .wrapper .writeinfo .inputinfo .subinfo div.left {
+        width: 108px;
+        text-align: right;
+        margin-right: 5px;
+        font-size: 20px; }
+      .wrapper .writeinfo .inputinfo .subinfo div.right {
+        width: 237px;
+        height: 30px;
+        border: 1px solid #aaa; }
+        .wrapper .writeinfo .inputinfo .subinfo div.right input {
+          text-indent: 5px;
+          outline: none;
+          width: 100%;
+          height: 100%; }
+  .wrapper .writeinfo .hr {
+    border-top: 1px dashed #7f7f7f;
+    width: 940px;
+    margin: 18px auto 28px; }
+  .wrapper .writeinfo p {
+    text-align: center;
+    font-size: 15px; }
+  .wrapper .writeinfo #submit {
+    width: 170px;
+    margin: 25px auto -10px;
+    height: 43px;
+    color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 43px;
+    background-color: #047aff;
+    cursor: pointer; }
+
+.wrapper .index_footer {
+  margin-top: 82px; }
+
+.wrapper .third {
+  display: none !important; }
+
+.wrapper .about {
+  display: block !important; }

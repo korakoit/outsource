@@ -1,0 +1,62 @@
+.wrapper .banner_top {
+  height: 500px; }
+  .wrapper .banner_top a {
+    display: block;
+    height: 100%;
+    background: url("/static/images/top_bg.png") center top no-repeat;
+    background-size: cover;
+    text-align: center; }
+    .wrapper .banner_top a span {
+      color: #fff;
+      font-size: 80px;
+      font-weight: bold;
+      text-shadow: 1px #000;
+      position: relative;
+      top: 160px;
+      text-shadow: 4px 3px 1px rgba(0, 0, 0, 0.75); }
+
+.wrapper .text {
+  text-align: center;
+  color: #000; }
+  .wrapper .text h2 {
+    font-size: 30px;
+    margin: 36px 0; }
+  .wrapper .text p {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 34px; }
+
+.wrapper .imgmap {
+  padding-top: 20px;
+  background-color: #dedfe2; }
+  .wrapper .imgmap .desc {
+    height: 120px;
+    background-color: #113071;
+    color: #fff;
+    text-align: center;
+    padding-top: 15px; }
+    .wrapper .imgmap .desc h3 {
+      font-size: 20px;
+      margin-bottom: 15px; }
+    .wrapper .imgmap .desc p {
+      font-size: 15px;
+      line-height: 1.2; }
+  .wrapper .imgmap .map {
+    height: 390px;
+    background: url(/static/images/map.png) center -34px no-repeat; }
+
+.wrapper .shangbiao {
+  margin-top: -2px;
+  background: url(/static/images/shangbiao.png) repeat-x center center; }
+
+.third {
+  display: none !important; }
+
+.about {
+  display: block !important; }
+
+p {
+  padding: 0 5px; }
+
+.index_footer {
+  margin-top: -2px !important; }

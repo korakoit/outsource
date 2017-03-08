@@ -1,0 +1,55 @@
+/*black_footer*/
+.black_footer{
+  min-width: 1140px;
+  font-size:14px;
+  color:#555765;
+  background:#363841;
+  height:97px;
+  text-align:center;
+  padding: 23px 0 38px 0;
+  z-index: 9;
+  position: relative;
+  a{
+    cursor:default;
+  }
+  p{
+    text-align:center;
+  }
+  .imglist{
+    float:left;
+    position:relative;
+    left:50%;
+    margin-top:23px;
+    li{
+      position:relative;
+      right:50%;
+      float:left;
+      margin-right: 28px;
+      display: table-cell;
+      vertical-align: middle;
+      width: 82px;
+      height: 32px;
+      text-align: center;/*设置水平居中*/
+      overflow: hidden;
+      *font-family:Arial;/*预防IE6，7在gbk2312编码下，垂直居中有时候会失效*/
+      a{
+        *font-size:27.936px;/*设置IE6,7垂直居中Hack，约为高度的0.873*/
+        img {
+            vertical-align: middle;
+        }
+      }
+    }
+  }
+}
+/*black_footer*/
+/*white_footer*/
+.white_footer{
+  height:96px;
+  padding:45px 0;
+  background:#fff;
+  p{
+    color:#8fa0b1;
+    font-size:14px;
+  }
+}
+/*white_footer*/

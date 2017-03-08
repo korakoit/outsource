@@ -1,0 +1,78 @@
+@import "variable.scss";
+html,body{
+    background-color: $background;
+    //word-break: break-all;  //以字母开始换行
+    word-wrap: break-word;  //以单词开始换行
+    color:$title;
+    font: 14px/1.5 helvetica, 'PingFangSC','microsoft yahei', '微软雅黑','STXihei','华文细黑',tahoma,arial, 'Hiragino Sans GB','\5b8b\4f53',sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+a {
+    text-decoration: none;
+}
+dd{
+  margin:0px;
+}
+.center{
+    width:1000px;
+    margin: 0 auto;
+}
+input::-ms-clear { display: none; }
+input {
+    background: none;
+    outline: none;
+}
+input[type="password"],input[type="text"],input[type="button"],input[type="submit"],input[type="reset"],input[type="file"]::-webkit-file-upload-button,button,select,textarea{
+    -webkit-appearance:none;
+    appearance:none;
+    border: none;
+    border-radius: 0;
+    outline: none;
+}
+.ellipsis{
+    white-space: nowrap;
+    word-wrap:normal;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.break{
+    word-break: break-all;
+    word-wrap: break-word;
+}
+.clearfix:after {
+    content: "";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+.clearfix{
+    zoom: 1;
+}
+/* button */
+.yellow{
+    color:$yellow;
+}
+.btn{
+    color:#fff;
+    text-align: center;
+    font-size: 14px;
+    background-color:$yellow;
+    width:64px;
+    padding:6px 0;
+    border:none;
+    display:inline-block;
+    cursor: pointer;
+    font-family: 'microsoft yahei';
+    &:hover{
+        opacity: 0.5;
+        filter:alpha(opacity=50);
+    }
+    &.disabled,&:disabled{
+      background:#f0f2f5;
+      cursor:not-allowed;
+    }
+}
+/* button end */
+

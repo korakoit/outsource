@@ -1,0 +1,78 @@
+
+$fc:#55c1dd;
+$color:#000;
+$icon_data:(d_0,75px,0),(d_1,0,1),(d_2,75px,2),(d_3,0,3),(d_4,75px,4),(d_5,0,5),(d_6,75px,6),(d_7,0,7),(d_8,75px,8);
+.wrapper{
+    .banner_top{
+        height:500px;
+        a{
+            display: block;
+            height:100%;
+            background: url('/public/images/top_bg.png') center top no-repeat ;
+            background-size:cover;
+            text-align:center;
+            span{
+                color:#fff;
+                font-size:80px;
+                font-weight:bold;
+                text-shadow:1px #000;
+                position:relative;
+                top:160px;
+                text-shadow: 4px 3px 1px rgba(0,0,0,.75);
+            }
+        } 
+    }
+    .text{
+        text-align:center;
+        color:#000;
+        h2{
+            font-size:30px;
+            margin:36px 0;
+        }
+        p{
+            font-size:16px;
+            line-height:1.5;
+            margin-bottom:34px;
+        }
+    }
+    .imgmap{
+        padding-top:20px;
+        background-color:#dedfe2;
+        .desc{
+            height:120px;
+            background-color:#113071;
+            color:#fff;
+            text-align:center;
+            padding-top:15px;
+            h3{
+                font-size:20px;
+                margin-bottom:15px;
+            }
+            p{
+                font-size:15px;
+                line-height:1.2;
+            }
+        }
+        .map{
+            height:390px;
+            background:url(/public/images/map.png) center -34px no-repeat;
+        }
+    }
+    .shangbiao{
+        margin-top:-2px;
+        background:url(/public/images/shangbiao.png) repeat-x center center;
+    }
+}
+
+.third{
+    display:none!important;
+}
+.about{
+    display:block!important;
+}
+p{
+    padding:0 5px;
+}
+.index_footer{
+    margin-top:-2px !important;
+}
