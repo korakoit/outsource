@@ -88,6 +88,11 @@ class Product extends MY_Controller
         $this->load->view('admin/product/detail',$product);
     }
 
+    public function beforeAdd(){
+        $data['action'] = base_url('admin/product/add');
+        $this->load->view('admin/product/edit',$data);
+    }
+
     /**
      * User: cheye
      * Desc: 添加商品
@@ -99,7 +104,8 @@ class Product extends MY_Controller
         $price = $this->input->post('price',true);
         $detail = $this->input->post('detail',true);
         $star = $this->input->post('start',true);
-        $category_id = $this->input->post('category_id',true);
+        $main_category = $this->input->post('main_category',true);
+        $sub_category = $this->input->post('sub_category',true);
         $seo_title = $this->input->post('seo_title',true);
         $seo_content = $this->input->post('seo_content',true);
         $seo_desc = $this->input->post('seo_desc',true);

@@ -26,6 +26,7 @@ CREATE TABLE `banner` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `image` varchar(500) COLLATE utf8mb4_bin DEFAULT '' COMMENT '图片地址',
   `product_id` bigint(20) DEFAULT '0' COMMENT '商品 ID',
+  `pcode` char(64) COLLATE utf8mb4_bin DEFAULT '' COMMENT '商品编号',
   `ctime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `mtime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
@@ -189,7 +190,6 @@ CREATE TABLE `product` (
   `price` decimal(10,2) DEFAULT '0.00' COMMENT '商品价格',
   `detail` text COLLATE utf8mb4_bin COMMENT '商品详情',
   `star` int(11) DEFAULT '0' COMMENT '评星级',
-  `category_id` int(11) DEFAULT '0' COMMENT '商品类型id',
   `seo_title` varchar(1000) COLLATE utf8mb4_bin DEFAULT '' COMMENT 'seo title',
   `seo_content` varchar(1000) COLLATE utf8mb4_bin DEFAULT '' COMMENT 'seo  content',
   `seo_desc` varchar(1000) COLLATE utf8mb4_bin DEFAULT '' COMMENT 'seo desc',
@@ -197,6 +197,8 @@ CREATE TABLE `product` (
   `business_phone` char(50) COLLATE utf8mb4_bin DEFAULT '' COMMENT '企业电话',
   `ctime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `mtime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `main_category` int(11) DEFAULT '0' COMMENT '主分类',
+  `sub_category` int(11) DEFAULT '0' COMMENT '二级分类',
   PRIMARY KEY (`id`),
   KEY `product_name` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
@@ -227,7 +229,7 @@ CREATE TABLE `product_category` (
   `sort` int(11) DEFAULT '0' COMMENT '分类排序',
   PRIMARY KEY (`id`),
   KEY `pc_title` (`title`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -236,6 +238,7 @@ CREATE TABLE `product_category` (
 
 LOCK TABLES `product_category` WRITE;
 /*!40000 ALTER TABLE `product_category` DISABLE KEYS */;
+INSERT INTO `product_category` VALUES (6,0,'main category','2017-03-08 00:23:07','2017-03-08 00:23:07',0),(7,6,'sizeone','2017-03-08 00:23:16','2017-03-08 00:23:16',0),(8,6,'size two','2017-03-08 00:23:22','2017-03-08 00:23:22',0),(9,0,'Main Category','2017-03-08 00:23:31','2017-03-08 00:23:31',0),(10,9,'helloworld','2017-03-08 00:23:39','2017-03-08 00:23:39',0);
 /*!40000 ALTER TABLE `product_category` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -421,4 +424,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-03-07  8:27:26
+-- Dump completed on 2017-03-08  9:35:52

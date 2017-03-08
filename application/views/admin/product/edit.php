@@ -70,7 +70,7 @@
                         <!-- BEGIN BREADCRUMB-->
                         <ul class="breadcrumb" style="margin-top:10px;">
                             <li>
-                                <a href="<?= base_url("product/index") ?>">Seller Info</a>
+                                <a href="<?= base_url("product/index") ?>">Product Info</a>
                                 <i class="icon-angle-right"></i>
                             </li>
                         </ul>
@@ -78,7 +78,7 @@
                     </div>
                 </div>
                 <form class="form-horizontal" method="post" name="product-form" id="seller_form" action="<?=$action?>">
-                    <h3 class="form-section">Seller Info</h3>
+                    <h3 class="form-section">Product Info</h3>
                     <div class="row-fluid">
                         <div class="span12">
 
@@ -195,7 +195,15 @@
                             <div class="control-group">
                                 <label class="control-label">Images:<span class="required">*</span></label>
                                 <div class="controls" id="imageDiv">
-                                    <div id="image">Upload</div>
+                                    <div id="images">Upload</div>
+                                    <div class="remove"></div>
+                                    <?php if(isset($image_list)):?>
+                                        <?php foreach ($image_list as $value):?>
+                                            <div>
+                                                <img id="showImage" src="" style="width:30%;height:100px;display:none"/>
+                                            </div>
+                                        <?php endforeach;?>
+                                    <?php endif;?>
                                     <?php if (empty($product['image'])):?>
                                         <img id="showImage" src="" style="width:30%;height:100px;display:none"/>
                                     <?php else:?>
@@ -231,7 +239,7 @@
 <script type="text/javascript">
     $(document).ready(function(){
 
-        $('#seller_form').ajaxForm(function(data){
+        $('#product_form').ajaxForm(function(data){
             if (data.err_code=='0000'){
                 layer.msg('Save Success');
             }
@@ -262,6 +270,33 @@
                 }
             }
         });
+
+        $("#images").uploadify({
+            height        : 27,
+            width         : 80,
+            fileName      : "image",               //提交到服务器的文件名
+            maxFileCount: 1,                //上传文件个数（多个时修改此处
+            returnType    : 'json',              //服务返回数据
+            allowedTypes: 'jpg,jpeg,png,gif',  //允许上传的文件式
+            showDone: false,                     //是否显示"Done"(完成)按钮
+            showDelete: false,
+            buttonText   : 'Select Image',
+            fileSizeLimit : '2048KB',
+            swf           : '<?=STATIC_FILE_HOST?>assets/plugin/uploadify/uploadify.swf',
+            uploader      : '/admin/upload/uploadImage',
+            onUploadSuccess:function(file,data,response){
+                $('#image-queue').remove();
+                var result = JSON.parse(data);
+                if (result.err_code=='0000'){
+                    $('#showImage').attr('src','<?=IMAGE_HOST?>'+result.path);
+                    $('#showImage').show();
+                    $('#logo').val(result.path)
+                }else{
+                    layer.msg(result.err_msg);
+                }
+            }
+        });
+
         $('#image-queue').remove();
 
     });

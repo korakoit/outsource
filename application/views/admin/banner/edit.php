@@ -1,179 +1,174 @@
-<?php $this->load->view('block/header.php');?>
+<?php $this->load->view('admin/block/header.php'); ?>
 
-<?php $this->load->view('block/nav_top.php');?>
+<?php $this->load->view('admin/block/nav_top.php'); ?>
 
-<?php $this->load->view('block/nav_bar.php');?>
+<?php $this->load->view('admin/block/nav_bar.php'); ?>
 
-<style type="text/css">
-    #thumbnails ul li{float:left;list-style-type:none;width:105px;margin-left:5px;}
-    #thumbnails .button{display:block;position: relative;right:-84px;top: -118px;width: 30px;z-index: 1103;cursor:pointer;}
-</style>
+<link rel="stylesheet" type="text/css" href="<?=STATIC_FILE_HOST?>assets/css/select2_metro.css"/>
 
 <!-- BEGIN PAGE -->
+<style type="text/css">
+    .table th, .table td {
+        border-top: 1px solid #ddd;
+        line-height: 20px;
+        padding: 8px;
+        text-align: center;
+        vertical-align: middle;
+    }
+</style>
+
 <div class="page-content">
-    <!-- BEGIN PAGE CONTAINER-->
-    <div class="container-fluid">
-        <!-- BEGIN PAGE HEADER-->
-        <div class="row-fluid">
-            <div class="span12">
-                首页BANNER的管理
-            </div>
+
+    <!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+
+    <div id="portlet-config" class="modal hide">
+
+        <div class="modal-header">
+
+            <button data-dismiss="modal" class="close" type="button"></button>
+
+            <h3>portlet Settings</h3>
+
         </div>
 
-        <!-- END PAGE HEADER-->
-        <!-- BEGIN PAGE CONTENT-->
-        <div class="row-fluid profile">
-            <div class="span12">
-                <!--BEGIN TABS-->
-                <div class="tabbable tabbable-custom tabbable-full-width">
-                    <div class="tab-content">
-                        <div class="tab-pane row-fluid active" id="tab_1_1">
-                            <div class="row-fluid">
-                                <div class="span12">
+        <div class="modal-body">
 
-                                    <form action="/banner/save" class="form-horizontal" method="post">
-                                        <input type="hidden" name="id" id="id" value="<?=V($banner,'id',"")?>">
-                                        <div class="control-group">
-                                            <label class="control-label">终端:</label>
-                                            <div class="controls">
-                                                <select name="type" id="type" class="medium m-wrap" >
-                                                    <option value="-1">选择终端</option>
-                                                    <option value="0" <?php if(V($banner,'type',"") =="0") echo 'selected';?> >移动端</option>
-                                                    <option value="1" <?php if(V($banner,'type',"") =="1") echo 'selected';?> >PC端</option>
-                                                </select>
-                                            </div>
-                                        </div>
-
-                                        <div class="control-group">
-                                            <label class="control-label">标题:</label>
-                                            <div class="controls">
-                                                <input type="text" name="title"  placeholder="<?=V($banner,'title',"")?>" value="<?=V($banner,'title',"")?>" class="m-wrap large">
-                                            </div>
-                                        </div>
-
-                                        <div class="control-group">
-                                            <label class="control-label">描述:</label>
-                                            <div class="controls">
-                                                <input type="text" name="profile"  placeholder="<?=V($banner,'profile',"")?>" class="m-wrap large" value="<?=V($banner,'profile',"")?>">
-                                            </div>
-                                        </div>
-
-                                        <div class="control-group">
-                                            <label class="control-label">链接:</label>
-                                            <div class="controls">
-                                                <input type="text" name="url"  placeholder="<?=V($banner,'url',"")?>" class="m-wrap large" value="<?=V($banner,'url',"")?>">
-                                            </div>
-                                        </div>
-
-                                        <div class="control-group">
-                                            <label class="control-label">是否有效:</label>
-                                            <div class="controls">
-                                                <input type="radio" value="0" name="valid" <?php if(V($banner,'valid',0) == "0"):?>checked<?php endif; ?>>无效
-                                                <input type="radio" value="1" name="valid" <?php if(V($banner,'valid',1) == "1"):?>checked<?php endif; ?>>有效
-                                            </div>
-                                        </div>
-
-                                        <div class="control-group">
-                                            <label class="control-label">排序值:</label>
-                                            <div class="controls">
-                                                <input type="text" name="ord" id="ord" placeholder="排序值，默认为0" class="m-wrap large" value="<?=V($banner,'ord',"0")?>">
-                                            </div>
-                                        </div>
-
-                                        <div class="control-group">
-                                            <label class="control-label">位置标志:</label>
-                                            <div class="controls">
-                                                <input type="text" name="position" id="position" placeholder="位置标志，默认为空" class="m-wrap large" value="<?=V($banner,'position',"")?>">
-                                            </div>
-                                        </div>
-
-                                        <div class="control-group">
-                                            <label class="control-label">图片：</label>
-                                            <input type="hidden" name="catepic" id="catepic" value="<?=V($banner,'pic',"")?>">
-                                            <div class="controls">
-                                                <div class="margin-bottom-10" title="pic">
-                                                    <div id="queue"></div>
-                                                    <div style="width:250px; height: auto; border: 1px solid #e1e1e1; font-size: 12px; padding: 10px;">
-                                                        <div id="thumbnails" class="margin-bottom-10">
-                                                            <ul id="pic_list" style="margin: 5px;">
-                                                                <?php if(!empty(V($banner,'pic',""))):?>
-                                                                    <li><img class='content'  src='<?=IMAGE_FILE_HOST?><?=substr(V($banner,'pic',""),0,2)?>/<?=V($banner,'pic',"")?>' style="width:100px;height:100px;"></li>
-                                                                <?php endif; ?>
-                                                            </ul>
-                                                            <div style="clear: both;"></div>
-                                                            <div style="">[移动端]请使用750*400宽度的图片<br>
-                                                                [PC端&nbsp;&nbsp;]请使用1920*1010宽度图片<br>
-                                                                [PC端小Banner]请使用640*400宽度图片,位置标志使用1
-                                                            </div>
-                                                        </div>
-                                                        <input name="file_upload" id='cate_upload' type="file" multiple="false">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-actions">
-                                            <button class="btn blue" type="submit"><i class="icon-ok"></i>保存</button>
-                                            <button class="btn" type="button">取消</button>
-                                        </div>
-                                    </form>
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-                <!--END TABS-->
-
-            </div>
+            <p>Here will be a configuration form</p>
 
         </div>
 
     </div>
 
-    <!-- END PAGE CONTAINER-->
+    <!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+
+    <!-- BEGIN PAGE CONTAINER-->
+
+    <div class="container-fluid">
+
+        <!-- BEGIN PAGE HEADER-->
+
+        <div class="row-fluid">
+
+            <div class="span12">
+
+                <!--                --><?php //$this->load->view('block/style_bar.php'); ?>
+
+                <!-- BEGIN PAGE TITLE & BREADCRUMB-->
+                <!--                --><?php //$this->load->view('block/bread_crumb.php'); ?>
+                <!-- END PAGE TITLE & BREADCRUMB -->
+
+            </div>
+
+        </div>
+
+        <!-- END PAGE HEADER-->
+
+        <div class="page-content" id="content">
+            <div class="container-fluid">
+                <div class="row-fluid">
+                    <div class="span12">
+                        <!-- BEGIN BREADCRUMB-->
+                        <ul class="breadcrumb" style="margin-top:10px;">
+                            <li>
+                                <a href="<?= base_url("product/index") ?>">Seller Info</a>
+                                <i class="icon-angle-right"></i>
+                            </li>
+                        </ul>
+                        <!-- END BREADCRUMB -->
+                    </div>
+                </div>
+                <form class="form-horizontal" method="post" name="product-form" id="seller_form" action="<?=base_url('admin/banner/edit')?>">
+                    <h3 class="form-section">Seller Info</h3>
+                    <div class="row-fluid">
+                        <div class="span12">
+
+                            <div class="control-group">
+                                <label class="control-label">Pcode:<span class="required">*</span></label>
+                                <div class="controls">
+                                    <input type="text" placeholder="Input Pcode" name="pcode" value="<?=$pcode?>">
+                                    <span class="help-inline" for="pcode"></span>
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <label class="control-label">Sort:<span class="required">*</span></label>
+                                <div class="controls">
+                                    <input type="text" placeholder="Input Sort" name="sort" value="<?=$sotrt?>">
+                                    <span class="help-inline" for="sort"></span>
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <label class="control-label">Logo:<span class="required">*</span></label>
+                                <div class="controls" id="imageDiv">
+                                    <div id="image">Upload</div>
+                                    <?php if (empty($image)):?>
+                                        <img id="showImage" src="" style="width:30%;height:100px;display:none"/>
+                                    <?php else:?>
+                                        <img id="showImage" src="<?=IMAGE_HOST.$image?>" style="width:30%;height:100px;"/>
+                                    <?php endif;?>
+                                    <input type="hidden" name="image" id="image" value="<?=$image?>"/>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+
+                        <button class="btn green" type="submit">Save</button>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
 
 </div>
 
-
 <!-- END PAGE -->
 
-<?php $this->load->view('block/footer.php')?>
-<!-- 数据验证相关 -->
-<script type="text/javascript" src="<?=STATIC_FILE_HOST?>assets/js/jquery.validate.min.js"></script>
-<script src="<?=STATIC_FILE_HOST?>assets/js/form-validation.js"></script>
-
-<script src="<?=STATIC_FILE_HOST?>assets/plugin/layer/layer.js"></script>
-
+<?php $this->load->view('admin/block/footer.php') ?>
 <script src="<?=STATIC_FILE_HOST?>assets/plugin/uploadify/jquery.uploadify.min.js" type="text/javascript"></script>
+<script src="<?=STATIC_FILE_HOST?>assets/plugin/layer/layer.js"></script>
+<script src="<?=STATIC_FILE_HOST?>assets/js/jquery.form.js"></script>
 
-<script language="javascript">
-    $("#cate_upload").uploadify({
-        height        : 27,
-        width         : 80,
-        buttonText   : '选择图片',
-        fileSizeLimit : '2048KB',
-        fileTypeDesc : 'Image Files',
-        fileTypeExts : '*.gif; *.jpg; *.png',
-        swf           : '<?=STATIC_FILE_HOST?>assets/plugin/uploadify/uploadify.swf',
-        auto: true,
-        multi: true,
-        formData : { 'width': '200', 'height': '200' },
-        uploader      : '/upload/uploadCountryPic/',
-        onUploadSuccess:function(file,data,response){
-            var obj=eval('('+data+')');
-            if(obj.error_code==0){
-                var newElement = "<li><img class='content'  src='"+image_url+obj.path+"' style=\"width:100px;height:100px;\"></li>";
-                $("#pic_list").html(newElement);
-                $("#catepic").val(obj.raw_name);
-            }else{
-                alert(obj.error_msg)
-                return false;
+<script type="text/javascript">
+    $(document).ready(function(){
+
+        $('#seller_form').ajaxForm(function(data){
+            if (data.err_code=='0000'){
+                layer.msg('Save Success');
             }
-        },
+        });
+
+        $("#image").uploadify({
+            height        : 27,
+            width         : 80,
+            fileName      : "image",               //提交到服务器的文件名
+            maxFileCount: 1,                //上传文件个数（多个时修改此处
+            returnType    : 'json',              //服务返回数据
+            allowedTypes: 'jpg,jpeg,png,gif',  //允许上传的文件式
+            showDone: false,                     //是否显示"Done"(完成)按钮
+            showDelete: false,
+            buttonText   : 'Select Image',
+            fileSizeLimit : '2048KB',
+            swf           : '<?=STATIC_FILE_HOST?>assets/plugin/uploadify/uploadify.swf',
+            uploader      : '/admin/upload/uploadImage',
+            onUploadSuccess:function(file,data,response){
+                $('#image-queue').remove();
+                var result = JSON.parse(data);
+                if (result.err_code=='0000'){
+                    $('#showImage').attr('src','<?=IMAGE_HOST?>'+result.path);
+                    $('#showImage').show();
+                    $('#image').val(result.path)
+                }else{
+                    layer.msg(result.err_msg);
+                }
+            }
+        });
+        $('#image-queue').remove();
+
     });
 </script>
-
