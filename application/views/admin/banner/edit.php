@@ -4,7 +4,6 @@
 
 <?php $this->load->view('admin/block/nav_bar.php'); ?>
 
-<link rel="stylesheet" type="text/css" href="<?=STATIC_FILE_HOST?>assets/css/select2_metro.css"/>
 
 <!-- BEGIN PAGE -->
 <style type="text/css">
@@ -70,46 +69,43 @@
                         <!-- BEGIN BREADCRUMB-->
                         <ul class="breadcrumb" style="margin-top:10px;">
                             <li>
-                                <a href="<?= base_url("product/index") ?>">Seller Info</a>
+                                <a href="<?= base_url("product/index") ?>">Banner</a>
                                 <i class="icon-angle-right"></i>
                             </li>
                         </ul>
                         <!-- END BREADCRUMB -->
                     </div>
                 </div>
-                <form class="form-horizontal" method="post" name="product-form" id="seller_form" action="<?=base_url('admin/banner/edit')?>">
-                    <h3 class="form-section">Seller Info</h3>
+                <form class="form-horizontal" method="post" id="data_form" action="<?=$action?>">
+                    <h3 class="form-section">Product Info</h3>
                     <div class="row-fluid">
                         <div class="span12">
+
+                            <?php if (isset($banner)):?>
+                                <input type="hidden" name="id" value="<?=$banner['id']?>"/>
+                            <?php endif;?>
 
                             <div class="control-group">
                                 <label class="control-label">Pcode:<span class="required">*</span></label>
                                 <div class="controls">
-                                    <input type="text" placeholder="Input Pcode" name="pcode" value="<?=$pcode?>">
+                                    <input type="text" placeholder="Input Product Code" name="pcode" value="<?=isset($banner)?$banner['pcode']:''?>">
                                     <span class="help-inline" for="pcode"></span>
                                 </div>
                             </div>
 
                             <div class="control-group">
-                                <label class="control-label">Sort:<span class="required">*</span></label>
+                                <label class="control-label">First Image:<span class="required">*</span></label>
                                 <div class="controls">
-                                    <input type="text" placeholder="Input Sort" name="sort" value="<?=$sotrt?>">
-                                    <span class="help-inline" for="sort"></span>
+                                    <div id="image">Upload</div>
+                                    <?php if (empty($banner['image'])):?>
+                                        <img id="showImage" src="" style="width:30%;height:100px;display:none"/>
+                                    <?php else:?>
+                                        <img id="showImage" src="<?=IMAGE_HOST.$banner['image']?>" style="width:30%;height:100px;"/>
+                                    <?php endif;?>
+                                    <input type="hidden" name="image" id="image" value="<?=isset($banner)?$banner['image']:''?>"/>
                                 </div>
                             </div>
 
-                            <div class="control-group">
-                                <label class="control-label">Logo:<span class="required">*</span></label>
-                                <div class="controls" id="imageDiv">
-                                    <div id="image">Upload</div>
-                                    <?php if (empty($image)):?>
-                                        <img id="showImage" src="" style="width:30%;height:100px;display:none"/>
-                                    <?php else:?>
-                                        <img id="showImage" src="<?=IMAGE_HOST.$image?>" style="width:30%;height:100px;"/>
-                                    <?php endif;?>
-                                    <input type="hidden" name="image" id="image" value="<?=$image?>"/>
-                                </div>
-                            </div>
 
                         </div>
                     </div>
@@ -137,7 +133,7 @@
 <script type="text/javascript">
     $(document).ready(function(){
 
-        $('#seller_form').ajaxForm(function(data){
+        $('#product_form').ajaxForm(function(data){
             if (data.err_code=='0000'){
                 layer.msg('Save Success');
             }
@@ -168,7 +164,18 @@
                 }
             }
         });
+
         $('#image-queue').remove();
 
+        $('#product_form').ajaxForm(function(data){
+            if (data.err_code=='0000') {
+                layer.msg("Save Success");
+                window.location.href = '<?=base_url('admin/banner/index?id=')?>'+data.banner_id;
+            }else{
+                layer.msg(data.err_msg);
+            }
+        });
+
     });
+
 </script>

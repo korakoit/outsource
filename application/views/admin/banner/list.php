@@ -1,8 +1,8 @@
-<?php $this->load->view('block/header.php');?>
+<?php $this->load->view('admin/block/header.php');?>
 
-<?php $this->load->view('block/nav_top.php');?>
+<?php $this->load->view('admin/block/nav_top.php');?>
 
-<?php $this->load->view('block/nav_bar.php');?>
+<?php $this->load->view('admin/block/nav_bar.php');?>
 
 <link rel="stylesheet" type="text/css" href="<?=STATIC_FILE_HOST?>assets/css/select2_metro.css" />
 
@@ -27,7 +27,7 @@
 
         <div class="row-fluid">
 
-            
+
         </div>
 
         <!-- END PAGE HEADER-->
@@ -38,54 +38,77 @@
 
             <div class="span12 booking-search">
 
-                    <form action="" method="get" class="form-horizontal">
-                        <div class="clearfix margin_left_90">
-                            <div class="control-group pull-left margin-right-20" style="margin-right:20px;">
-                                <label class="control-label">所属终端:</label>
-                                <div class="controls">
-                                    <select name="type" id="type" class="medium m-wrap" >
-                                        <option value="-1">选择终端</option>
-                                        <option value="0" <?php if(isset($search['type']) && $search['type'] ==0) echo 'selected';?> >移动端</option>
-                                        <option value="1" <?php if(isset($search['type']) && $search['type'] ==1) echo 'selected';?> >PC端</option>
-                                    </select>
-                                </div>
+                <form action="<?=base_url('admin/product/index')?>" method="get" class="form-horizontal">
+                    <div class="clearfix margin_left_90">
 
-                            </div>
-
-                            <div class="control-group pull-left margin-right-20" style="margin-right:20px;">
-                                <label class="control-label">有效状态:</label>
-                                <div class="controls">
-                                    <select class="medium m-wrap" name="valid" id="valid">
-                                        <option value="-1">选择状态</option>
-                                        <option  value="0" <?php if(isset($search['valid']) && $search['valid'] == 0) echo 'selected';?> >失效</option>
-                                        <option  value="1" <?php if(isset($search['valid']) && $search['valid'] == 1) echo 'selected';?> >有效</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="control-group pull-left margin-right-20"  style="margin-left:-20px;">
-                                <label class="control-label">标题关键字:</label>
-                                <div class="controls">
-                                    <input type="text" name="titleKey" class="medium m-wrap" placeholder="键入标题关键字" value="<?php if(isset($search['titleKey'])) echo $search['titleKey'];?>">
-                                </div>
+                        <div class="control-group pull-left margin-right-20" style="margin-right:20px;">
+                            <label class="control-label">Main Category:</label>
+                            <div class="controls">
+                                <select name="main_category" id="main_category" onchange="changeMainCategory()" class="medium m-wrap" >
+                                    <option value="">Select</option>
+                                    <?php foreach ($main_list as $key=>$value):?>
+                                        <option value="<?=$key?>"
+                                            <?=isset($search['main_category'])&&$search['main_category']==$key?" selected":""?>
+                                        ><?=$value?></option>
+                                    <?php endforeach;?>
+                                </select>
                             </div>
                         </div>
 
-
-                        <div class="clearfix margin-bottom-10">
-                            <div class="pull-left margin-right-20" style="margin-right:20px;">
-                                <a class="btn green" href="/banner/add/">新增BANNER</a>
-                            </div>
-
-                            <div class="pull-left margin-right-20" style="margin-right:20px;">
-                                    <button class="btn blue" type="submit">开始搜索</button>
-                            </div>
-
-                            <div class="pull-left margin-left-20" style="margin-right:20px;">
-                                <a class="btn blue" href="/banner/index">清空条件</a>
+                        <div class="control-group pull-left margin-right-20" style="margin-right:20px;">
+                            <label class="control-label">Sub Category:</label>
+                            <div class="controls">
+                                <select name="sub_category" class="medium m-wrap" id="sub_category">
+                                    <option value="">Select</option>
+                                    <?php foreach ($sub_list as $key=>$value):?>
+                                        <option value="<?=$key?>"
+                                            <?=isset($search['sub_category'])&&$search['sub_category']==$key?" selected":""?>
+                                        ><?=$value?></option>
+                                    <?php endforeach;?>
+                                </select>
                             </div>
                         </div>
-                    </form>
+
+                        <div class="control-group pull-left margin-right-20"  style="margin-left:-20px;">
+
+                            <label class="control-label">Name:</label>
+
+                            <div class="controls">
+
+                                <input type="text" name="name" class="medium m-wrap" placeholder="Input Name"value="<?=isset($search['name'])?$search['name']:''?>">
+
+                            </div>
+
+                        </div>
+
+                        <div class="control-group pull-left margin-right-20"  style="margin-left:-20px;">
+
+                            <label class="control-label">Code:</label>
+
+                            <div class="controls">
+
+                                <input type="text" name="pcode" class="medium m-wrap" placeholder="Input Code" value="<?=isset($search['pcode'])?$search['pcode']:''?>">
+
+                            </div>
+
+                        </div>
+
+
+
+                    </div>
+
+
+                    <div class="clearfix margin-bottom-10">
+
+                        <div class="pull-left margin-right-20" style="margin-right:20px;">
+
+                            <button class="btn blue" type="submit">Search</button>
+
+                        </div>
+
+                    </div>
+
+                </form>
             </div>
 
             <!-- 开始分割线-->
@@ -96,61 +119,59 @@
             </ul>
             <!-- 结束分割线-->
             <form id="batch-form" name="batch-form" method="post" >
-            <table class="table table-striped table-bordered table-hover" id="sample_1">
-                <thead>
-                <tr>
-                    <th>编号</th>
-                    <th class="hidden-480">标题</th>
-                    <th class="hidden-480">图片</th>
-                    <th class="hidden-480">所属终端</th>
-                    <th class="hidden-480">URL地址</th>
-                    <th class="hidden-480">添加时间</th>
-                    <th class="hidden-480">更新时间</th>
-<!--                    <th class="hidden-480">开始时间</th>-->
-<!--                    <th class="hidden-480">结束时间</th>-->
-                    <th class="hidden-480">有效状态</th>
-                    <th class="hidden-480">排序值</th>
-                    <th class="hidden-480">位置标志</th>
-                    <th class="hidden-480">管理</th>
-                </tr>
-                </thead>
-                <tbody>
-                <?php if(!empty($result)):?>
-                    <?php foreach($result as $k=>$row): ?>
-                        <?php
-                            $skunum = isset($row['sku']) ? count($row['sku']) : 0;
-                        ?>
-                        <tr class="odd gradeX">
-                            <td><?=$row['id']?></td>
-                            <td><?=$row['title']?></td>
-                            <td>
-                                <?php if(!empty($row['pic'])):?>
-                                    <img class='content'  src='<?=IMAGE_FILE_HOST?><?=substr($row['pic'],0,2)?>/<?=$row['pic']?>' style=\"width:100px;height:100px;\">
-                                <?php endif; ?>
-                            </td>
-                            <td><?php if($row['type'] == "0"):?>移动端<?php else:?>PC端<?php endif;?></td>
-                            <td ><?=@$row['url']?></td>
-                            <td ><?=@date("Y-m-d H:i",$row['add_date'])?></td>
-                            <td ><?=@date("Y-m-d H:i",$row['update_date'])?></td>
-<!--                            <td >--><?//=@date("Y-m-d H:i",$row['start_date'])?><!--</td>-->
-<!--                            <td >--><?//=@date("Y-m-d H:i",$row['end_date'])?><!--</td>-->
-                            <td ><?php if($row['valid'] == "0"):?>失效<?php else:?>有效<?php endif;?></td>
-                            <td ><?=@$row['ord']?></td>
-                            <td ><?=@$row['position']?></td>
-                            <td ><a href="/banner/edit/<?=$row['id']?>">编辑</a></td>
-                        </tr>
-                    <?php endforeach;?>
-                <?php else:?>
+                <table class="table table-striped table-bordered table-hover" id="sample_1">
+
+                    <thead>
+
                     <tr>
-                        <td colspan="15">没有数据！</td>
+                        <th class="hidden-480">Number</th>
+
+                        <th class="hidden-480">Image</th>
+
+                        <th class="hidden-480">Name</th>
+
+                        <th class="hidden-480">Code</th>
+
+                        <th class="hidden-480">Status</th>
+
+                        <th class="hidden-480">Storage</th>
+
+                        <th class="hidden-480">Operation</th>
+
                     </tr>
-                <?php endif;?>
 
-                </tbody>
+                    </thead>
 
-            </table>
+                    <tbody>
+                    <?php if (isset($result)):?>
+                        <?php foreach ($result as $key=>$value):?>
+                            <tr>
+                                <td class="hidden-480"><?=($key+1)?></td>
+                                <td class="hidden-480"><img src="<?=IMAGE_HOST.$value['image']?>" style="width:30px;height: 30px"/></td>
+                                <td class="hidden-480"><?=$value['name']?></td>
+                                <td class="hidden-480"><?=$value['pcode']?></td>
+                                <td class="hidden-480"><?=$value['status']==1?'On Shelf':'Down Shelf'?></td>
+                                <td class="hidden-480"><?=$value['storage']?></td>
+                                <td class="hidden-480">
+                                    <a class="btn blue" href="<?=base_url('admin/product/detail?product_id='.$value['id'])?>">Edit</a>
+                                    <?php if($value['status']==Product::STATUS_ON_SHELF):?>
+                                        <a class="btn blue" onclick="downShelf('<?=$value['id']?>')">Down</a>
+                                    <?php else:?>
+                                        <a class="btn green" onclick="onShelf('<?=$value['id']?>')">On</a>
+                                    <?php endif;?>
+                                    <a class="btn red" onclick="del('<?=$value['id']?>')">Delete</a>
+                                </td>
+                            </tr>
+                        <?php endforeach;?>
+                    <?php else:?>
+                        <tr><td colspan="15">No Data</td></tr>
+                    <?php endif;?>
+
+                    </tbody>
+
+                </table>
             </form>
-            <!--分页-->
+
             <?php if(isset($pagination)):?>
                 <tfoot>
                 <tr>
@@ -163,7 +184,7 @@
                 </tfoot>
             <?php endif;?>
 
-         </div>
+        </div>
 
     </div>
 
@@ -173,10 +194,76 @@
 
 <!-- END PAGE -->
 
-<?php $this->load->view('block/footer.php')?>
+<?php $this->load->view('admin/block/footer.php')?>
 <!-- 弹窗相关 -->
 <script src="<?=STATIC_FILE_HOST?>assets/plugin/layer/layer.js"></script>
 <script type="text/javascript" src="<?=STATIC_FILE_HOST?>assets/js/select2.min.js"></script>
 <script type="text/javascript">
+
+    function onShelf(id){
+        layer.confirm('Sure On Shelf？', {
+            btn: ['Yes','No']
+        }, function(){
+            $.post('<?=base_url('admin/product/onShelf')?>',{id:id},function(data){
+                if(data.err_code=='0000'){
+                    layer.msg('Save Success');
+                    location.reload();
+                }else{
+                    layer.msg(data.err_msg);
+                }
+            });
+        }, function(){
+
+        });
+    }
+
+    function downShelf(id){
+        layer.confirm('Sure Down Shelf？', {
+            btn: ['Yes','No']
+        }, function(){
+            $.post('<?=base_url('admin/product/downShelf')?>',{id:id},function(data){
+                if(data.err_code=='0000'){
+                    layer.msg('Save Success');
+                    location.reload();
+                }else{
+                    layer.msg(data.err_msg);
+                }
+            });
+        }, function(){
+
+        });
+    }
+
+    function del(id){
+        layer.confirm('Sure Delete？', {
+            btn: ['Yes','No']
+        }, function(){
+            $.post('<?=base_url('admin/product/delete')?>',{id:id},function(data){
+                if(data.err_code=='0000'){
+                    layer.msg('Delete Success');
+                    location.reload();
+                }else{
+                    layer.msg(data.err_msg);
+                }
+            });
+        }, function(){
+
+        });
+    }
+
+    function changeMainCategory() {
+        var pid = $('#main_category').val();
+        $('#sub_category').empty();
+        if (pid!=undefined||pid!=''){
+            $.post("<?=base_url('admin/product/ajaxGetSubCategory')?>",{pid:pid},function (data) {
+
+                $('#sub_category').append("<option value=''>Select</option>");
+                $.each(data,function(index,value){
+                    $('#sub_category').append("<option value='"+index+"'>"+value+"</option>");
+                });
+            });
+        }
+
+    }
 
 </script>

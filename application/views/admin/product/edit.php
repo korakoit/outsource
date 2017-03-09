@@ -15,6 +15,28 @@
         text-align: center;
         vertical-align: middle;
     }
+
+     .img{
+         position:relative;
+         width:30%;
+         height:100px;
+         display: inline-block;
+     }
+
+    .img img{
+        width:100%;
+        height:100%;
+    }
+    .img i{
+        position:absolute;
+        top:-7px;
+        right:-7px;
+        display:block;
+        background:url(<?=STATIC_FILE_HOST.'assets/image/xx.png'?>) no-repeat center center;
+        background-size:contain;
+        width:10px;
+        height:10px;
+    }
 </style>
 
 <div class="page-content">
@@ -77,7 +99,7 @@
                         <!-- END BREADCRUMB -->
                     </div>
                 </div>
-                <form class="form-horizontal" method="post" name="product-form" id="seller_form" action="<?=$action?>">
+                <form class="form-horizontal" method="post" id="product_form" action="<?=$action?>">
                     <h3 class="form-section">Product Info</h3>
                     <div class="row-fluid">
                         <div class="span12">
@@ -121,6 +143,14 @@
                             </div>
 
                             <div class="control-group">
+                                <label class="control-label">Storage<span class="required">*</span></label>
+                                <div class="controls">
+                                    <input type="text" placeholder="Input Storage" name="storage" value="<?=isset($product)?$product['storage']:''?>">
+                                    <span class="help-inline" for="storage"></span>
+                                </div>
+                            </div>
+
+                            <div class="control-group">
                                 <label class="control-label">Star:<span class="required">*</span></label>
                                 <div class="controls">
                                     <select name="star">
@@ -144,14 +174,26 @@
                             <div class="control-group">
                                 <label class="control-label">Main Category:<span class="required">*</span></label>
                                 <div class="controls">
-                                    <select name="main_category"></select>
+                                    <select name="main_category" id="main_category" onchange="changeMainCategory()">
+                                        <option value="">Select</option>
+                                        <?php foreach ($main_list as $key=>$value):?>
+                                            <option value="<?=$key?>" <?php if($product['main_category']==$key) echo 'selected';?>><?=$value?></option>
+                                        <?php endforeach;?>
+                                    </select>
                                 </div>
                             </div>
 
                             <div class="control-group">
                                 <label class="control-label">Sub Category:<span class="required">*</span></label>
                                 <div class="controls">
-                                    <select name="sub_category"></select>
+                                    <select name="sub_category" id="sub_category">
+                                        <option value="">Select</option>
+                                        <?php if(isset($sub_list)):?>
+                                            <?php foreach ($sub_list as $key=>$value):?>
+                                                <option value="<?=$key?>" <?php if($product['sub_category']==$key) echo 'selected';?>><?=$value?></option>
+                                            <?php endforeach;?>
+                                        <?php endif;?>
+                                    </select>
                                 </div>
                             </div>
 
@@ -174,19 +216,27 @@
                             <div class="control-group">
                                 <label class="control-label">Seo Desc:<span class="required">*</span></label>
                                 <div class="controls">
-                                    <textarea name="detail"><?=isset($product)?$product['seo_desc']:''?></textarea>
+                                    <textarea name="seo_desc"><?=isset($product)?$product['seo_desc']:''?></textarea>
+                                    <span class="help-inline" for="seo_desc"></span>
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <label class="control-label">Detail:<span class="required">*</span></label>
+                                <div class="controls">
+                                    <textarea name="detail"><?=isset($product)?$product['detail']:''?></textarea>
                                     <span class="help-inline" for="detail"></span>
                                 </div>
                             </div>
 
                             <div class="control-group">
                                 <label class="control-label">First Image:<span class="required">*</span></label>
-                                <div class="controls" id="imageDiv">
+                                <div class="controls">
                                     <div id="image">Upload</div>
                                     <?php if (empty($product['image'])):?>
                                         <img id="showImage" src="" style="width:30%;height:100px;display:none"/>
                                     <?php else:?>
-                                        <img id="showImage" src="<?=IMAGE_HOST.$logo?>" style="width:30%;height:100px;"/>
+                                        <img id="showImage" src="<?=IMAGE_HOST.$product['image']?>" style="width:30%;height:100px;"/>
                                     <?php endif;?>
                                     <input type="hidden" name="image" id="logo" value="<?=isset($product)?$product['image']:''?>"/>
                                 </div>
@@ -196,20 +246,11 @@
                                 <label class="control-label">Images:<span class="required">*</span></label>
                                 <div class="controls" id="imageDiv">
                                     <div id="images">Upload</div>
-                                    <div class="remove"></div>
                                     <?php if(isset($image_list)):?>
-                                        <?php foreach ($image_list as $value):?>
-                                            <div>
-                                                <img id="showImage" src="" style="width:30%;height:100px;display:none"/>
-                                            </div>
+                                        <?php foreach ($image_list as $key=>$value):?>
+                                            <div id="<?=$key?>" class="img"><img src="<?=IMAGE_HOST.$value?>"><i onclick="removeImage(<?=$key?>)"></i><input type="hidden" name="images[]" value="<?=$value?>"/></div>
                                         <?php endforeach;?>
                                     <?php endif;?>
-                                    <?php if (empty($product['image'])):?>
-                                        <img id="showImage" src="" style="width:30%;height:100px;display:none"/>
-                                    <?php else:?>
-                                        <img id="showImage" src="<?=IMAGE_HOST.$logo?>" style="width:30%;height:100px;"/>
-                                    <?php endif;?>
-                                    <input type="hidden" name="image" id="logo" value="<?=isset($product)?$product['image']:''?>"/>
                                 </div>
                             </div>
 
@@ -285,12 +326,11 @@
             swf           : '<?=STATIC_FILE_HOST?>assets/plugin/uploadify/uploadify.swf',
             uploader      : '/admin/upload/uploadImage',
             onUploadSuccess:function(file,data,response){
-                $('#image-queue').remove();
+                $('#image-queues').remove();
                 var result = JSON.parse(data);
                 if (result.err_code=='0000'){
-                    $('#showImage').attr('src','<?=IMAGE_HOST?>'+result.path);
-                    $('#showImage').show();
-                    $('#logo').val(result.path)
+                    var time = new Date().getTime();
+                    $('#imageDiv').append('<div id="'+time+'" class="img"><img src="<?=IMAGE_HOST?>'+result.path+'"><i onclick="removeImage(\''+time+'\')"></i><input type="hidden" name="images[]" value="'+result.path+'"/></div>');
                 }else{
                     layer.msg(result.err_msg);
                 }
@@ -298,6 +338,35 @@
         });
 
         $('#image-queue').remove();
+        $('#images-queue').remove();
+
+        $('#product_form').ajaxForm(function(data){
+            if (data.err_code=='0000') {
+                layer.msg("Save Success");
+                window.location.href = '<?=base_url('admin/product/detail?product_id=')?>'+data.product_id;
+            }else{
+                layer.msg(data.err_msg);
+            }
+        });
 
     });
+
+    function removeImage(id){
+        $('#'+id).remove();
+    }
+
+    function changeMainCategory() {
+        var pid = $('#main_category').val();
+        $('#sub_category').empty();
+        if (pid!=undefined||pid!=''){
+            $.post("<?=base_url('admin/product/ajaxGetSubCategory')?>",{pid:pid},function (data) {
+
+                $('#sub_category').append("<option value=''>Select</option>");
+                $.each(data,function(index,value){
+                    $('#sub_category').append("<option value='"+index+"'>"+value+"</option>");
+                });
+            });
+        }
+
+    }
 </script>
