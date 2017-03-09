@@ -199,9 +199,12 @@ CREATE TABLE `product` (
   `mtime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `main_category` int(11) DEFAULT '0' COMMENT '主分类',
   `sub_category` int(11) DEFAULT '0' COMMENT '二级分类',
+  `image` char(255) COLLATE utf8mb4_bin DEFAULT '' COMMENT '商品头图',
+  `status` tinyint(4) DEFAULT '1' COMMENT '状态 1下架 2上架 3删除',
+  `storage` int(11) DEFAULT '0' COMMENT '库存',
   PRIMARY KEY (`id`),
   KEY `product_name` (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -210,6 +213,7 @@ CREATE TABLE `product` (
 
 LOCK TABLES `product` WRITE;
 /*!40000 ALTER TABLE `product` DISABLE KEYS */;
+INSERT INTO `product` VALUES (2,0,'abc','P1488981872','abc',0.00,'abc',NULL,'abc','abc',NULL,'','','2017-03-08 14:04:32','2017-03-08 15:27:08',NULL,NULL,'be/be254b4a5c2de0d5e5d9c870bd368120.png',2,0),(3,0,'abc','P1488981915','abc',0.00,'abc',NULL,'abc','abc',NULL,'','','2017-03-08 14:05:15','2017-03-08 15:27:05',NULL,NULL,'be/be254b4a5c2de0d5e5d9c870bd368120.png',2,0),(4,0,'abc','P1488981936','abc',0.00,'abc',NULL,'abc','abc',NULL,'','','2017-03-08 14:05:36','2017-03-08 15:27:03',NULL,NULL,'be/be254b4a5c2de0d5e5d9c870bd368120.png',2,0),(5,0,'abc','P1488982079','abc',0.00,'abc',NULL,'abc','abc',NULL,'','','2017-03-08 14:07:59','2017-03-08 15:27:01',NULL,NULL,'be/be254b4a5c2de0d5e5d9c870bd368120.png',2,0),(6,0,'abc','P1488982159','abc',0.00,'abc',NULL,'0.00','abc','abc','','','2017-03-08 14:09:19','2017-03-08 15:26:59',NULL,NULL,'be/be254b4a5c2de0d5e5d9c870bd368120.png',2,0),(7,0,'hello','P1488983345','hello',0.00,'hello',NULL,'0.00','hello','hello','','','2017-03-08 14:29:05','2017-03-08 15:38:01',6,7,'be/be254b4a5c2de0d5e5d9c870bd368120.png',2,0);
 /*!40000 ALTER TABLE `product` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -257,7 +261,7 @@ CREATE TABLE `product_image` (
   `mtime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `product_image_product_id` (`product_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -266,6 +270,7 @@ CREATE TABLE `product_image` (
 
 LOCK TABLES `product_image` WRITE;
 /*!40000 ALTER TABLE `product_image` DISABLE KEYS */;
+INSERT INTO `product_image` VALUES (1,0,'','2017-03-08 14:05:15','2017-03-08 14:05:15'),(2,0,'','2017-03-08 14:05:36','2017-03-08 14:05:36'),(3,0,'','2017-03-08 14:07:59','2017-03-08 14:07:59'),(4,0,'','2017-03-08 14:07:59','2017-03-08 14:07:59'),(8,6,'be/be254b4a5c2de0d5e5d9c870bd368120.png','2017-03-08 14:28:16','2017-03-08 14:28:16'),(9,6,'0f/0f52f1ce52f93437a2e9a12e2ae1d669.png','2017-03-08 14:28:16','2017-03-08 14:28:16'),(12,7,'f1/f1addde41bba9e4450a207efb79bb679.png','2017-03-08 15:40:09','2017-03-08 15:40:09');
 /*!40000 ALTER TABLE `product_image` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -424,4 +429,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-03-08  9:35:52
+-- Dump completed on 2017-03-09 16:15:42
