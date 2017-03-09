@@ -13,5 +13,39 @@ class Home extends MY_Controller
         parent::__construct();
     }
 
+    public function bannerList(){
+        $this->load->view('admin/home/edit_banner');
+    }
 
+    public function addBanner(){
+
+    }
+
+    public function deleteBanner(){
+
+    }
+
+    public function reccomendList(){
+
+    }
+
+    public function addRecommend(){
+
+    }
+
+    public function deleteRecommend(){
+
+    }
+
+    public function friendLinkList(){
+
+    }
+
+    public function addFriendLink(){
+
+    }
+
+    public function deleteFriendLink(){
+
+    }
 }
