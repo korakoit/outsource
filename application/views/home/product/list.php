@@ -13,57 +13,18 @@
 		<div class="center">
 			<!-- left -->
 			 <section class="left" id="leftlist">
-			 	<div class="list">
-			 		<div class="title first"><i></i>Cooking Equipment Cooking Equipment</div>
-			 		<ul>
-			 			<li>Commercial Ranges</li>
-			 			<li>Commercial Fryers and  Oil Filtration</li>
-			 			<li>Commercial Fryers and  Oil Filtration</li>
-			 			<li>Commercial Ranges</li>
-			 			<li>Commercial Fryers and  Oil Filtration</li>
-			 			<li>Commercial Fryers and  Oil Filtration</li>
-			 			<li>Commercial Ranges</li>
-			 			<li>Commercial Fryers and  Oil Filtration</li>
-			 			<li>Commercial Fryers and  Oil Filtration</li>
-			 			<li>Commercial Ranges</li>
-			 			<li>Commercial Fryers and  Oil Filtration</li>
-			 			<li>Commercial Fryers and  Oil Filtration</li>
-			 		</ul>
-			 	</div>
-			 	<div class="list">
-			 		<div class="title"><i></i>Cooking Equipment</div>
-			 		<ul>
-			 			<li>Commercial Ranges</li>
-			 			<li>Commercial Fryers and  Oil Filtration</li>
-			 			<li>Commercial Fryers and  Oil Filtration</li>
-			 			<li>Commercial Ranges</li>
-			 			<li>Commercial Fryers and  Oil Filtration</li>
-			 			<li>Commercial Fryers and  Oil Filtration</li>
-			 			<li>Commercial Ranges</li>
-			 			<li>Commercial Fryers and  Oil Filtration</li>
-			 			<li>Commercial Fryers and  Oil Filtration</li>
-			 			<li>Commercial Ranges</li>
-			 			<li>Commercial Fryers and  Oil Filtration</li>
-			 			<li>Commercial Fryers and  Oil Filtration</li>
-			 		</ul>
-			 	</div>
-			 	<div class="list">
-			 		<div class="title"><i></i>Cooking Equipment</div>
-			 		<ul>
-			 			<li>Commercial Ranges</li>
-			 			<li>Commercial Fryers and  Oil Filtration</li>
-			 			<li>Commercial Fryers and  Oil Filtration</li>
-			 			<li>Commercial Ranges</li>
-			 			<li>Commercial Fryers and  Oil Filtration</li>
-			 			<li>Commercial Fryers and  Oil Filtration</li>
-			 			<li>Commercial Ranges</li>
-			 			<li>Commercial Fryers and  Oil Filtration</li>
-			 			<li>Commercial Fryers and  Oil Filtration</li>
-			 			<li>Commercial Ranges</li>
-			 			<li>Commercial Fryers and  Oil Filtration</li>
-			 			<li>Commercial Fryers and  Oil Filtration</li>
-			 		</ul>
-			 	</div>
+				 <?php foreach($category as $k => $v):?>
+                    <div class="list">
+                        <div class="title first <?php if($v['id']==$pid):?>show<?php endif;?>"><i></i><?=$v['title']?></div>
+                        <ul>
+                            <?php if(isset($v['son'])):?>
+                                <?php foreach($v['son'] as $key => $val):?>
+                                <li <?php if($val['id']==$id):?>class='show'<?php endif; ?> id="<?=$val['id']?>"><a href="/product/category/<?=$v['id']?>/<?=$val['id']?>/"><?=$val['title']?></a></li>
+                                <?php endforeach;?>
+                            <?php endif;?>
+                        </ul>
+                    </div>
+                <?php endforeach;?>
 			 </section>
 			 <!-- right -->
 			 <section class="right">
@@ -89,53 +50,22 @@
 			 	</section>
 			 	<section class="showlist">
 			 		<ul>
-			 			<li>
-			 				<div class="img"></div>
-			 				<p class="tit">Markless Fashion Mens  Down Jacket Men's Brand</p>
-			 				<p class="subtit">Brand Clothing Casual</p>
-			 			</li>
-			 			<li>
-			 				<div class="img"></div>
-			 				<p class="tit">Markless Fashion Mens  Down Jacket Men's Brand</p>
-			 				<p class="subtit">Brand Clothing Casual</p>
-			 			</li>
-			 			<li>
-			 				<div class="img"></div>
-			 				<p class="tit">Markless Fashion Mens  Down Jacket Men's Brand</p>
-			 				<p class="subtit">Brand Clothing Casual</p>
-			 			</li>
-			 			<li>
-			 				<div class="img"></div>
-			 				<p class="tit">Markless Fashion Mens  Down Jacket Men's Brand</p>
-			 				<p class="subtit">Brand Clothing Casual</p>
-			 			</li>
-			 			<li>
-			 				<div class="img"></div>
-			 				<p class="tit">Markless Fashion Mens  Down Jacket Men's Brand</p>
-			 				<p class="subtit">Brand Clothing Casual</p>
-			 			</li>
-			 			<li>
-			 				<div class="img"></div>
-			 				<p class="tit">Markless Fashion Mens  Down Jacket Men's Brand</p>
-			 				<p class="subtit">Brand Clothing Casual</p>
-			 			</li>
-			 			<li>
-			 				<div class="img"></div>
-			 				<p class="tit">Markless Fashion Mens  Down Jacket Men's Brand</p>
-			 				<p class="subtit">Brand Clothing Casual</p>
-			 			</li>
-			 			<li>
-			 				<div class="img"></div>
-			 				<p class="tit">Markless Fashion Mens  Down Jacket Men's Brand</p>
-			 				<p class="subtit">Brand Clothing Casual</p>
-			 			</li>
-			 			<li>
-			 				<div class="img"></div>
-			 				<p class="tit">Markless Fashion Mens  Down Jacket Men's Brand</p>
-			 				<p class="subtit">Brand Clothing Casual</p>
-			 			</li>
+                        <?php if(count($product_lsit)>0):?>
+                            <?php foreach($product_lsit as $key => $val):?>
+                                <li>
+                                    <div class="img" style="background-image:url(<?=$val['image']?>);"></div>
+                                    <p class="tit"><?=$val['name']?></p>
+                                    <p class="subtit"><?=$val['title']?></p>
+                                </li>
+                            <?php endforeach;?>
+                        <?php else:?>
+
+                                没有数据！
+
+                        <?php endif;?>
 			 		</ul>
 			 	</section>
+                    <input type="hidden" id="page_num" val="<?=$totle?>">
 			 		<div id="page" class="pager"></div>
 			 </section>
 		</div>

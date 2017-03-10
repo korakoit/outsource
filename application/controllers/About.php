@@ -22,7 +22,7 @@ class About extends MY_Controller
 
     public function contactus(){
 
-
-        $this->load->view('home/about/contactus');
+        $data['category'] = $this->public_category();
+        $this->load->view('home/about/contactus',$data);
     }
 }

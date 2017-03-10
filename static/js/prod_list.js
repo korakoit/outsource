@@ -41,6 +41,7 @@ function initlist(){
 		
 	});
 	$('#leftlist').on('click','ul li',function(){
+		var id = $(this).attr('id');
 		var ddom = $(this).parents('#leftlist');
 		ddom.find('.title').removeClass('show');
 		ddom.find('li').removeClass('show');
@@ -49,7 +50,8 @@ function initlist(){
 }
 
 function initpage(){
-	pages(5)
+    var page_num = $('#page_num').val();
+	pages(page_num);
 }
 //分页初始
 function pages(count){

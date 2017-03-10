@@ -41,7 +41,6 @@ class Admin extends MY_Controller
             return;
         }
 
-        $this->load->database('default');
         $admin = $this->db->where('username', $username)
             ->where('password', $password)
             ->get('seller')->row_array();

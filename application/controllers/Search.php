@@ -6,7 +6,7 @@
  * Time: 下午1:42
  */
 
-class Cart extends MY_Controller
+class Search extends MY_Controller
 {
 
     public function __construct()
@@ -16,6 +16,6 @@ class Cart extends MY_Controller
 
     public function index(){
         $data['category'] = $this->public_category();
-        $this->load->view('home/cart/list',$data);
+        $this->load->view('home/search/search',$data);
     }
 }

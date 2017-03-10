@@ -40,7 +40,7 @@
     <div id="navinfo" data-info="0"></div>
     <script type="text/javascript" src="<?=STATIC_FILE_HOST?>static/commonJs/jquery.min.js"></script>
     <?php $this->load->view('home/base/footer_script.php');?>
-        <script type="text/javascript"   src="<?=STATIC_FILE_HOST?>static/commonJs/jquery.lazyload.min.js"></script>
+    <script type="text/javascript"   src="<?=STATIC_FILE_HOST?>static/commonJs/jquery.lazyload.min.js"></script>
     <script type="text/javascript">
     $(function(){
         $('img').lazyload({

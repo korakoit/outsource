@@ -26,4 +26,10 @@ class MY_Controller extends CI_Controller{
         exit;
     }
 
+    public function public_category(){
+        $this->load->database('default');
+        $category = $this->db->where('pid',0)->get('product_category')->result_array();
+        return $category;
+    }
+
 }

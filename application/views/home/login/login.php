@@ -14,14 +14,40 @@
 				<!-- 主要内容 -->
 				<section class="logo"></section>
 				<h2>Sign in</h2>
-				<div class="txt_phone"><input type="text" placeholder="Enter your email"></div>
-				<div class="txt_pass"><input type="password" placeholder="Password"></div>
+				<div class="txt_phone"><input id="email" type="text" placeholder="Enter your email"></div>
+				<div class="txt_pass"><input id="password" type="password" placeholder="Password"></div>
 				<div id="signin" class="signin">Sign in</div>
-				<p><span>Don't have an account? </span><a>Sign up</a></p>
+				<p><span>Don't have an account? </span><a href="/login/register">Sign up</a></p>
 				<a>Forgot password?</a>
 			</div>
 		</div>
 	</div>
-	<!-- 底部授权 -->
+    <?php $this->load->view('home/base/footer_script.php');?>
+    <!-- 底部授权 -->
 </body>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#signin").click(function(){
+            var email = $("#email").val();
+            var password = $("#password").val();
+            if(email == ''){
+                alert('miss email');
+                return false;
+            }
+            if(password == ''){
+                alert('miss password');
+                return false;
+            }
+            $.post("/login/login",{email:email,password:password},function(result){
+               var obj =  eval("("+result+")");
+                if(obj.err_msg == 'successful'){
+                    alert(obj.err_msg);
+                    window.location.href = '/home/';
+                }else{
+                    alert(obj.err_msg);
+                }
+            });
+        })
+    });
+</script>
 </html>

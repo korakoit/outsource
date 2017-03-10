@@ -4,7 +4,7 @@
 define('STATIC_FILE_HOST','http://'.$_SERVER['SERVER_NAME'].'/');
 
 define('ADMIN_SESS','ADMIN_SESS');
-
+define('USER_SESS','USER_SESS');
 
 
 //product status

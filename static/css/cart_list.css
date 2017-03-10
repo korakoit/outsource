@@ -30,6 +30,34 @@
     color: #0c3a9b; }
 
 /*分页*/
+.seainput {
+  margin-top: 20px;
+  width: 600px;
+  height: 40px;
+  color: #000;
+  font-size: 16px;
+  position: relative; }
+  .seainput .input {
+    border: 1px solid #999;
+    height: 100%;
+    box-sizing: border-box; }
+    .seainput .input input {
+      outline: none;
+      text-indent: 10px;
+      height: 100%;
+      width: 100%;
+      border-color: transparent; }
+  .seainput i {
+    position: absolute;
+    top: 0px;
+    right: -42px;
+    display: block;
+    background: url(/static/images/login.png) no-repeat -560px center;
+    width: 41px;
+    border: 1px solid #999;
+    height: 38px;
+    cursor: pointer; }
+
 .showlist {
   margin-bottom: 10px; }
   .showlist ul {
@@ -47,7 +75,9 @@
       height: 298px;
       margin-left: -1px;
       margin-top: -1px;
-      background-color: #fff; }
+      background-color: #fff;
+      position: relative;
+      overflow: hidden; }
       .showlist ul li .img {
         height: 224px;
         background: url(/static/images/list0.png) center center no-repeat; }
@@ -61,3 +91,22 @@
       .showlist ul li .subtit {
         font-size: 13px;
         color: #a5a0a0; }
+      .showlist ul li .delete {
+        position: absolute;
+        left: 0;
+        bottom: -37px;
+        height: 35px;
+        width: 100%;
+        background-image: url(/static/images/bg.png);
+        background-position: center center;
+        background-repeat: repeat;
+        -webkit-animation: all .1s ease-in-out;
+                animation: all .1s ease-in-out; }
+        .showlist ul li .delete .icon {
+          height: 100%;
+          width: 100%;
+          background-image: url(/static/images/del.png);
+          background-position: center center;
+          background-repeat: no-repeat; }
+      .showlist ul li:hover .delete {
+        bottom: 0; }

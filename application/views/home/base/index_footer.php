@@ -4,12 +4,13 @@
 		<ul class="center">
 			<li class="li0">
 				<div class="third">
-					<a href="#"></a>
+					<a href="http://www.facebook.com/sharer.php?u=aaaa" title="分享到Twitter" target="_blank"
+					   rel="nofollow"></a>
 					<a href="#" class="a1"></a>
 					<a href="#" class="a2"></a>
 					<a href="#" class="a3"></a>
 					<a href="#" class="a4"></a>
-					<a href="#" class="a5"></a>
+                    <a class="a5" href="http://www.google.com/bookmarks/mark?op=add&bkmk=22222&title=1111"></a>
 				</div>
 				<div class="about">
 					<ul>
@@ -44,10 +45,10 @@
 		<div class="center">
 			<div class="adiv">
 				<a href="" target="_blank">Track Order</a>
-				<a href="/views/home/aboutus.html" target="_blank">About Us </a>
+				<a href="/about" target="_blank">About Us </a>
 				<a href="" target="_blank">Policies</a>
-				<a href="/views/home/contactus.html" target="_blank">Contact</a>
-				<a class="last" href="" target="_blank">Chat Online</a>
+				<a href="/about/contactus" target="_blank">Contact</a>
+				<a class="last" href="/about/contactus" target="_blank">Chat Online</a>
 			</div>
 			<div class="idiv">
 				<i></i>

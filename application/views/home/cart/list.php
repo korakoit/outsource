@@ -13,49 +13,60 @@
 					<section class="showlist">
 			 		<ul>
 			 			<li>
-			 				<div class="img"></div>
-			 				<p class="tit">Markless Fashion Mens  Down Jacket Men's Brand</p>
-			 				<p class="subtit">Brand Clothing Casual</p>
+			 				<a href="#">
+				 				<div class="img"></div>
+				 				<p class="tit">Markless Fashion Mens  Down Jacket Men's Brand</p>
+				 				<p class="subtit">Brand Clothing Casual</p>
+			 				</a>
+			 				<div class="delete"><div class="icon"></div></div>
 			 			</li>
 			 			<li>
-			 				<div class="img"></div>
-			 				<p class="tit">Markless Fashion Mens  Down Jacket Men's Brand</p>
-			 				<p class="subtit">Brand Clothing Casual</p>
+			 				<a href="#">
+				 				<div class="img"></div>
+				 				<p class="tit">Markless Fashion Mens  Down Jacket Men's Brand</p>
+				 				<p class="subtit">Brand Clothing Casual</p>
+			 				</a>
+			 				<div class="delete"><div class="icon"></div></div>
 			 			</li>
 			 			<li>
-			 				<div class="img"></div>
-			 				<p class="tit">Markless Fashion Mens  Down Jacket Men's Brand</p>
-			 				<p class="subtit">Brand Clothing Casual</p>
+			 				<a href="#">
+				 				<div class="img"></div>
+				 				<p class="tit">Markless Fashion Mens  Down Jacket Men's Brand</p>
+				 				<p class="subtit">Brand Clothing Casual</p>
+			 				</a>
+			 				<div class="delete"><div class="icon"></div></div>
 			 			</li>
 			 			<li>
-			 				<div class="img"></div>
-			 				<p class="tit">Markless Fashion Mens  Down Jacket Men's Brand</p>
-			 				<p class="subtit">Brand Clothing Casual</p>
+			 				<a href="#">
+				 				<div class="img"></div>
+				 				<p class="tit">Markless Fashion Mens  Down Jacket Men's Brand</p>
+				 				<p class="subtit">Brand Clothing Casual</p>
+			 				</a>
+			 				<div class="delete"><div class="icon"></div></div>
 			 			</li>
 			 			<li>
-			 				<div class="img"></div>
-			 				<p class="tit">Markless Fashion Mens  Down Jacket Men's Brand</p>
-			 				<p class="subtit">Brand Clothing Casual</p>
+			 				<a href="#">
+				 				<div class="img"></div>
+				 				<p class="tit">Markless Fashion Mens  Down Jacket Men's Brand</p>
+				 				<p class="subtit">Brand Clothing Casual</p>
+			 				</a>
+			 				<div class="delete"><div class="icon"></div></div>
 			 			</li>
 			 			<li>
-			 				<div class="img"></div>
-			 				<p class="tit">Markless Fashion Mens  Down Jacket Men's Brand</p>
-			 				<p class="subtit">Brand Clothing Casual</p>
+			 				<a href="#">
+				 				<div class="img"></div>
+				 				<p class="tit">Markless Fashion Mens  Down Jacket Men's Brand</p>
+				 				<p class="subtit">Brand Clothing Casual</p>
+			 				</a>
+			 				<div class="delete"><div class="icon"></div></div>
 			 			</li>
 			 			<li>
-			 				<div class="img"></div>
-			 				<p class="tit">Markless Fashion Mens  Down Jacket Men's Brand</p>
-			 				<p class="subtit">Brand Clothing Casual</p>
-			 			</li>
-			 			<li>
-			 				<div class="img"></div>
-			 				<p class="tit">Markless Fashion Mens  Down Jacket Men's Brand</p>
-			 				<p class="subtit">Brand Clothing Casual</p>
-			 			</li>
-			 			<li>
-			 				<div class="img"></div>
-			 				<p class="tit">Markless Fashion Mens  Down Jacket Men's Brand</p>
-			 				<p class="subtit">Brand Clothing Casual</p>
+			 				<a href="#">
+				 				<div class="img"></div>
+				 				<p class="tit">Markless Fashion Mens  Down Jacket Men's Brand</p>
+				 				<p class="subtit">Brand Clothing Casual</p>
+			 				</a>
+			 				<div class="delete"><div class="icon"></div></div>
 			 			</li>
 			 		</ul>
 			 	</section>
@@ -63,9 +74,9 @@
 				</div> 
 				<!--main end -->
 			</div>
-            <?php $this->load->view('home/base/index_footer.php');?>
+			<?php $this->load->view('home/base/index_footer.php');?>
 		</div>
-        <?php $this->load->view('home/base/footer_script.php');?>
+		<?php $this->load->view('home/base/footer_script.php');?>
 		<script src="<?=STATIC_FILE_HOST?>static/commonJs/laypage/laypage.js"></script>
 		<script type="text/javascript" src="<?=STATIC_FILE_HOST?>static/js/cart.js"></script>
 
