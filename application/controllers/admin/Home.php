@@ -99,4 +99,35 @@ class Home extends MY_Controller
         $this->db->where('id',$id)->delete('friend_link');
         $this->jsonOutput(['err_code' => '0000', 'err_msg' => 'OK']);
     }
+
+    public function homeList()
+    {
+        $data = [];
+        $recommend_list = $this->db->get('recommend_product')->result_array();
+        if (!empty($recommend_list)){
+            $data['result'] = $this->db->where_in('id', array_column($recommend_list, 'product_id'))
+                ->get('product')->result_array();
+        }
+        $this->load->view('admin/home/edit_recommend', $data);
+    }
+
+    public function addHome()
+    {
+        $pcode = $this->input->post('pcode', true);
+
+        $product = $this->db->where('pcode', $pcode)->get('product')->row_array();
+        if (empty($product)) {
+            $this->jsonOutput(['err_code' => '0001', 'err_msg' => 'Product Un Exist']);
+        }
+        $this->db->insert('recommend_product', ['product_id' => $product['id']]);
+        $this->jsonOutput(['err_code' => '0000', 'err_msg' => 'OK']);
+    }
+
+    public function deleteHome()
+    {
+        $product_id = $this->input->post('product_id',true);
+        $this->db->where('product_id',$product_id)->delete('recommend_product');
+        $this->jsonOutput(['err_code' => '0000', 'err_msg' => 'OK']);
+    }
+
 }

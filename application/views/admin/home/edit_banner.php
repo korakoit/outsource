@@ -57,7 +57,6 @@
                             <ul class="nav nav-tabs">
 
                                 <li><a href="" onclick="window.location.href='<?=base_url('admin/home/friendLinkList')?>';"  data-toggle="tab">Friend Link</a></li>
-                                <li><a href="#friend_logo" onclick="window.location.href='<?=base_url('admin/home/friendLogoList')?>';"  data-toggle="tab">Friend Logo</a></li>
                                 <li><a href="#home_product" onclick="window.location.href='<?=base_url('admin/home/homeProductList')?>';"  data-toggle="tab">Home Product</a></li>
                                 <li><a href="" onclick="window.location.href='<?=base_url('admin/home/recommendList')?>';" data-toggle="tab">Recommend Product</a></li>
                                 <li><a href="#six_product" onclick="window.location.href='<?=base_url('admin/home/sixProductList')?>';" data-toggle="tab">Six Product</a></li>
@@ -135,7 +134,6 @@
                                 <div class="tab-pane" id="six_product"></div>
                                 <div class="tab-pane" id="recommend_product"></div>
                                 <div class="tab-pane" id="home_product"></div>
-                                <div class="tab-pane" id="friend_logo"></div>
                                 <div class="tab-pane" id="friend_link"></div>
                             </div>
 
