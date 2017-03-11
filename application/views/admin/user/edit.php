@@ -51,10 +51,10 @@
 
             <div class="span12">
 
-<!--                --><?php //$this->load->view('block/style_bar.php'); ?>
+                <!--                --><?php //$this->load->view('block/style_bar.php'); ?>
 
                 <!-- BEGIN PAGE TITLE & BREADCRUMB-->
-<!--                --><?php //$this->load->view('block/bread_crumb.php'); ?>
+                <!--                --><?php //$this->load->view('block/bread_crumb.php'); ?>
                 <!-- END PAGE TITLE & BREADCRUMB -->
 
             </div>
@@ -77,16 +77,42 @@
                         <!-- END BREADCRUMB -->
                     </div>
                 </div>
-                <form class="form-horizontal" method="post" name="product-form" id="seller_form" action="<?=base_url('admin/admin/edit')?>">
+                <form class="form-horizontal" method="post" name="product-form" id="user_form" action="<?=base_url('admin/user/edit')?>">
                     <h3 class="form-section">Seller Info</h3>
                     <div class="row-fluid">
                         <div class="span12">
+
+                            <input type="hidden" name="id" value="<?=$id?>"/>
+
+                            <div class="control-group">
+                                <label class="control-label">First Name:<span class="required">*</span></label>
+                                <div class="controls">
+                                    <input type="text" placeholder="Input First Name" name="first_name" value="<?=$first_name?>">
+                                    <span class="help-inline" for="first_name"></span>
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <label class="control-label">Last Name:<span class="required">*</span></label>
+                                <div class="controls">
+                                    <input type="text" placeholder="Input Last Name" name="last_name" value="<?=$last_name?>">
+                                    <span class="help-inline" for="last_name"></span>
+                                </div>
+                            </div>
 
                             <div class="control-group">
                                 <label class="control-label">Email Address:<span class="required">*</span></label>
                                 <div class="controls">
                                     <input type="text" placeholder="Input Email Address" name="email_address" value="<?=$email_address?>">
                                     <span class="help-inline" for="name"></span>
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <label class="control-label">Company Name:<span class="required">*</span></label>
+                                <div class="controls">
+                                    <input type="text" placeholder="Input Company Name" name="company_name" value="<?=$company_name?>">
+                                    <span class="help-inline" for="company_name"></span>
                                 </div>
                             </div>
 
@@ -99,31 +125,18 @@
                             </div>
 
                             <div class="control-group">
+                                <label class="control-label">Company Website:<span class="required">*</span></label>
+                                <div class="controls">
+                                    <input type="text" placeholder="Input Company Website" name="company_website" value="<?=$company_website?>">
+                                    <span class="help-inline" for="company_website"></span>
+                                </div>
+                            </div>
+
+                            <div class="control-group">
                                 <label class="control-label">Business Phone:<span class="required">*</span></label>
                                 <div class="controls">
                                     <input type="text" placeholder="Input Business Phone" name="business_phone" value="<?=$business_phone?>">
                                     <span class="help-inline" for="business_phone"></span>
-                                </div>
-                            </div>
-
-                            <div class="control-group">
-                                <label class="control-label">Tow Dimensional Code:<span class="required">*</span></label>
-                                <div class="controls">
-                                    <input type="text" placeholder="Input Tow Dimensional Code" name="two_dimensional_code" value="<?=$two_dimensional_code?>">
-                                    <span class="help-inline" for="two_dimensional_code"></span>
-                                </div>
-                            </div>
-
-                            <div class="control-group">
-                                <label class="control-label">Logo:<span class="required">*</span></label>
-                                <div class="controls" id="imageDiv">
-                                    <div id="image">Upload</div>
-                                    <?php if (empty($logo)):?>
-                                        <img id="showImage" src="" style="width:30%;height:100px;display:none"/>
-                                    <?php else:?>
-                                        <img id="showImage" src="<?=$logo?>" style="width:30%;height:100px;"/>
-                                    <?php endif;?>
-                                    <input type="hidden" name="logo" id="logo" value="<?=$logo?>"/>
                                 </div>
                             </div>
 
@@ -153,38 +166,13 @@
 <script type="text/javascript">
     $(document).ready(function(){
 
-        $('#seller_form').ajaxForm(function(data){
+        $('#user_form').ajaxForm(function(data){
             if (data.err_code=='0000'){
                 layer.msg('Save Success');
             }
         });
 
-        $("#image").uploadify({
-            height        : 27,
-            width         : 80,
-            fileName      : "image",               //提交到服务器的文件名
-            maxFileCount: 1,                //上传文件个数（多个时修改此处
-            returnType    : 'json',              //服务返回数据
-            allowedTypes: 'jpg,jpeg,png,gif',  //允许上传的文件式
-            showDone: false,                     //是否显示"Done"(完成)按钮
-            showDelete: false,
-            buttonText   : 'Select Image',
-            fileSizeLimit : '2048KB',
-            swf           : '<?=STATIC_FILE_HOST?>assets/plugin/uploadify/uploadify.swf',
-            uploader      : '/admin/upload/uploadImage',
-            onUploadSuccess:function(file,data,response){
-                    $('#image-queue').remove();
-                    var result = JSON.parse(data);
-                    if (result.err_code=='0000'){
-                        $('#showImage').attr('src','<?=IMAGE_HOST?>'+result.path);
-                        $('#showImage').show();
-                        $('#logo').val('<?=IMAGE_HOST?>'+result.path)
-                    }else{
-                        layer.msg(result.err_msg);
-                    }
-            }
-        });
-        $('#image-queue').remove();
-
     });
+
+
 </script>

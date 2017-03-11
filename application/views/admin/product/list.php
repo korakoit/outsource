@@ -147,7 +147,7 @@
                     <?php foreach ($result as $key=>$value):?>
                             <tr>
                                 <td class="hidden-480"><?=($key+1)?></td>
-                                <td class="hidden-480"><img src="<?=IMAGE_HOST.$value['image']?>" style="width:30px;height: 30px"/></td>
+                                <td class="hidden-480"><img src="<?=$value['image']?>" style="width:30px;height: 30px"/></td>
                                 <td class="hidden-480"><?=$value['name']?></td>
                                 <td class="hidden-480"><?=$value['pcode']?></td>
                                 <td class="hidden-480"><?=$value['status']==1?'On Shelf':'Down Shelf'?></td>
@@ -158,6 +158,9 @@
                                         <a class="btn blue" onclick="downShelf('<?=$value['id']?>')">Down</a>
                                     <?php else:?>
                                         <a class="btn green" onclick="onShelf('<?=$value['id']?>')">On</a>
+                                    <?php endif;?>
+                                    <?php if($value['is_home']==0):?>
+                                        <a class="btn green" onclick="setHomeStatus('<?=$value['id']?>',1)">Home</a>
                                     <?php endif;?>
                                     <a class="btn red" onclick="del('<?=$value['id']?>')">Delete</a>
                                 </td>
@@ -264,6 +267,23 @@
             });
         }
 
+    }
+
+    function setHomeStatus(product_id,is_home) {
+        layer.confirm('Sure Set Home？', {
+            btn: ['Yes','No']
+        }, function(){
+            $.post('<?=base_url('admin/product/setHomeStatus')?>',{product_id:product_id,is_home:is_home},function(data){
+                if(data.err_code=='0000'){
+                    layer.msg('Delete Success');
+                    location.reload();
+                }else{
+                    layer.msg(data.err_msg);
+                }
+            });
+        }, function(){
+
+        });
     }
 
 </script>

@@ -56,12 +56,11 @@
 
                             <ul class="nav nav-tabs">
 
-                                <li><a href="#friend_link" data-toggle="tab">Friend Link</a></li>
-                                <li><a href="#friend_logo" data-toggle="tab">Friend Logo</a></li>
-                                <li><a href="#home_product" data-toggle="tab">Home Product</a></li>
-                                <li><a href="#recommend_product" data-toggle="tab">Recommend Product</a></li>
-                                <li><a href="#six_product" data-toggle="tab">Six Product</a></li>
-                                <li class="active" ><a href="#banner" data-toggle="tab">Banner</a></li>
+                                <li><a href="" onclick="window.location.href='<?=base_url('admin/home/friendLinkList')?>';"  data-toggle="tab">Friend Link</a></li>
+                                <li><a href="" onclick="window.location.href='<?=base_url('admin/home/homeList')?>';"  data-toggle="tab">Home Product</a></li>
+                                <li><a href="" onclick="window.location.href='<?=base_url('admin/home/recommendList')?>';" data-toggle="tab">Recommend Product</a></li>
+                                <li  class="active"><a href="" onclick="window.location.href='<?=base_url('admin/home/sixList')?>';" data-toggle="tab">Six Product</a></li>
+                                <li><a href="" onclick="window.location.href='<?=base_url('admin/home/bannerList')?>';" data-toggle="tab">Banner</a></li>
 
                             </ul>
 
@@ -74,7 +73,7 @@
 
                                             <div class="pull-left margin-right-20" style="margin-right:20px;">
 
-                                                <button class="btn blue" type="submit">Search</button>
+                                                <button class="btn green" onclick="$('#banner_form').modal('show');">Add</button>
 
                                             </div>
 
@@ -88,7 +87,7 @@
 
                                     </ul>
                                     <!-- 结束分割线-->
-                                    <form id="batch-form" name="batch-form" method="post" >
+                                    <form id="batch-form" name="batch-form" method="post"  >
                                         <table class="table table-striped table-bordered table-hover" id="sample_1">
 
                                             <thead>
@@ -117,7 +116,7 @@
                                                         <td class="hidden-480"><?=$value['name']?></td>
                                                         <td class="hidden-480"><?=$value['pcode']?></td>
                                                         <td class="hidden-480">
-                                                            <a class="btn red" onclick="del('<?=$value['id']?>')">Delete</a>
+                                                            <a class="btn red" onclick="deleteSix('<?=$value['id']?>')">Delete</a>
                                                         </td>
                                                     </tr>
                                                 <?php endforeach;?>
@@ -134,7 +133,6 @@
                                 <div class="tab-pane" id="six_product"></div>
                                 <div class="tab-pane" id="recommend_product"></div>
                                 <div class="tab-pane" id="home_product"></div>
-                                <div class="tab-pane" id="friend_logo"></div>
                                 <div class="tab-pane" id="friend_link"></div>
                             </div>
 
@@ -157,21 +155,29 @@
 
 <!-- END PAGE -->
 
-<div class="modal fade" id="main_form" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"  style="display: none">
+<div class="modal fade" id="banner_form" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"  style="display: none">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                <h4 class="modal-title" id="myModalLabel">Main Cateogry</h4>
+                <h4 class="modal-title" id="myModalLabel">Add Six</h4>
             </div>
             <div class="modal-body">
                 <div class="row-fluid">
                     <div class="span12">
                         <form class="form-horizontal" method="post" novalidate="novalidate">
                             <div class="control-group not_private_car">
-                                <label class="control-label">Title<span class="required">*</span></label>
+                                <label class="control-label">Pcode<span class="required">*</span></label>
                                 <div class="controls">
-                                    <input type="text" class="small m-wrap" data-required="1" id="title" />
+                                    <input type="text" class="small m-wrap" data-required="1" id="pcode" />
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Image:<span class="required">*</span></label>
+                                <div class="controls">
+                                    <div id="image">Upload</div>
+                                    <img id="showImage" src="" style="width:30%;height:100px;display:none"/>
+                                    <input type="hidden" name="image"/>
                                 </div>
                             </div>
                         </form>
@@ -179,7 +185,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" id="main_btn" class="btn btn-primary" onclick="submitMainCategory()">Save</button>
+                <button type="button" id="main_btn" class="btn btn-primary" onclick="addSix()">Save</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
             </div>
         </div>
@@ -215,7 +221,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" id="main_btn" class="btn btn-primary" onclick="submitSubCategory()">Save</button>
+                <button type="button" id="main_btn" class="btn btn-primary" onclick="addSix()">Save</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
             </div>
         </div>
@@ -225,7 +231,71 @@
 </div>
 
 <?php $this->load->view('admin/block/footer.php')?>
+<script src="<?=STATIC_FILE_HOST?>assets/plugin/uploadify/jquery.uploadify.min.js" type="text/javascript"></script>
+<script src="<?=STATIC_FILE_HOST?>assets/plugin/layer/layer.js"></script>
+<script src="<?=STATIC_FILE_HOST?>assets/js/jquery.form.js"></script>
 <script type="application/javascript">
 
+    $(document).ready(function () {
 
+        $("#image").uploadify({
+            height        : 27,
+            width         : 80,
+            fileName      : "image",               //提交到服务器的文件名
+            maxFileCount: 1,                //上传文件个数（多个时修改此处
+            returnType    : 'json',              //服务返回数据
+            allowedTypes: 'jpg,jpeg,png,gif',  //允许上传的文件式
+            showDone: false,                     //是否显示"Done"(完成)按钮
+            showDelete: false,
+            buttonText   : 'Select Image',
+            fileSizeLimit : '2048KB',
+            swf           : '<?=STATIC_FILE_HOST?>assets/plugin/uploadify/uploadify.swf',
+            uploader      : '/admin/upload/uploadImage',
+            onUploadSuccess:function(file,data,response){
+                $('#image-queue').remove();
+                var result = JSON.parse(data);
+                if (result.err_code=='0000'){
+                    $('#showImage').attr('src','<?=IMAGE_HOST?>'+result.path);
+                    $('#showImage').show();
+                    $('input[name="image"]').val(result.path);
+                }else{
+                    layer.msg(result.err_msg);
+                }
+            }
+        });
+    });
+
+    function addSix() {
+        var image =  $('input[name="image"]').val();
+        var pcode = $('#pcode').val();
+        $.post("<?=base_url('admin/home/addSix')?>",{pcode:pcode,image:image},function(data){
+            if (data.err_code=='0000'){
+                layer.msg('Save Success');
+                window.location.reload();
+            }else{
+                layer.msg(data.err_msg);
+            }
+
+        });
+    }
+
+    function deleteSix(id) {
+
+        layer.confirm('Confirm Delete？', {
+            btn: ['Yes','No']
+        }, function(index){
+            $.post("<?=base_url('admin/home/deleteSix')?>",{id:id},function(data){
+                if (data.err_code=='0000'){
+                    layer.msg('Delete Success');
+                    window.location.reload();
+                }else{
+                    layer.msg(data.err_msg);
+                }
+
+            });
+            layer.close(index);
+        }, function(){
+
+        });
+    }
 </script>

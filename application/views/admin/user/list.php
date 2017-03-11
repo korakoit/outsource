@@ -73,6 +73,21 @@
 
                         </div>
 
+                        <div class="control-group pull-left margin-right-20"  style="margin-left:-20px;">
+
+                            <label class="control-label">Status:</label>
+
+                            <div class="controls">
+
+                                <select name="status">
+                                    <option value="">Select</option>
+                                    <option value="1" <?php if (isset($search['status'])&&$search['status']==1) echo 'selected';?>>Wait Check</option>
+                                    <option value="2" <?php if (isset($search['status'])&&$search['status']==2) echo 'selected';?>>Pass</option>
+                                    <option value="3" <?php if (isset($search['status'])&&$search['status']==3) echo 'selected';?>>Un Pass</option>
+                                </select>
+                            </div>
+
+                        </div>
 
 
                     </div>
@@ -116,6 +131,10 @@
 
                         <th class="hidden-480">Business Phone</th>
 
+                        <th class="hidden-480">Status</th>
+
+                        <th class="hidden-480">Ctime</th>
+
                         <th class="hidden-480">Operation</th>
 
                     </tr>
@@ -132,9 +151,25 @@
                                 <td class="hidden-480"><?=$value['location']?></td>
                                 <td class="hidden-480"><?=$value['company_website']?></td>
                                 <td class="hidden-480"><?=$value['business_phone']?></td>
-
+                                <td class="hidden-480"><?=$value['ctime']?></td>
                                 <td class="hidden-480">
-<!--                                    <a class="btn blue" href="--><?//=base_url()?><!--">Edit</a>-->
+                                    <?php if ($value['status']==1):?>
+                                        Wait Check
+                                    <?php elseif($value['status']==2):?>
+                                        Pass
+                                    <?php else:?>
+                                        UnPass
+                                    <?php endif;?>
+                                </td>
+                                <td class="hidden-480">
+                                    <a  class="btn green" href="<?=base_url('admin/user/beforeEdit?'.'id='.$value['id'])?>">Edit</a>
+                                    <a class="btn red" onclick="deleteUser(<?=$value['id']?>)">Delete</a>
+                                    <?php if (in_array($value['status'],[1,3])):?>
+                                        <a class="btn green" onclick="passUser('<?=$value['id']?>')" >Pass</a>
+                                    <?php endif;?>
+                                    <?php if (in_array($value['status'],[1,2])):?>
+                                        <a class="btn red" onclick="unpassUser('<?=$value['id']?>')" >UnPass</a>
+                                    <?php endif;?>
                                 </td>
                             </tr>
                         <?php endforeach;?>
@@ -176,5 +211,61 @@
 <script type="text/javascript">
 
 
+    function unpassUser(id){
+        layer.confirm('Confirm Un Pass？', {
+            btn: ['Yes','No']
+        }, function(index){
+            $.post("<?=base_url('admin/User/setUserStatus')?>",{id:id,status:3},function(data){
+                if (data.err_code=='0000'){
+                    layer.msg('Save Success');
+                    window.location.reload();
+                }else{
+                    layer.msg(data.err_msg);
+                }
+
+            });
+            layer.close(index);
+        }, function(){
+
+        });
+    }
+
+    function passUser(id){
+        layer.confirm('Confirm Pass？', {
+            btn: ['Yes','No']
+        }, function(index){
+            $.post("<?=base_url('admin/User/setUserStatus')?>",{id:id,status:2},function(data){
+                if (data.err_code=='0000'){
+                    layer.msg('Save Success');
+                    window.location.reload();
+                }else{
+                    layer.msg(data.err_msg);
+                }
+
+            });
+            layer.close(index);
+        }, function(){
+
+        });
+    }
+
+    function deleteUser(id){
+        layer.confirm('Confirm Delete？', {
+            btn: ['Yes','No']
+        }, function(index){
+            $.post("<?=base_url('admin/User/delete')?>",{id:id},function(data){
+                if (data.err_code=='0000'){
+                    layer.msg('Delete Success');
+                    window.location.reload();
+                }else{
+                    layer.msg(data.err_msg);
+                }
+
+            });
+            layer.close(index);
+        }, function(){
+
+        });
+    }
 
 </script>

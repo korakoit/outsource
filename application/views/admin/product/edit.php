@@ -177,7 +177,7 @@
                                     <select name="main_category" id="main_category" onchange="changeMainCategory()">
                                         <option value="">Select</option>
                                         <?php foreach ($main_list as $key=>$value):?>
-                                            <option value="<?=$key?>" <?php if($product['main_category']==$key) echo 'selected';?>><?=$value?></option>
+                                            <option value="<?=$key?>" <?php if(isset($product)&&$product['main_category']==$key) echo 'selected';?>><?=$value?></option>
                                         <?php endforeach;?>
                                     </select>
                                 </div>
@@ -190,7 +190,7 @@
                                         <option value="">Select</option>
                                         <?php if(isset($sub_list)):?>
                                             <?php foreach ($sub_list as $key=>$value):?>
-                                                <option value="<?=$key?>" <?php if($product['sub_category']==$key) echo 'selected';?>><?=$value?></option>
+                                                <option value="<?=$key?>" <?php if(isset($product)&&$product['sub_category']==$key) echo 'selected';?>><?=$value?></option>
                                             <?php endforeach;?>
                                         <?php endif;?>
                                     </select>
@@ -236,7 +236,7 @@
                                     <?php if (empty($product['image'])):?>
                                         <img id="showImage" src="" style="width:30%;height:100px;display:none"/>
                                     <?php else:?>
-                                        <img id="showImage" src="<?=IMAGE_HOST.$product['image']?>" style="width:30%;height:100px;"/>
+                                        <img id="showImage" src="<?=$product['image']?>" style="width:30%;height:100px;"/>
                                     <?php endif;?>
                                     <input type="hidden" name="image" id="logo" value="<?=isset($product)?$product['image']:''?>"/>
                                 </div>
@@ -248,7 +248,7 @@
                                     <div id="images">Upload</div>
                                     <?php if(isset($image_list)):?>
                                         <?php foreach ($image_list as $key=>$value):?>
-                                            <div id="<?=$key?>" class="img"><img src="<?=IMAGE_HOST.$value?>"><i onclick="removeImage(<?=$key?>)"></i><input type="hidden" name="images[]" value="<?=$value?>"/></div>
+                                            <div id="<?=$key?>" class="img"><img src="<?=$value?>"><i onclick="removeImage(<?=$key?>)"></i><input type="hidden" name="images[]" value="<?=$value?>"/></div>
                                         <?php endforeach;?>
                                     <?php endif;?>
                                 </div>
@@ -305,7 +305,7 @@
                 if (result.err_code=='0000'){
                     $('#showImage').attr('src','<?=IMAGE_HOST?>'+result.path);
                     $('#showImage').show();
-                    $('#logo').val(result.path)
+                    $('#logo').val('<?=IMAGE_HOST?>'+result.path)
                 }else{
                     layer.msg(result.err_msg);
                 }
@@ -330,7 +330,7 @@
                 var result = JSON.parse(data);
                 if (result.err_code=='0000'){
                     var time = new Date().getTime();
-                    $('#imageDiv').append('<div id="'+time+'" class="img"><img src="<?=IMAGE_HOST?>'+result.path+'"><i onclick="removeImage(\''+time+'\')"></i><input type="hidden" name="images[]" value="'+result.path+'"/></div>');
+                    $('#imageDiv').append('<div id="'+time+'" class="img"><img src="<?=IMAGE_HOST?>'+result.path+'"><i onclick="removeImage(\''+time+'\')"></i><input type="hidden" name="images[]" value="<?=IMAGE_HOST?>'+result.path+'"/></div>');
                 }else{
                     layer.msg(result.err_msg);
                 }

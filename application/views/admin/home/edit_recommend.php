@@ -55,11 +55,11 @@
                         <div class="tabbable portlet-tabs">
 
                             <ul class="nav nav-tabs">
-
+v
                                 <li><a href="" onclick="window.location.href='<?=base_url('admin/home/friendLinkList')?>';"  data-toggle="tab">Friend Link</a></li>
-                                <li><a href="#home_product" onclick="window.location.href='<?=base_url('admin/home/homeProductList')?>';"  data-toggle="tab">Home Product</a></li>
-                                <li class="active" ><a href="" onclick="window.location.href='<?=base_url('admin/home/recommendList')?>';" data-toggle="tab">Recommend Product</a></li>
-                                <li><a href="#six_product" onclick="window.location.href='<?=base_url('admin/home/sixProductList')?>';" data-toggle="tab">Six Product</a></li>
+                                <li><a href="" onclick="window.location.href='<?=base_url('admin/home/homeList')?>';"  data-toggle="tab">Home Product</a></li>
+                                <li class="active"><a href="" onclick="window.location.href='<?=base_url('admin/home/recommendList')?>';" data-toggle="tab">Recommend Product</a></li>
+                                <li><a href="" onclick="window.location.href='<?=base_url('admin/home/sixList')?>';" data-toggle="tab">Six Product</a></li>
                                 <li><a href="" onclick="window.location.href='<?=base_url('admin/home/bannerList')?>';" data-toggle="tab">Banner</a></li>
 
                             </ul>

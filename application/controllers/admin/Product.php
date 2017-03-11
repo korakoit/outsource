@@ -114,7 +114,7 @@ class Product extends MY_Controller
     public function beforeAdd()
     {
 
-        $data['main_list'] = $this->db->get('product_category')->result_array();
+        $data['main_list'] = array_column($this->db->get('product_category')->result_array(),'title','id');
         $data['action'] = base_url('admin/product/add');
         $this->load->view('admin/product/edit', $data);
     }
@@ -243,6 +243,13 @@ class Product extends MY_Controller
         $product_id = $this->input->post('id');
         $this->db->where('id', $product_id)->update('product', ['status' => Product::STATUS_ON_SHELF]);
         $this->jsonOutput(['err_code'=>'0000','err_msg'=>'OK']);
+    }
+
+    public function setHomeStatus(){
+        $product_id = $this->input->post('product_id', true);
+        $is_home = $this->input->post('is_home',true);
+        $this->db->where('id',$product_id)->update('product',['is_home'=>$is_home]);
+        $this->jsonOutput(['err_code' => '0000', 'err_msg' => 'OK']);
     }
 
 }
