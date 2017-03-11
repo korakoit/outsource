@@ -12,52 +12,8 @@
 				<div class="main">
 					<section class="seainput"><div class="input"><input type="text" maxlength="80" placeholder="Please enter the name of the commodity" value=""></div><i id="gosearch"></i></section>
 					<section class="showlist">
-			 		<ul>
-			 			<li>
-			 				<div class="img"></div>
-			 				<p class="tit">Markless Fashion Mens  Down Jacket Men's Brand</p>
-			 				<p class="subtit">Brand Clothing Casual</p>
-			 			</li>
-			 			<li>
-			 				<div class="img"></div>
-			 				<p class="tit">Markless Fashion Mens  Down Jacket Men's Brand</p>
-			 				<p class="subtit">Brand Clothing Casual</p>
-			 			</li>
-			 			<li>
-			 				<div class="img"></div>
-			 				<p class="tit">Markless Fashion Mens  Down Jacket Men's Brand</p>
-			 				<p class="subtit">Brand Clothing Casual</p>
-			 			</li>
-			 			<li>
-			 				<div class="img"></div>
-			 				<p class="tit">Markless Fashion Mens  Down Jacket Men's Brand</p>
-			 				<p class="subtit">Brand Clothing Casual</p>
-			 			</li>
-			 			<li>
-			 				<div class="img"></div>
-			 				<p class="tit">Markless Fashion Mens  Down Jacket Men's Brand</p>
-			 				<p class="subtit">Brand Clothing Casual</p>
-			 			</li>
-			 			<li>
-			 				<div class="img"></div>
-			 				<p class="tit">Markless Fashion Mens  Down Jacket Men's Brand</p>
-			 				<p class="subtit">Brand Clothing Casual</p>
-			 			</li>
-			 			<li>
-			 				<div class="img"></div>
-			 				<p class="tit">Markless Fashion Mens  Down Jacket Men's Brand</p>
-			 				<p class="subtit">Brand Clothing Casual</p>
-			 			</li>
-			 			<li>
-			 				<div class="img"></div>
-			 				<p class="tit">Markless Fashion Mens  Down Jacket Men's Brand</p>
-			 				<p class="subtit">Brand Clothing Casual</p>
-			 			</li>
-			 			<li>
-			 				<div class="img"></div>
-			 				<p class="tit">Markless Fashion Mens  Down Jacket Men's Brand</p>
-			 				<p class="subtit">Brand Clothing Casual</p>
-			 			</li>
+			 		<ul id="search_list">
+
 			 		</ul>
 			 	</section>
 			 	<div id="page" class="pager"></div>

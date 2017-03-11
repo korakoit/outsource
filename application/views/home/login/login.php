@@ -18,7 +18,7 @@
 				<div class="txt_pass"><input id="password" type="password" placeholder="Password"></div>
 				<div id="signin" class="signin">Sign in</div>
 				<p><span>Don't have an account? </span><a href="/login/register">Sign up</a></p>
-				<a>Forgot password?</a>
+				<a href="/about/contactus">Forgot password?</a>
 			</div>
 		</div>
 	</div>

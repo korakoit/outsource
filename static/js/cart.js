@@ -1,9 +1,15 @@
 $(document).ready(function() {
-    if(Common.isLogin()){ //已经登录
-        pages(8);
-    }else{// 未登录;
-        alert('Please sign in');
-    }
+    $('.delete').on('click',function(){
+        var product_id = $(this).prev().val();
+        $.post("/cart/delcart",{product_id:product_id},function(result){
+            var obj =  eval("("+result+")");
+            if(obj.err_code == '0000'){
+                window.location.href = '/cart';
+            }else{
+                window.location.href = '/login';
+            }
+        });
+    });
 });
 //分页初始
 function pages(count){

@@ -147,7 +147,7 @@ var Common=(function(doc,win,lib){
             }
         },
         goLoginPage:function(){
-            window.location.href="/views/login/login.html";
+            window.location.href="/login";
             return false;
         },
         isuseJsonp:function(){

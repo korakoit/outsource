@@ -47,12 +47,16 @@ function initslide(){
 //加入购物车
 function toCart(){
 	$('#tocart').on('click',function(){
-		if(!Common.isLogin()){
-			Common.goLoginPage();
-		}else{//登录
-			// dosomething
-
-		}
+		var id = $('#pid').val();
+		var num = $('#num').val();
+		$.post("/cart/addcart",{product_id:id,num:num},function(result){
+			var obj =  eval("("+result+")");
+			if(obj.err_code == '0000'){
+                window.location.href = '/cart';
+            }else{
+                window.location.href = '/login';
+            }
+		});
 	});
 	
 }

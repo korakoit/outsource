@@ -29,14 +29,43 @@ class Product extends MY_Controller
             $data['totle'] = $count_num;
             $data['product_lsit'] = $this->db->where('main_category',$pid)->limit($this->page_offset,$start)->get('product')->result_array();
         }
+        $p_name = $this->db->where('id',$pid)->get('product_category')->row_array();
+        $name = $this->db->where('id',$id)->get('product_category')->row_array();
         $data['id'] = $id;
         $data['pid'] = $pid;
+        $data['link'] = $this->public_friend();
+        $data['title'] = '';
+        $data['keywords'] = '';
+        $data['description'] = '';
+        $data['bre'] = '<a href="/product/category/'.$pid.'/0">'.$p_name['title'].'</a><span>&gt;</span><a class="active">'.$name['title'].'</a>';
         $this->load->view('home/product/list',$data);
     }
 
-    public function details(){
+    public function details($id){
+        $data['category'] = $this->public_category();
+        $product = $this->db->where('id',$id)->get('product')->row_array();
+        $pic_list = $this->db->where('product_id',$id)->get('product_image')->result_array();
+        $similar_product = $this->db->where('sub_category',$product['sub_category'])->limit(6,0)->get('product')->result_array();
+        $data['product'] = $product;
+        $data['pic_list'] = $pic_list;
+        $data['similar_product'] = $similar_product;
+        $data['link'] = $this->public_friend();
+        $data['title'] = $product['seo_title'];
+        $data['keywords'] = $product['seo_title'];
+        $data['description'] = $product['seo_desc'];
+        $p_name = $this->db->where('id',$product['main_category'])->get('product_category')->row_array();
+        $name = $this->db->where('id',$product['sub_category'])->get('product_category')->row_array();
+        $data['bre'] = '<a href="/product/category/'.$product['main_category'].'/0/">'.$p_name['title'].'</a><span>&gt;</span><a href="/product/category/'.$product['main_category'].'/'.$product['sub_category'].'/">'.$name['title'].'</a><span>&gt;</span><a class="active">'.$product['name'].'</a>';
+        $this->load->view('home/product/details',$data);
+    }
 
-        $this->load->view('home/product/details');
+    public function download(){
+        $data['link'] = $this->public_friend();
+        $data['category'] = $this->public_category();
+        $data['title'] = '';
+        $data['keywords'] = '';
+        $data['description'] = '';
+        $this->load->view('home/product/download',$data);
     }
 
     public function format_tree($array, $pid = 0){

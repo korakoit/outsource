@@ -15,7 +15,7 @@
             <a href="/login"><span>login</span></a>
           </li>
           <li class="li4">
-            <a href="/product/category/0/0/"><span>brochure</span></a>
+            <a href="/product/download"><span>brochure</span></a>
           </li>
           <li class="li5"><a href="/cart"><span style="width:20px;height:20px;"></span></a></li>
           <li class="li6"><a href="/search"><span style="width:20px;height:20px;"></span></a></li>

@@ -4,14 +4,13 @@
 		<ul class="center">
 			<li class="li0">
 				<div class="third">
-					<a href="http://www.facebook.com/sharer.php?u=aaaa" title="分享到Twitter" target="_blank"
-					   rel="nofollow"></a>
-					<a href="#" class="a1"></a>
-					<a href="#" class="a2"></a>
+                    <a class="" href="javascript:window.open('http://www.facebook.com/sharer.php?u='+encodeURIComponent(document.location.href)+'&title='+encodeURIComponent(document.title),'_blank','toolbar=yes, location=yes, directories=no, status=no, menubar=yes, scrollbars=yes, resizable=no, copyhistory=yes, width=600, height=450,top=100,left=350');void(0)" ></a>
+                    <a href="#" class="a1"></a>
+                    <a class="a2" href="javascript:window.open('http://twitter.com/home?status='+encodeURIComponent(document.location.href)+' '+encodeURIComponent(document.title),'_blank','toolbar=yes, location=yes, directories=no, status=no, menubar=yes, scrollbars=yes, resizable=no, copyhistory=yes, width=600, height=450,top=100,left=350');void(0)" ></a>
 					<a href="#" class="a3"></a>
 					<a href="#" class="a4"></a>
-                    <a class="a5" href="http://www.google.com/bookmarks/mark?op=add&bkmk=22222&title=1111"></a>
-				</div>
+                    <a class="a5" href="javascript:window.open('http://www.google.com/bookmarks/mark?op=add&bkmk='+encodeURIComponent(document.location.href)+'&title='+encodeURIComponent(document.title),'_blank','toolbar=yes, location=yes, directories=no, status=no, menubar=yes, scrollbars=yes, resizable=no, copyhistory=yes, width=600, height=450,top=100,left=350');void(0)" ></a>
+                </div>
 				<div class="about">
 					<ul>
 						<li>
@@ -35,8 +34,8 @@
 				<div class="join">
 					<h3>Join our Mailing List  </h3>
 					<p>Get exclusive daily deals sent  straight to your inbox.</p>
-					<input type="text">
-					<input type="button" value="JOIN">
+					<input type="text" id="email_val">
+					<input type="button" value="JOIN" id="join">
 				</div>
 			</li>
 		</ul>
@@ -51,11 +50,11 @@
 				<a class="last" href="/about/contactus" target="_blank">Chat Online</a>
 			</div>
 			<div class="idiv">
-				<i></i>
-				<i class="a1"></i>
-				<i class="a2"></i>
-				<i class="a3"></i>
-				<i class="a4"></i>
+                <?php if(!empty($link)):?>
+                    <?php foreach($link as $k => $v):?>
+                        <i style="background-image:url(<?=$v['image']?>)"></i>
+                    <?php endforeach; ?>
+                <?php endif;?>
 			</div>
 			<p>© 2003-2016 Glead Kitchen Equipment (Guangzhou) Company — All Rights Reserved</p>
 		</div>

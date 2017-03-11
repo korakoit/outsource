@@ -82,6 +82,15 @@
 				alert('Please enter Note');
 			}
 			// do something  submit
+            $.post("/about/add",{name:Name,email:Email,subject:Subject,note:Note},function(result){
+                var obj =  eval("("+result+")");
+                if(obj.err_code == '0000'){
+                    alert('success');
+                    window.location.href = '/home';
+                }else{
+                    alert(obj.err_code)
+                }
+            });
 		});
 	</script>
 </body>

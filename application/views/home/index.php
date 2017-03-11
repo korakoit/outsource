@@ -2,7 +2,7 @@
 <html>
   <head>
     <?php $this->load->view('home/base/header_meta.php');?>
-    <title>首页</title>
+    <title>index</title>
     <link rel="stylesheet" href="<?=STATIC_FILE_HOST?>static/css/index.css">
   </head>
   <body>
@@ -13,9 +13,11 @@
         <div class="ck-slide">
           <!-- 轮播项目 -->
           <div class="ck-slide-wrapper">
-            <a class="item" href="#" alt="..." style="background-image:url(/static/images/banner.png);"></a>
-            <a class="item" href="#" alt="..." style="display:none;background-image:url(/static/images/index0.png);"></a>
-            <a class="item" href="#" alt="..." style="display:none;background-image:url(/static/images/banner.png);"></a>
+            <?php if(!empty($banner)):?>
+                <?php foreach($banner as $k => $v):?>
+                  <a class="item" href="/product/details/<?=$v['product_id']?>" alt="..." style="background-image:url(<?=$v['image']?>);"></a>
+                <?php endforeach;?>
+            <?php endif;?>
           </div>
           <!-- 轮播指标 -->
           <div class="ck-slidebox">
@@ -32,12 +34,11 @@
       <section class="showgoods center">
         <h3>Commercial Restaurant Supplies & Equipment from WebstaurantStor</h3>
         <ul class="ul0">
-          <li><a><img src="/static/images/index0.png" width="321" height="229"></a></li>
-          <li><a><img src="/static/images/index0.png" width="321" height="229"></a></li>
-          <li><a><img src="/static/images/index0.png" width="321" height="229"></a></li>
-          <li><a><img src="/static/images/index0.png" width="321" height="229"></a></li>
-          <li><a><img src="/static/images/index0.png" width="321" height="229"></a></li>
-          <li><a><img src="/static/images/index0.png" width="321" height="229"></a></li>
+          <?php if(!empty($eight_product)):?>
+            <?php foreach($eight_product as $key => $val):?>
+                  <li><a href="/product/details/<?=$val['product_id']?>"><img src="<?=$val['image']?>" width="321" height="229"></a></li>
+            <?php endforeach;?>
+          <?php endif;?>
         </ul>
       </section>
       <!--轮播 -->
@@ -46,70 +47,18 @@
         <div class=" hotdeswrapper">
         <div class="scrollcontainer">
           <ul>
-            <li>
-              <a href="#" target="_black">
-                <div style="background-image:url(/static/images/index1.png)"></div>
-                <p class="p0">Restaurant Food  Storage Baking  Smallwares Beverage  Supplies</p>
-                <p class="p1">$600</p>
-                <p class="p2"><i></i><i></i><i></i><i></i></p>
-              </a>
-            </li>
-            <li>
-              <a href="#" target="_black">
-                <div style="background-image:url(/static/images/index1.png)"></div>
-                <p class="p0">Restaurant Food  Storage Baking  Smallwares Beverage  Supplies</p>
-                <p class="p1">$600</p>
-                <p class="p2"><i></i><i></i><i></i><i></i></p>
-              </a>
-            </li>
-            <li>
-              <a href="#" target="_black">
-                <div style="background-image:url(/static/images/index1.png)"></div>
-                <p class="p0">Restaurant Food  Storage Baking  Smallwares Beverage  Supplies</p>
-                <p class="p1">$600</p>
-                <p class="p2"><i></i><i></i><i></i><i></i></p>
-              </a>
-            </li>
-            <li>
-              <a href="#" target="_black">
-                <div style="background-image:url(/static/images/index1.png)"></div>
-                <p class="p0">Restaurant Food  Storage Baking  Smallwares Beverage  Supplies</p>
-                <p class="p1">$600</p>
-                <p class="p2"><i></i><i></i><i></i><i></i></p>
-              </a>
-            </li>
-            <li>
-              <a href="#" target="_black">
-                <div style="background-image:url(/static/images/index1.png)"></div>
-                <p class="p0">Restaurant Food  Storage Baking  Smallwares Beverage  Supplies</p>
-                <p class="p1">$600</p>
-                <p class="p2"><i></i><i></i><i></i><i></i></p>
-              </a>
-            </li>
-            <li>
-              <a href="#" target="_black">
-                <div style="background-image:url(/static/images/index1.png)"></div>
-                <p class="p0">Restaurant Food  Storage Baking  Smallwares Beverage  Supplies</p>
-                <p class="p1">$600</p>
-                <p class="p2"><i></i><i></i><i></i><i></i></p>
-              </a>
-            </li>
-            <li>
-              <a href="#" target="_black">
-                <div style="background-image:url(/static/images/index1.png)"></div>
-                <p class="p0">Restaurant Food  Storage Baking  Smallwares Beverage  Supplies</p>
-                <p class="p1">$600</p>
-                <p class="p2"><i></i><i></i><i></i><i></i></p>
-              </a>
-            </li>
-            <li>
-              <a href="#" target="_black">
-                <div style="background-image:url(/static/images/index1.png)"></div>
-                <p class="p0">Restaurant Food  Storage Baking  Smallwares Beverage  Supplies</p>
-                <p class="p1">$800</p>
-                <p class="p2"><i></i><i></i><i></i><i></i></p>
-              </a>
-            </li>
+           <?php if(!empty($recommend_product)):?>
+              <?php foreach($recommend_product as $key => $val):?>
+                <li>
+                  <a href="/product/details/<?=$val['product_id']?>" target="_black">
+                    <div style="background-image:url(<?=$val['image']?>)"></div>
+                    <p class="p0"><?=$val['name']?></p>
+                    <p class="p1"><?=$val['price']?></p>
+                    <p class="p2"><i></i><i></i><i></i><i></i></p>
+                  </a>
+                </li>
+               <?php endforeach;?>
+           <?php endif;?>
           </ul>
           </div>
           <a class="pageprev aleft pageicon"></a>
@@ -120,54 +69,16 @@
       </section>
       <section class="showtext center">
         <ul>
-          <li>
-            <div class="img" style="background-image:url(/static/images/index2.png)"></div>
-            <h2>Restaurant Equipment</h2>
-            <p> Refrigeration Equipment Food Preparation Cooking Equipment Bev</p>
-            <div class="hr"></div>
-          </li>
-          <li>
-            <div class="img" style="background-image:url(/static/images/index2.png)"></div>
-            <h2>Restaurant Equipment</h2>
-            <p> Refrigeration Equipment Food Preparation Cooking Equipment Bev</p>
-            <div class="hr"></div>
-          </li>
-          <li>
-            <div class="img" style="background-image:url(/static/images/index2.png)"></div>
-            <h2>Restaurant Equipment</h2>
-            <p> Refrigeration Equipment Food Preparation Cooking Equipment Bev</p>
-            <div class="hr"></div>
-          </li>
-          <li>
-            <div class="img" style="background-image:url(/static/images/index2.png)"></div>
-            <h2>Restaurant Equipment</h2>
-            <p> Refrigeration Equipment Food Preparation Cooking Equipment Bev</p>
-          </li>
-        </ul>
-        <ul class="ul2">
-          <li>
-            <div class="img" style="background-image:url(/static/images/index2.png)"></div>
-            <h2>Restaurant Equipment</h2>
-            <p> Refrigeration Equipment Food Preparation Cooking Equipment Bev</p>
-            <div class="hr"></div>
-          </li>
-          <li>
-            <div class="img" style="background-image:url(/static/images/index2.png)"></div>
-            <h2>Restaurant Equipment</h2>
-            <p> Refrigeration Equipment Food Preparation Cooking Equipment Bev</p>
-            <div class="hr"></div>
-          </li>
-          <li>
-            <div class="img" style="background-image:url(/static/images/index2.png)"></div>
-            <h2>Restaurant Equipment</h2>
-            <p> Refrigeration Equipment Food Preparation Cooking Equipment Bev</p>
-            <div class="hr"></div>
-          </li>
-          <li>
-            <div class="img" style="background-image:url(/static/images/index2.png)"></div>
-            <h2>Restaurant Equipment</h2>
-            <p> Refrigeration Equipment Food Preparation Cooking Equipment Bev</p>
-          </li>
+         <?php if(!empty($six_product)):?>
+         <?php foreach($six_product as $key => $val):?>
+            <li>
+                 <div class="img" style="background-image:url(<?=$val['image']?>)"></div>
+                 <h2><?=$val['name']?></h2>
+                 <p><?=$val['title']?></p>
+                 <div class="hr"></div>
+            </li>
+         <?php endforeach;?>
+         <?php endif;?>
         </ul>
       </section>
         <?php $this->load->view('home/base/index_footer.php');?>

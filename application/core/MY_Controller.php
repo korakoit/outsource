@@ -11,6 +11,7 @@ class MY_Controller extends CI_Controller{
         parent::__construct();
         $this->load->library('session');
         $this->admin = $this->session->userdata(ADMIN_SESS);
+        $this->user = $this->session->userdata(USER_SESS);
 	}
 
 
@@ -32,4 +33,9 @@ class MY_Controller extends CI_Controller{
         return $category;
     }
 
+    public function public_friend(){
+        $this->load->database('default');
+        $link = $this->db->order_by('sort')->get('friend_link')->result_array();
+        return $link;
+    }
 }

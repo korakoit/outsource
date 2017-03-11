@@ -19,6 +19,10 @@ class Home extends MY_Controller
         $recommend_product = $this->db->get('recommend_product')->row_array();
         $data['recommend_product'] = $this->product_detail($recommend_product);
         $data['category'] = $this->public_category();
+        $data['link'] = $this->public_friend();
+        $data['title'] = '';
+        $data['keywords'] = '';
+        $data['description'] = '';
         $this->load->view('home/index',$data);
     }
 

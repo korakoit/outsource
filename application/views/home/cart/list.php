@@ -12,62 +12,21 @@
 				<div class="main">
 					<section class="showlist">
 			 		<ul>
-			 			<li>
-			 				<a href="#">
-				 				<div class="img"></div>
-				 				<p class="tit">Markless Fashion Mens  Down Jacket Men's Brand</p>
-				 				<p class="subtit">Brand Clothing Casual</p>
-			 				</a>
-			 				<div class="delete"><div class="icon"></div></div>
-			 			</li>
-			 			<li>
-			 				<a href="#">
-				 				<div class="img"></div>
-				 				<p class="tit">Markless Fashion Mens  Down Jacket Men's Brand</p>
-				 				<p class="subtit">Brand Clothing Casual</p>
-			 				</a>
-			 				<div class="delete"><div class="icon"></div></div>
-			 			</li>
-			 			<li>
-			 				<a href="#">
-				 				<div class="img"></div>
-				 				<p class="tit">Markless Fashion Mens  Down Jacket Men's Brand</p>
-				 				<p class="subtit">Brand Clothing Casual</p>
-			 				</a>
-			 				<div class="delete"><div class="icon"></div></div>
-			 			</li>
-			 			<li>
-			 				<a href="#">
-				 				<div class="img"></div>
-				 				<p class="tit">Markless Fashion Mens  Down Jacket Men's Brand</p>
-				 				<p class="subtit">Brand Clothing Casual</p>
-			 				</a>
-			 				<div class="delete"><div class="icon"></div></div>
-			 			</li>
-			 			<li>
-			 				<a href="#">
-				 				<div class="img"></div>
-				 				<p class="tit">Markless Fashion Mens  Down Jacket Men's Brand</p>
-				 				<p class="subtit">Brand Clothing Casual</p>
-			 				</a>
-			 				<div class="delete"><div class="icon"></div></div>
-			 			</li>
-			 			<li>
-			 				<a href="#">
-				 				<div class="img"></div>
-				 				<p class="tit">Markless Fashion Mens  Down Jacket Men's Brand</p>
-				 				<p class="subtit">Brand Clothing Casual</p>
-			 				</a>
-			 				<div class="delete"><div class="icon"></div></div>
-			 			</li>
-			 			<li>
-			 				<a href="#">
-				 				<div class="img"></div>
-				 				<p class="tit">Markless Fashion Mens  Down Jacket Men's Brand</p>
-				 				<p class="subtit">Brand Clothing Casual</p>
-			 				</a>
-			 				<div class="delete"><div class="icon"></div></div>
-			 			</li>
+                        <?php if(!empty($cart)):?>
+                            <?php foreach($cart as $key => $val):?>
+                                <li>
+                                    <a href="/product/details/<?=$val['product_id']?>">
+                                        <div class="img" style="background-image:url(<?=$val['image']?>);"></div>
+                                        <p class="tit"><?=$val['name']?></p>
+                                        <p class="subtit"><?=$val['title']?></p>
+                                    </a>
+                                    <input type="hidden" id="product_id" value="<?=$val['product_id']?>">
+                                    <div class="delete"><div class="icon"></div></div>
+                                </li>
+                            <?php endforeach;?>
+                        <?php else: ?>
+                            NO DATA!
+                        <?php endif;?>
 			 		</ul>
 			 	</section>
 			 	<div id="page" class="pager"></div>

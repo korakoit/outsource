@@ -28,39 +28,22 @@
 			 </section>
 			 <!-- right -->
 			 <section class="right">
-			 	<section class="banner"></section>
-			 	<section class="twolist">
-			 		<ul>
-			 			<li>
-			 				<div class="l" style="background-image:url(/static/images/list0.png);"></div>
-			 				<div class="r">
-			 					<p class="p0">Markless Fashion  Down Jacket Mens   Brand Men's  Markless Fash</p>
-			 					<p class="p1">Men's Brand Men's  Commercial Ranges</p>
-			 				</div>
-			 				<div class="hr"></div>
-			 			</li>
-			 			<li>
-			 				<div class="l" style="background-image:url(/static/images/list0.png);"></div>
-			 				<div class="r">
-			 					<p class="p0">Markless Fashion  Down Jacket Mens   Brand Men's  Markless Fash</p>
-			 					<p class="p1">Men's Brand Men's  Commercial Ranges</p>
-			 				</div>
-			 			</li>
-			 		</ul>
-			 	</section>
+
 			 	<section class="showlist">
 			 		<ul>
                         <?php if(count($product_lsit)>0):?>
                             <?php foreach($product_lsit as $key => $val):?>
-                                <li>
-                                    <div class="img" style="background-image:url(<?=$val['image']?>);"></div>
-                                    <p class="tit"><?=$val['name']?></p>
-                                    <p class="subtit"><?=$val['title']?></p>
-                                </li>
+                                <a href="/product/details/<?=$val['id']?>">
+									<li>
+										<div class="img" style="background-image:url(<?=$val['image']?>);"></div>
+										<p class="tit"><?=$val['name']?></p>
+										<p class="subtit"><?=$val['title']?></p>
+									</li>
+								</a>
                             <?php endforeach;?>
                         <?php else:?>
 
-                                没有数据！
+                                NO DATA！
 
                         <?php endif;?>
 			 		</ul>
