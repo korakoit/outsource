@@ -30,7 +30,7 @@ class Upload extends MY_Controller{
         $upload_path = UPLOAD_PATH.'/'.substr($md5_str,0,2).'/';
         $config['file_name'] = $md5_str.'.'.$this->getExt($_FILES['Filedata']['name']);
         $config['upload_path'] = $upload_path;
-        $config['allowed_types'] = 'gif|jpg|png|jpeg';
+        $config['allowed_types'] = 'gif|jpg|png|jpeg|pdf|doc|dotx|docx|ppt|zip|rar|xlsx';
         $config['overwrite'] = true;
         $config['max_size'] = '2000';
         $this->load->library('upload',$config);

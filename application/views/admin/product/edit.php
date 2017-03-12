@@ -232,6 +232,15 @@
                                 <label class="control-label">Brochure:<span class="required">*</span></label>
                                 <div class="controls">
                                     <div id="brochure">Upload</div>
+
+                                    <div id="brochureDiv" class="alert alert-success" <?=empty($product['brochure'])?' style="display: none"':''?>>
+
+                                        <a class="close" onclick="deleteBrochure()"></a>
+
+                                        <a id="brochureA"><strong id="brochureText"><?=isset($product)?$product['brochure']:''?></strong></a>
+
+                                    </div>
+
                                     <input type="hidden" name="brochure" id="brochure" value="<?=isset($product)?$product['brochure']:''?>"/>
                                 </div>
                             </div>
@@ -343,8 +352,35 @@
             }
         });
 
+        $("#brochure").uploadify({
+            height        : 27,
+            width         : 80,
+            fileName      : "image",               //提交到服务器的文件名
+            maxFileCount: 1,                //上传文件个数（多个时修改此处
+            returnType    : 'json',              //服务返回数据
+            showDone: false,                     //是否显示"Done"(完成)按钮
+            showDelete: false,
+            buttonText   : 'Select File',
+            fileSizeLimit : '2048KB',
+            swf           : '<?=STATIC_FILE_HOST?>assets/plugin/uploadify/uploadify.swf',
+            uploader      : '/admin/upload/uploadImage',
+            onUploadSuccess:function(file,data,response){
+                $('#brochure-queue').remove();
+                var result = JSON.parse(data);
+                if (result.err_code=='0000'){
+                    $('#brochureA').attr('href','<?=IMAGE_HOST?>'+result.path);
+                    $('#brochureText').text('<?=IMAGE_HOST?>'+result.path);
+                    $('#brochureDiv').show();
+                    $('input[name="brochure"]').val('<?=IMAGE_HOST?>'+result.path);
+                }else{
+                    layer.msg(result.err_msg);
+                }
+            }
+        });
+
         $('#image-queue').remove();
         $('#images-queue').remove();
+        $('#brochure-queue').remove();
 
         $('#product_form').ajaxForm(function(data){
             if (data.err_code=='0000') {
@@ -374,5 +410,10 @@
             });
         }
 
+    }
+
+    function deleteBrochure() {
+        $('#brochureDiv').hide();
+        $('input[name="brochure"]').val('');
     }
 </script>

@@ -29,7 +29,7 @@ class Mail extends MY_Controller
             $this->db->where($where);
         }
 
-        $total = $this->db->select('count(id) as num')->get('mail_list')->row()->num;
+        $total = $this->db->select('count(*) as num')->get('mail_list')->row()->num;
         if ($total > 0) {
             if (!empty($where)) {
                 $this->db->where($where);

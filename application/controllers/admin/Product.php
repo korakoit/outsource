@@ -148,6 +148,7 @@ class Product extends MY_Controller
         $seo_content = $this->input->post('seo_content', true);
         $seo_desc = $this->input->post('seo_desc', true);
         $image = $this->input->post('image', true);
+        $brochure = $this->input->post('brochure',true);
 
         $link_list = $this->input->post('images', true);
 
@@ -163,6 +164,7 @@ class Product extends MY_Controller
             'seo_content' => $seo_content,
             'seo_desc' => $seo_desc,
             'image' => $image,
+            'brochure'=>$brochure,
             'pcode' => 'P' . time()]);
 
         $product_id = $this->db->insert_id();
@@ -198,6 +200,7 @@ class Product extends MY_Controller
         $seo_content = $this->input->post('seo_content');
         $seo_desc = $this->input->post('seo_desc');
         $image = $this->input->post('image');
+        $brochure = $this->input->post('brochure',true);
 
         $link_list = $this->input->post('images', true);
 
@@ -212,6 +215,7 @@ class Product extends MY_Controller
             'seo_title' => $seo_title,
             'seo_content' => $seo_content,
             'seo_desc' => $seo_desc,
+            'brochure'=>$brochure,
             'image' => $image]);
 
         $this->db->where('product_id', $id)->delete('product_image');

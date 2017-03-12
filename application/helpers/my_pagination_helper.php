@@ -33,11 +33,11 @@ if ( ! function_exists('create_pagination')){
 		$html['num_tag_open'] = "<li>";
 		$html['num_tag_close'] = "</li>";
 		//第一页
-		$html['first_link']   = "第一页";
+		$html['first_link']   = "First";
 		$html['first_tag_open'] = "<li>";
 		$html['first_tag_close'] = "</li>";
 		//最后一页
-		$html['last_link']    = "最后一页";
+		$html['last_link']    = "Last";
 		$html['last_tag_open'] = "<li>";
 		$html['last_tag_close'] = "</li>";
 		//前一页
