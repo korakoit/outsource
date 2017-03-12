@@ -41,7 +41,7 @@
                 <form action="<?=base_url('admin/user/index')?>" method="get" class="form-horizontal">
                     <div class="clearfix margin_left_90">
 
-                        <div class="control-group pull-left margin-right-20"  style="margin-left:-20px;">
+                        <div class="control-group pull-left margin-right-20"  style="margin-left:20px;">
 
                             <label class="control-label">First Name:</label>
 
@@ -51,7 +51,7 @@
 
                         </div>
 
-                        <div class="control-group pull-left margin-right-20"  style="margin-left:-20px;">
+                        <div class="control-group pull-left margin-right-20"  style="margin-left:20px;">
 
                             <label class="control-label">Last Name:</label>
 
@@ -61,7 +61,7 @@
 
                         </div>
 
-                        <div class="control-group pull-left margin-right-20"  style="margin-left:-20px;">
+                        <div class="control-group pull-left margin-right-20"  style="margin-left:20px;">
 
                             <label class="control-label">Email Address:</label>
 
@@ -73,7 +73,7 @@
 
                         </div>
 
-                        <div class="control-group pull-left margin-right-20"  style="margin-left:-20px;">
+                        <div class="control-group pull-left margin-right-20"  style="margin-left:20px;">
 
                             <label class="control-label">Status:</label>
 

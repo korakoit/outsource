@@ -229,6 +229,14 @@
                             </div>
 
                             <div class="control-group">
+                                <label class="control-label">Brochure:<span class="required">*</span></label>
+                                <div class="controls">
+                                    <div id="brochure">Upload</div>
+                                    <input type="hidden" name="brochure" id="brochure" value="<?=isset($product)?$product['brochure']:''?>"/>
+                                </div>
+                            </div>
+
+                            <div class="control-group">
                                 <label class="control-label">First Image:<span class="required">*</span></label>
                                 <div class="controls">
                                     <div id="image">Upload</div>

@@ -41,7 +41,7 @@
                 <form action="<?=base_url('admin/product/index')?>" method="get" class="form-horizontal">
                     <div class="clearfix margin_left_90">
 
-                        <div class="control-group pull-left margin-right-20" style="margin-right:20px;">
+                        <div class="control-group pull-left margin-right-20" style="margin-left:20px;">
                             <label class="control-label">Main Category:</label>
                             <div class="controls">
                                 <select name="main_category" id="main_category" onchange="changeMainCategory()" class="medium m-wrap" >
@@ -55,7 +55,7 @@
                             </div>
                         </div>
 
-                        <div class="control-group pull-left margin-right-20" style="margin-right:20px;">
+                        <div class="control-group pull-left margin-right-20" style="margin-left:20px;">
                             <label class="control-label">Sub Category:</label>
                             <div class="controls">
                                 <select name="sub_category" class="medium m-wrap" id="sub_category">
@@ -69,7 +69,7 @@
                             </div>
                         </div>
 
-                        <div class="control-group pull-left margin-right-20"  style="margin-left:-20px;">
+                        <div class="control-group pull-left margin-right-20"  style="margin-left:20px;">
 
                             <label class="control-label">Name:</label>
 
@@ -81,7 +81,7 @@
 
                         </div>
 
-                        <div class="control-group pull-left margin-right-20"  style="margin-left:-20px;">
+                        <div class="control-group pull-left margin-right-20"  style="margin-left:20px;">
 
                             <label class="control-label">Code:</label>
 

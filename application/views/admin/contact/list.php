@@ -42,7 +42,7 @@
                     <div class="clearfix margin_left_90">
 
 
-                        <div class="control-group pull-left margin-right-20"  style="margin-left:-20px;">
+                        <div class="control-group pull-left margin-right-20"  style="margin-left:20px;">
 
                             <label class="control-label">Name:</label>
 
@@ -54,7 +54,7 @@
 
                         </div>
 
-                        <div class="control-group pull-left margin-right-20"  style="margin-left:-20px;">
+                        <div class="control-group pull-left margin-right-20"  style="margin-left:20px;">
 
                             <label class="control-label">Email:</label>
 
