@@ -39,7 +39,7 @@ CREATE TABLE `banner` (
 
 LOCK TABLES `banner` WRITE;
 /*!40000 ALTER TABLE `banner` DISABLE KEYS */;
-INSERT INTO `banner` VALUES (1,'be/be254b4a5c2de0d5e5d9c870bd368120.png',5,'P1488982079','2017-03-11 04:02:36','2017-03-11 04:02:36');
+INSERT INTO `banner` VALUES (1,'be/be254b4a5c2de0d5e5d9c870bd368120.png',1,'P1488982079','2017-03-11 04:02:36','2017-03-12 03:42:58');
 /*!40000 ALTER TABLE `banner` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -126,6 +126,34 @@ LOCK TABLES `mail_list` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `news`
+--
+
+DROP TABLE IF EXISTS `news`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `news` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` char(255) COLLATE utf8mb4_bin DEFAULT '' COMMENT '标题',
+  `content` text COLLATE utf8mb4_bin COMMENT '正文',
+  `ctime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `mtime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `news_title` (`title`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `news`
+--
+
+LOCK TABLES `news` WRITE;
+/*!40000 ALTER TABLE `news` DISABLE KEYS */;
+INSERT INTO `news` VALUES (1,'abc','<p>abc</p><p><img src=\"/ueditor/php/upload/image/20170312/1489304523677307.png\" title=\"1489304523677307.png\" alt=\"屏幕快照 2017-02-27 下午5.19.15.png\" width=\"422\" height=\"186\"></p>','2017-03-12 07:32:07','2017-03-12 07:42:12');
+/*!40000 ALTER TABLE `news` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `product`
 --
 
@@ -156,7 +184,7 @@ CREATE TABLE `product` (
   `is_home` tinyint(4) DEFAULT '0' COMMENT '是否首页商品',
   PRIMARY KEY (`id`),
   KEY `product_name` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -165,7 +193,7 @@ CREATE TABLE `product` (
 
 LOCK TABLES `product` WRITE;
 /*!40000 ALTER TABLE `product` DISABLE KEYS */;
-INSERT INTO `product` VALUES (1,0,'','P1489223903','',0.00,'1231',NULL,'0.00','abc','123','','','2017-03-11 09:18:23','2017-03-11 09:19:15',6,7,'http://shop.cheye.com/uploads/be/be254b4a5c2de0d5e5d9c870bd368120.png',1,0,0);
+INSERT INTO `product` VALUES (1,0,'nimab','P1489223903','nimab',0.00,'1231',NULL,'0.00','abc','123','','','2017-03-11 09:18:23','2017-03-12 03:21:41',6,7,'http://shop.cheye.com/uploads/be/be254b4a5c2de0d5e5d9c870bd368120.png',1,0,0),(2,0,'sb','P1489288864','sb',0.00,'sb',1,'sb','sb','sb','','','2017-03-12 03:21:04','2017-03-12 03:21:04',7,0,'http://shop.cheye.com/uploads/be/be254b4a5c2de0d5e5d9c870bd368120.png',1,0,0);
 /*!40000 ALTER TABLE `product` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -185,7 +213,7 @@ CREATE TABLE `product_category` (
   `sort` int(11) DEFAULT '0' COMMENT '分类排序',
   PRIMARY KEY (`id`),
   KEY `pc_title` (`title`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -194,7 +222,7 @@ CREATE TABLE `product_category` (
 
 LOCK TABLES `product_category` WRITE;
 /*!40000 ALTER TABLE `product_category` DISABLE KEYS */;
-INSERT INTO `product_category` VALUES (6,0,'main category','2017-03-08 00:23:07','2017-03-08 00:23:07',0),(7,6,'sizeone','2017-03-08 00:23:16','2017-03-08 00:23:16',0),(8,6,'size two','2017-03-08 00:23:22','2017-03-08 00:23:22',0),(9,0,'Main Category','2017-03-08 00:23:31','2017-03-08 00:23:31',0),(10,9,'helloworld','2017-03-08 00:23:39','2017-03-08 00:23:39',0);
+INSERT INTO `product_category` VALUES (6,0,'main category','2017-03-08 00:23:07','2017-03-08 00:23:07',0),(7,6,'sizeone','2017-03-08 00:23:16','2017-03-08 00:23:16',0),(8,6,'size two','2017-03-08 00:23:22','2017-03-08 00:23:22',0),(9,0,'Main Category','2017-03-08 00:23:31','2017-03-08 00:23:31',0),(10,9,'helloworld','2017-03-08 00:23:39','2017-03-08 00:23:39',0),(11,6,'helloworld','2017-03-12 03:14:03','2017-03-12 03:14:03',0),(12,0,'Size','2017-03-12 03:25:57','2017-03-12 03:25:57',0),(13,12,'helloworld','2017-03-12 03:26:03','2017-03-12 03:26:03',0);
 /*!40000 ALTER TABLE `product_category` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -213,7 +241,7 @@ CREATE TABLE `product_image` (
   `mtime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `product_image_product_id` (`product_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -222,7 +250,7 @@ CREATE TABLE `product_image` (
 
 LOCK TABLES `product_image` WRITE;
 /*!40000 ALTER TABLE `product_image` DISABLE KEYS */;
-INSERT INTO `product_image` VALUES (1,0,'','2017-03-08 14:05:15','2017-03-08 14:05:15'),(2,0,'','2017-03-08 14:05:36','2017-03-08 14:05:36'),(3,0,'','2017-03-08 14:07:59','2017-03-08 14:07:59'),(4,0,'','2017-03-08 14:07:59','2017-03-08 14:07:59'),(8,6,'be/be254b4a5c2de0d5e5d9c870bd368120.png','2017-03-08 14:28:16','2017-03-08 14:28:16'),(9,6,'0f/0f52f1ce52f93437a2e9a12e2ae1d669.png','2017-03-08 14:28:16','2017-03-08 14:28:16'),(12,7,'f1/f1addde41bba9e4450a207efb79bb679.png','2017-03-08 15:40:09','2017-03-08 15:40:09'),(15,1,'http://shop.cheye.com/uploads/41/4160bfc78465fa6bf9fead5d3b54d23f.png','2017-03-11 09:19:15','2017-03-11 09:19:15');
+INSERT INTO `product_image` VALUES (1,0,'','2017-03-08 14:05:15','2017-03-08 14:05:15'),(2,0,'','2017-03-08 14:05:36','2017-03-08 14:05:36'),(3,0,'','2017-03-08 14:07:59','2017-03-08 14:07:59'),(4,0,'','2017-03-08 14:07:59','2017-03-08 14:07:59'),(8,6,'be/be254b4a5c2de0d5e5d9c870bd368120.png','2017-03-08 14:28:16','2017-03-08 14:28:16'),(9,6,'0f/0f52f1ce52f93437a2e9a12e2ae1d669.png','2017-03-08 14:28:16','2017-03-08 14:28:16'),(12,7,'f1/f1addde41bba9e4450a207efb79bb679.png','2017-03-08 15:40:09','2017-03-08 15:40:09'),(16,2,'http://shop.cheye.com/uploads/41/4160bfc78465fa6bf9fead5d3b54d23f.png','2017-03-12 03:21:04','2017-03-12 03:21:04'),(18,1,'http://shop.cheye.com/uploads/41/4160bfc78465fa6bf9fead5d3b54d23f.png','2017-03-12 03:21:41','2017-03-12 03:21:41');
 /*!40000 ALTER TABLE `product_image` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -339,7 +367,7 @@ CREATE TABLE `six_product` (
 
 LOCK TABLES `six_product` WRITE;
 /*!40000 ALTER TABLE `six_product` DISABLE KEYS */;
-INSERT INTO `six_product` VALUES (1,5,0,'2017-03-11 04:02:46','2017-03-11 04:02:46','be/be254b4a5c2de0d5e5d9c870bd368120.png','P1488982079');
+INSERT INTO `six_product` VALUES (1,1,0,'2017-03-11 04:02:46','2017-03-12 03:43:04','be/be254b4a5c2de0d5e5d9c870bd368120.png','P1488982079');
 /*!40000 ALTER TABLE `six_product` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -387,4 +415,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-03-12 10:41:39
+-- Dump completed on 2017-03-12 15:52:21

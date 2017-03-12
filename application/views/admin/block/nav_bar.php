@@ -130,6 +130,18 @@
 
 				</li>
 
+				<li class="start " level="1" id="admin-news-index">
+
+					<a href="<?=base_url('admin/news/index')?>">
+
+						<i class="icon-home"></i>
+
+						<span class="title">News</span>
+
+					</a>
+
+				</li>
+
 			</ul>
 			
 			<!-- END SIDEBAR MENU -->

@@ -11,6 +11,7 @@ class News extends MY_Controller
     public function __construct()
     {
         parent::__construct();
+        $this->load->database('default');
     }
 
     public function index()
@@ -38,7 +39,7 @@ class News extends MY_Controller
             if (!empty($where)) {
                 $this->db->where($where);
             }
-            $result = $this->db->limit($this->page_size, $start)->order_by('id', 'desc')->get('new')->result_array();
+            $result = $this->db->limit($this->page_size, $start)->order_by('id', 'desc')->get('news')->result_array();
             $data['result'] = $result;
         }
 
@@ -59,14 +60,15 @@ class News extends MY_Controller
 
     public function beforeAdd()
     {
-        $data['active'] = 'admin-new-list';
+        $data['active'] = 'admin-new-index';
+        $data['action'] = base_url('admin/news/add');
         $this->load->view('admin/news/edit',$data);
     }
 
     public function add()
     {
         $title = $this->input->post('title', true);
-        $content = $this->input->post('content', true);
+        $content = $this->input->post('editorValue', true);
 
         $this->db->insert('news',['title'=>$title,'content'=>$content]);
         $this->jsonOutput(['err_code'=>'0000','err_msg'=>'OK']);
@@ -76,15 +78,16 @@ class News extends MY_Controller
     {
         $id = $this->input->get('id',true);
         $data['news'] = $this->db->where('id',$id)->get('news')->row_array();
-        $data['active'] = 'admin-new-list';
-        $this->load->view('admin/news/edit',$data['news']);
+        $data['active'] = 'admin-new-index';
+        $data['action'] = base_url('admin/news/edit');
+        $this->load->view('admin/news/edit',$data);
     }
 
     public function edit()
     {
         $id = $this->input->post('id',true);
         $title = $this->input->post('title', true);
-        $content = $this->input->post('content', true);
+        $content = $this->input->post('editorValue', true);
 
         $this->db->where('id',$id)->update('news',['title'=>$title,'content'=>$content]);
         $this->jsonOutput(['err_code'=>'0000','err_msg'=>'OK']);

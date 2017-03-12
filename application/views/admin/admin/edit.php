@@ -63,8 +63,7 @@
 
         <!-- END PAGE HEADER-->
 
-        <div class="page-content" id="content">
-            <div class="container-fluid">
+        <div class="container-fluid">
                 <div class="row-fluid">
                     <div class="span12">
                         <!-- BEGIN BREADCRUMB-->
@@ -137,7 +136,6 @@
                     </div>
                 </form>
             </div>
-        </div>
 
     </div>
 
