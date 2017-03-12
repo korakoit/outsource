@@ -10,7 +10,9 @@ function initlist(){
 		var dom = $(this).next('ul');
 		var self = $(this);
 		if(!self.hasClass('show')){
-			self.parents('#leftlist').find('.title').removeClass('show');
+			self.parents('#leftlist').find('.title').removeClass('show').find('i').removeClass('active');
+			self.parents('#leftlist').find('ul').removeClass('on')
+			//self.next('ul').find('li').removeClass('show');
 			self.addClass('show');
 			if(dom.hasClass('on')){
 				dom.slideUp('fast');

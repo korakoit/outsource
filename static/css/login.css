@@ -141,7 +141,7 @@
       height: 15px;
       position: relative;
       top: 3px;
-      background: url(/static/images/check.png) 0 bottom no-repeat;
+      background: url(/static/images/check.png) -22px bottom no-repeat;
       margin-right: 2px; }
       .wrapper .main_register .check span.active {
         background-position: -23px center; }

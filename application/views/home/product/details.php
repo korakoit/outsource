@@ -48,8 +48,11 @@
                     <div class="beizhu">
                         <p class="p0">NEED help ? <a href="/about/contactus">contact us </a></p>
                         <div class="hr"></div>
-                        <p class="p1">Call US At :  (800)215-9293 </br>MEIL US :  glead61888@vip.163.com</p>
+                        <p class="p1">Call US At :  <?=$seller['business_phone']?> </br>MEIL US :  <?=$seller['email_address']?></p>
                     </div>
+                    <?php if(!empty($product['brochure'])):?>
+                        <div class="tocart" id="download"><a href="<?=$product['brochure']?>">Download Brochure</a></div>
+                    <?php endif;?>
                 </div>
             </div>
         </section>

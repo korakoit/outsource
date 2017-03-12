@@ -44,9 +44,11 @@ class Product extends MY_Controller
     public function details($id){
         $data['category'] = $this->public_category();
         $product = $this->db->where('id',$id)->get('product')->row_array();
+        $seller = $this->db->where('id',$product['seller_id'])->get('seller')->row_array();
         $pic_list = $this->db->where('product_id',$id)->get('product_image')->result_array();
         $similar_product = $this->db->where('sub_category',$product['sub_category'])->limit(6,0)->get('product')->result_array();
         $data['product'] = $product;
+        $data['seller'] = $seller;
         $data['pic_list'] = $pic_list;
         $data['similar_product'] = $similar_product;
         $data['link'] = $this->public_friend();

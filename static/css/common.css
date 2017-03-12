@@ -56,6 +56,7 @@ html, body {
 
 a {
   text-decoration: none; }
+input{border-color:transparent;}
 
 dd {
   margin: 0px; }
@@ -296,10 +297,10 @@ input::-moz-placeholder, textarea::-moz-placeholder {
       height: 100%;
       float: left;
       background: url(/static/images/erlogo.png) no-repeat left center; }
-    .index_header .top0 .right {
+    .index_header .top0 .rightul {
       float: right;
       height: 100%; }
-      .index_header .top0 .right ul li {
+      .index_header .top0 .rightul ul li {
         background: url(/static/images/login.png) 17px center no-repeat;
         padding: 13px 18px;
         border-right: 1px solid #ccc;
@@ -307,34 +308,34 @@ input::-moz-placeholder, textarea::-moz-placeholder {
         zoom: 1;
         _display: inline;
         min-width: 36px; }
-        .index_header .top0 .right ul li span {
+        .index_header .top0 .rightul ul li span {
           text-indent: 36px;
           color: #333;
           font-size: 14px;
           display: inline-block;
           zoom: 1;
           _display: inline; }
-        .index_header .top0 .right ul li:nth-child(2) {
+        .index_header .top0 .rightul ul li:nth-child(2) {
           background-position: -128px center; }
-        .index_header .top0 .right ul li:nth-child(3) {
+        .index_header .top0 .rightul ul li:nth-child(3) {
           background-position: -260px center; }
-        .index_header .top0 .right ul li:nth-child(4) {
+        .index_header .top0 .rightul ul li:nth-child(4) {
           background-position: -360px center; }
-        .index_header .top0 .right ul li:nth-child(5) {
+        .index_header .top0 .rightul ul li:nth-child(5) {
           background-position: -496px center; }
-        .index_header .top0 .right ul li:nth-child(6) {
+        .index_header .top0 .rightul ul li:nth-child(6) {
           background-position: -560px center;
           min-width: 0px;
           border: none; }
-        .index_header .top0 .right ul li.li2 {
+        .index_header .top0 .rightul ul li.li2 {
           background-position: -128px center; }
-        .index_header .top0 .right ul li.li3 {
+        .index_header .top0 .rightul ul li.li3 {
           background-position: -260px center; }
-        .index_header .top0 .right ul li.li4 {
+        .index_header .top0 .rightul ul li.li4 {
           background-position: -360px center; }
-        .index_header .top0 .right ul li.li5 {
+        .index_header .top0 .rightul ul li.li5 {
           background-position: -496px center; }
-        .index_header .top0 .right ul li.li6 {
+        .index_header .top0 .rightul ul li.li6 {
           background-position: -560px center;
           min-width: 0px;
           border: none; }
@@ -560,4 +561,5 @@ input::-moz-placeholder, textarea::-moz-placeholder {
     height: 27px;
     border: 1px solid #fff;
     line-height: 27px;
-    text-align: center; }
+    text-align: center;
+  color:#fff;}

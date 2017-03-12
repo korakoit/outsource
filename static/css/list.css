@@ -50,6 +50,7 @@
       .wrapper .left .list .title.show {
         background-color: #113071;
         border-top: none; }
+.wrapper .left .list .title.show + ul{  display: block;}
       .wrapper .left .list .title i {
         display: block;
         width: 22px;
