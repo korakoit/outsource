@@ -60,14 +60,15 @@ class Category extends MY_Controller
         }
     }
 
-    public function deleteSubCategory(){
+    public function deleteSubCategory()
+    {
 
-        $id = $this->input->post('id',true);
-        $num = $this->db->select('count(id) as num')->where('sub_category',$id)->get('product')->row()->num;
-        if ($num>0) {
+        $id = $this->input->post('id', true);
+        $num = $this->db->select('count(id) as num')->where('sub_category', $id)->get('product')->row()->num;
+        if ($num > 0) {
             $this->jsonOutput(['err_code' => '00001', 'err_msg' => 'The Category has Product']);
-        }else{
-            $this->db->where('id',$id)->delete('product_category');
+        } else {
+            $this->db->where('id', $id)->delete('product_category');
             $this->jsonOutput(['err_code' => '0000', 'err_msg' => 'OK']);
         }
     }

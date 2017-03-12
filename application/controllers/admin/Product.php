@@ -69,9 +69,9 @@ class Product extends MY_Controller
             $data['result'] = $result;
         }
 
-        $data['main_list'] = array_column($this->db->where('pid',0)->get('product_category')->result_array(), 'title', 'id');
-        if (!empty($main_category)){
-            $data['sub_list'] = array_column($this->db->where('pid',$main_category)
+        $data['main_list'] = array_column($this->db->where('pid', 0)->get('product_category')->result_array(), 'title', 'id');
+        if (!empty($main_category)) {
+            $data['sub_list'] = array_column($this->db->where('pid', $main_category)
                 ->get('product_category')->result_array(), 'title', 'id');
         }
 
@@ -102,10 +102,10 @@ class Product extends MY_Controller
         if (!empty($image_list)) {
             $data['image_list'] = array_column($image_list, 'link');
         }
-        $data['main_list'] = array_column($this->db->where('pid',0)->get('product_category')->result_array(), 'title', 'id');
+        $data['main_list'] = array_column($this->db->where('pid', 0)->get('product_category')->result_array(), 'title', 'id');
         if (!empty($data['main_list'])) {
-            $data['sub_list'] = array_column($this->db->where('pid',key($data['main_list']))
-                ->get('product_category')->result_array(),'title','id');
+            $data['sub_list'] = array_column($this->db->where('pid', key($data['main_list']))
+                ->get('product_category')->result_array(), 'title', 'id');
         }
         $data['action'] = base_url('admin/product/edit');
         $data['active'] = 'admin-product-index';
@@ -115,7 +115,7 @@ class Product extends MY_Controller
     public function beforeAdd()
     {
 
-        $data['main_list'] = array_column($this->db->get('product_category')->result_array(),'title','id');
+        $data['main_list'] = array_column($this->db->get('product_category')->result_array(), 'title', 'id');
         $data['action'] = base_url('admin/product/add');
         $data['active'] = 'admin-product-index';
         $this->load->view('admin/product/edit', $data);
@@ -230,27 +230,28 @@ class Product extends MY_Controller
         $product_id = $this->input->post('id', true);
         $this->db->where('id', $product_id)->delete('product');
         $this->db->where('product_id', $product_id)->delete('product_image');
-        $this->jsonOutput(['err_code'=>'0000','err_msg'=>'OK']);
+        $this->jsonOutput(['err_code' => '0000', 'err_msg' => 'OK']);
     }
 
     public function downShelf()
     {
         $product_id = $this->input->post('id');
         $this->db->where('id', $product_id)->update('product', ['status' => Product::STATUS_DOWN_SHELF]);
-        $this->jsonOutput(['err_code'=>'0000','err_msg'=>'OK']);
+        $this->jsonOutput(['err_code' => '0000', 'err_msg' => 'OK']);
     }
 
     public function onShelf()
     {
         $product_id = $this->input->post('id');
         $this->db->where('id', $product_id)->update('product', ['status' => Product::STATUS_ON_SHELF]);
-        $this->jsonOutput(['err_code'=>'0000','err_msg'=>'OK']);
+        $this->jsonOutput(['err_code' => '0000', 'err_msg' => 'OK']);
     }
 
-    public function setHomeStatus(){
+    public function setHomeStatus()
+    {
         $product_id = $this->input->post('product_id', true);
-        $is_home = $this->input->post('is_home',true);
-        $this->db->where('id',$product_id)->update('product',['is_home'=>$is_home]);
+        $is_home = $this->input->post('is_home', true);
+        $this->db->where('id', $product_id)->update('product', ['is_home' => $is_home]);
         $this->jsonOutput(['err_code' => '0000', 'err_msg' => 'OK']);
     }
 

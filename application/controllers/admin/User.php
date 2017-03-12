@@ -21,7 +21,7 @@ class User extends MY_Controller
         $last_name = $this->input->get('last_name', true);
         $first_name = $this->input->get('first_name', true);
         $email_address = $this->input->get('email_address', true);
-        $status = $this->input->get('status',true);
+        $status = $this->input->get('status', true);
 
         $page = $this->input->get('page', true);
         $page = $page > 0 ? $page : 0;
@@ -78,13 +78,13 @@ class User extends MY_Controller
     public function edit()
     {
         $id = $this->input->post('id');
-        $first_name = $this->input->post('first_name',true);
-        $last_name = $this->input->post('last_name',true);
-        $email_address = $this->input->post('email_address',true);
-        $company_name = $this->input->post('company_name',true);
-        $location = $this->input->post('location',true);
-        $company_website = $this->input->post('company_website',true);
-        $business_phone = $this->input->post('business_phone',true);
+        $first_name = $this->input->post('first_name', true);
+        $last_name = $this->input->post('last_name', true);
+        $email_address = $this->input->post('email_address', true);
+        $company_name = $this->input->post('company_name', true);
+        $location = $this->input->post('location', true);
+        $company_website = $this->input->post('company_website', true);
+        $business_phone = $this->input->post('business_phone', true);
 
         $this->db->where('id', $id)->update('user', ['first_name' => $first_name,
             'last_name' => $last_name,
@@ -97,23 +97,26 @@ class User extends MY_Controller
         $this->jsonOutput(['err_code' => '0000', 'err_msg' => 'OK', 'id' => $id]);
     }
 
-    public function beforeEdit(){
-        $id = $this->input->get('id',true);
-        $user = $this->db->where('id',$id)->get('user')->row_array();
+    public function beforeEdit()
+    {
+        $id = $this->input->get('id', true);
+        $user = $this->db->where('id', $id)->get('user')->row_array();
         $user['active'] = 'admin-user-index';
-        $this->load->view('admin/user/edit',$user);
+        $this->load->view('admin/user/edit', $user);
     }
 
-    public function setUserStatus(){
-        $id = $this->input->post('id',true);
-        $status = $this->input->post('status',true);
-        $this->db->where('id',$id)->update('user',['status'=>$status]);
+    public function setUserStatus()
+    {
+        $id = $this->input->post('id', true);
+        $status = $this->input->post('status', true);
+        $this->db->where('id', $id)->update('user', ['status' => $status]);
         $this->jsonOutput(['err_code' => '0000', 'err_msg' => 'OK']);
     }
 
-    public function delete(){
-        $id = $this->input->post('id',true);
-        $this->db->where('id',$id)->delete('user');
+    public function delete()
+    {
+        $id = $this->input->post('id', true);
+        $this->db->where('id', $id)->delete('user');
         $this->jsonOutput(['err_code' => '0000', 'err_msg' => 'OK']);
     }
 
