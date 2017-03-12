@@ -118,6 +118,18 @@
 
 				</li>
 
+				<li class="start " level="1" id="admin-contact-index">
+
+					<a href="<?=base_url('admin/contact/index')?>">
+
+						<i class="icon-home"></i>
+
+						<span class="title">Contact</span>
+
+					</a>
+
+				</li>
+
 			</ul>
 			
 			<!-- END SIDEBAR MENU -->

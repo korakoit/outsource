@@ -100,6 +100,7 @@ class User extends MY_Controller
     public function beforeEdit(){
         $id = $this->input->get('id',true);
         $user = $this->db->where('id',$id)->get('user')->row_array();
+        $user['active'] = 'admin-user-index';
         $this->load->view('admin/user/edit',$user);
     }
 

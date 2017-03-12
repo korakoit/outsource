@@ -1,4 +1,4 @@
-<?php
+<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 /**
  * Created by cheye.
@@ -108,6 +108,7 @@ class Product extends MY_Controller
                 ->get('product_category')->result_array(),'title','id');
         }
         $data['action'] = base_url('admin/product/edit');
+        $data['active'] = 'admin-product-index';
         $this->load->view('admin/product/edit', $data);
     }
 
@@ -116,6 +117,7 @@ class Product extends MY_Controller
 
         $data['main_list'] = array_column($this->db->get('product_category')->result_array(),'title','id');
         $data['action'] = base_url('admin/product/add');
+        $data['active'] = 'admin-product-index';
         $this->load->view('admin/product/edit', $data);
     }
 

@@ -56,13 +56,33 @@
 
                             <ul class="nav nav-tabs">
 
-                                <li><a href="javascript:void(0)" onclick="beforeAddMainCategory()">Add Main Category</a></li>
+                                <li><a href="javascript:void(0)" "></a></li>
 
                             </ul>
 
                             <div class="tab-content">
 
                                 <div class="tab-pane active" id="portlet_tab1">
+
+
+                                    <div class="span12 booking-search">
+                                        <div class="clearfix margin-bottom-10">
+
+                                            <div class="pull-left margin-right-20" style="margin-right:20px;">
+
+                                                <button class="btn green" onclick="beforeAddMainCategory()">Add Main Category</button>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <!-- 开始分割线-->
+                                    <ul class="nav nav-list">
+
+                                        <li class="divider"></li>
+
+                                    </ul>
 
                                     <!-- BEGIN FORM-->
                                     <form class="form-horizontal" id="category_form" action="" novalidate="novalidate">

@@ -57,7 +57,7 @@ class Admin extends MY_Controller
     public function logout()
     {
         $this->session->set_userdata([ADMIN_SESS => '']);
-
+        redirect(base_url('admin/admin/index'),'',301);
     }
 
     public function getSellerInfo()

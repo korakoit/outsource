@@ -104,7 +104,7 @@
 
                             <button class="btn blue" type="submit">Search</button>
 
-                            <button class="btn blue" type="submit">Search</button>
+                            <a href="<?=base_url('admin/product/beforeAdd')?>" class="btn blue" type="submit">Add</a>
 
                         </div>
 

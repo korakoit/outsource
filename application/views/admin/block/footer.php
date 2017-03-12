@@ -93,7 +93,7 @@
 
 			jQuery(document).ready(function() {
 
-				var str_url = "<?=str_replace('/','-',trim($_SERVER['REQUEST_URI'],'/'))?>";
+				var str_url = "<?=isset($active)?$active:str_replace('/','-',trim($_SERVER['REQUEST_URI'],'/'))?>";
 				var active = $("#" + str_url);
 				var level 	= $(active).attr("level");
 				if(level == 2){
