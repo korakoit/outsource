@@ -142,6 +142,18 @@
 
 				</li>
 
+				<li class="start " level="1" id="admin-mail-index">
+
+					<a href="<?=base_url('admin/mail/index')?>">
+
+						<i class="icon-home"></i>
+
+						<span class="title">Mail</span>
+
+					</a>
+
+				</li>
+
 			</ul>
 			
 			<!-- END SIDEBAR MENU -->
