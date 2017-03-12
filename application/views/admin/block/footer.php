@@ -89,7 +89,29 @@
 
 	<!-- END PAGE LEVEL SCRIPTS -->
 
+	<script type="application/javascript">
 
+			jQuery(document).ready(function() {
+
+				var str_url = "<?=str_replace('/','-',trim($_SERVER['REQUEST_URI'],'/'))?>";
+				var active = $("#" + str_url);
+				var level 	= $(active).attr("level");
+				if(level == 2){
+					active.parent().parent().addClass("active");
+				}
+				active.addClass("active");
+
+				App.init(); // initlayout and core plugins
+				Index.init();
+				Index.initCalendar(); // init index page's custom scripts
+				Index.initCharts(); // init index page's custom scripts
+				Index.initChat();
+				Index.initMiniCharts();
+				Index.initDashboardDaterange();
+				// Index.initIntro();
+			});
+
+	</script>
 
 	<!-- END JAVASCRIPTS -->
 

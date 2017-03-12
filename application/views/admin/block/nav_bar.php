@@ -40,120 +40,83 @@
 
 				</li>
 
-				<li class="start ">
+				<li class="start " level="1" id="admin-admin-getSellerInfo">
 
-					<a href="index.html">
+					<a href="<?=base_url('admin/admin/getSellerInfo')?>">
 
 						<i class="icon-home"></i>
 
-						<span class="title">Dashboard</span>
+						<span class="title">Seller Info</span>
 
 					</a>
 
 				</li>
 
-				<li class="">
+				<li class="start " level="1">
 
 					<a href="javascript:;">
-
-						<i class="icon-cogs"></i>
-
-						<span class="title">Layouts</span>
-
-						<span class="arrow "></span>
-
+						<i class="icon-home"></i>
+						<span class="title">Product</span>
 					</a>
 
-					<ul class="sub-menu">
+					<ul class="sub-menu" >
 
-						<li >
-
-							<a href="layout_horizontal_sidebar_menu.html">
-
-								Horzontal & Sidebar Menu</a>
-
+						<li level="2" id="admin-category-beforeEdit">
+							<a href="<?=base_url('admin/category/beforeEdit')?>">Product Category</a>
 						</li>
 
-						<li >
-
-							<a href="layout_horizontal_menu1.html">
-
-								Horzontal Menu 1</a>
-
-						</li>
-
-						<li >
-
-							<a href="layout_horizontal_menu2.html">
-
-								Horzontal Menu 2</a>
-
-						</li>
-
-						<li >
-
-							<a href="layout_promo.html">
-
-								Promo Page</a>
-
-						</li>
-
-						<li >
-
-							<a href="layout_email.html">
-
-								Email Templates</a>
-
-						</li>
-
-						<li >
-
-							<a href="layout_ajax.html">
-
-								Content Loading via Ajax</a>
-
-						</li>
-
-						<li >
-
-							<a href="layout_sidebar_closed.html">
-
-								Sidebar Closed Page</a>
-
-						</li>
-
-						<li >
-
-							<a href="layout_blank_page.html">
-
-								Blank Page</a>
-
-						</li>
-
-						<li >
-
-							<a href="layout_boxed_page.html">
-
-								Boxed Page</a>
-
-						</li>
-
-						<li >
-
-							<a href="layout_boxed_not_responsive.html">
-
-								Non-Responsive Boxed Layout</a>
-
+						<li level="2" id="admin-product-index">
+							<a href="<?=base_url('admin/product/index')?>">Product List</a>
 						</li>
 
 					</ul>
 
 				</li>
 
+				<li class="start" level="1">
 
+					<a href="javascript:;">
+						<i class="icon-home"></i>
+						<span class="title">Home Page Mange</span>
+					</a>
 
+					<ul class="sub-menu" >
 
+						<li level="2" id="admin-home-bannerList">
+							<a href="<?=base_url('admin/home/bannerList')?>">Banner</a>
+						</li>
 
+						<li level="2" id="admin-home-sixList">
+							<a href="<?=base_url('admin/home/sixList')?>">Six Product</a>
+						</li>
+
+						<li level="2" id="admin-home-recommendList">
+							<a href="<?=base_url('admin/home/recommendList')?>">Recommend Product</a>
+						</li>
+
+						<li level="2" id="admin-home-homeList">
+							<a href="<?=base_url('admin/home/homeList')?>">Home Product</a>
+						</li>
+
+						<li level="2" id="admin-home-friendLinkList">
+							<a href="<?=base_url('admin/home/friendLinkList')?>">Friend Link</a>
+						</li>
+
+					</ul>
+
+				</li>
+
+				<li class="start " level="1" id="admin-user-index">
+
+					<a href="<?=base_url('admin/user/index')?>">
+
+						<i class="icon-home"></i>
+
+						<span class="title">User</span>
+
+					</a>
+
+				</li>
 
 			</ul>
 			

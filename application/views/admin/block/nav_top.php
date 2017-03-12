@@ -7,7 +7,7 @@
 			<div class="container-fluid">
 				<!-- BEGIN LOGO -->
 				<a class="brand" href="#">
-				<img src="<?=STATIC_FILE_HOST?>assets/image/lanmao.png" alt="" />
+				<img src="<?=STATIC_FILE_HOST?>assets/image/" alt="" />
 				</a>
 				<!-- END LOGO -->
 				<!-- BEGIN RESPONSIVE MENU TOGGLER -->
@@ -19,15 +19,15 @@
 				</a>          
 
                         <div class="navbar hor-menu hidden-phone hidden-tablet">
-        					<div class="navbar-inner" style="max-width:1098px;margin-left:auto; margin-right:auto; overflow:hidden; position:relative;">
-        						<ul class="nav nav-top-list sub-menu">
-        							<li>
-        								<a href="/" style='font-size:14px'>首页<span class="selected"></span><i class="icon-remove"></i></a>
-        							</li>
-
-
-        						</ul>
-        					</div>
+<!--        					<div class="navbar-inner" style="max-width:1098px;margin-left:auto; margin-right:auto; overflow:hidden; position:relative;">-->
+<!--        						<ul class="nav nav-top-list sub-menu">-->
+<!--        							<li>-->
+<!--        								<a href="/" style='font-size:14px'>首页<span class="selected"></span><i class="icon-remove"></i></a>-->
+<!--        							</li>-->
+<!---->
+<!---->
+<!--        						</ul>-->
+<!--        					</div>-->
         				</div>
 				<!-- END RESPONSIVE MENU TOGGLER -->            
 

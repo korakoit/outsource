@@ -104,6 +104,8 @@
 
                             <button class="btn blue" type="submit">Search</button>
 
+                            <button class="btn blue" type="submit">Search</button>
+
                         </div>
 
                     </div>

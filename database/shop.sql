@@ -30,7 +30,7 @@ CREATE TABLE `banner` (
   `ctime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `mtime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,6 +39,7 @@ CREATE TABLE `banner` (
 
 LOCK TABLES `banner` WRITE;
 /*!40000 ALTER TABLE `banner` DISABLE KEYS */;
+INSERT INTO `banner` VALUES (1,'be/be254b4a5c2de0d5e5d9c870bd368120.png',5,'P1488982079','2017-03-11 04:02:36','2017-03-11 04:02:36');
 /*!40000 ALTER TABLE `banner` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -58,7 +59,7 @@ CREATE TABLE `contact` (
   `ctime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `mtime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -67,33 +68,8 @@ CREATE TABLE `contact` (
 
 LOCK TABLES `contact` WRITE;
 /*!40000 ALTER TABLE `contact` DISABLE KEYS */;
+INSERT INTO `contact` VALUES (1,'sb','sb','sb','sb','2017-03-11 10:59:30','2017-03-11 10:59:30');
 /*!40000 ALTER TABLE `contact` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `eight_product`
---
-
-DROP TABLE IF EXISTS `eight_product`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `eight_product` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `product_id` bigint(20) DEFAULT '0' COMMENT '商品 ID',
-  `sort` int(11) DEFAULT '0' COMMENT '分类排序',
-  `ctime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-  `mtime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `eight_product`
---
-
-LOCK TABLES `eight_product` WRITE;
-/*!40000 ALTER TABLE `eight_product` DISABLE KEYS */;
-/*!40000 ALTER TABLE `eight_product` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -111,7 +87,7 @@ CREATE TABLE `friend_link` (
   `ctime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `mtime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -120,33 +96,8 @@ CREATE TABLE `friend_link` (
 
 LOCK TABLES `friend_link` WRITE;
 /*!40000 ALTER TABLE `friend_link` DISABLE KEYS */;
+INSERT INTO `friend_link` VALUES (1,'http://www.baidu.com','be/be254b4a5c2de0d5e5d9c870bd368120.png',0,'2017-03-11 04:03:18','2017-03-11 04:03:18');
 /*!40000 ALTER TABLE `friend_link` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `friend_logo`
---
-
-DROP TABLE IF EXISTS `friend_logo`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `friend_logo` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `logo` varchar(500) COLLATE utf8mb4_bin DEFAULT '' COMMENT 'logo',
-  `sort` int(11) DEFAULT '0' COMMENT '分类排序',
-  `ctime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-  `mtime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `friend_logo`
---
-
-LOCK TABLES `friend_logo` WRITE;
-/*!40000 ALTER TABLE `friend_logo` DISABLE KEYS */;
-/*!40000 ALTER TABLE `friend_logo` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -202,9 +153,10 @@ CREATE TABLE `product` (
   `image` char(255) COLLATE utf8mb4_bin DEFAULT '' COMMENT '商品头图',
   `status` tinyint(4) DEFAULT '1' COMMENT '状态 1下架 2上架 3删除',
   `storage` int(11) DEFAULT '0' COMMENT '库存',
+  `is_home` tinyint(4) DEFAULT '0' COMMENT '是否首页商品',
   PRIMARY KEY (`id`),
   KEY `product_name` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -213,7 +165,7 @@ CREATE TABLE `product` (
 
 LOCK TABLES `product` WRITE;
 /*!40000 ALTER TABLE `product` DISABLE KEYS */;
-INSERT INTO `product` VALUES (2,0,'abc','P1488981872','abc',0.00,'abc',NULL,'abc','abc',NULL,'','','2017-03-08 14:04:32','2017-03-08 15:27:08',NULL,NULL,'be/be254b4a5c2de0d5e5d9c870bd368120.png',2,0),(3,0,'abc','P1488981915','abc',0.00,'abc',NULL,'abc','abc',NULL,'','','2017-03-08 14:05:15','2017-03-08 15:27:05',NULL,NULL,'be/be254b4a5c2de0d5e5d9c870bd368120.png',2,0),(4,0,'abc','P1488981936','abc',0.00,'abc',NULL,'abc','abc',NULL,'','','2017-03-08 14:05:36','2017-03-08 15:27:03',NULL,NULL,'be/be254b4a5c2de0d5e5d9c870bd368120.png',2,0),(5,0,'abc','P1488982079','abc',0.00,'abc',NULL,'abc','abc',NULL,'','','2017-03-08 14:07:59','2017-03-08 15:27:01',NULL,NULL,'be/be254b4a5c2de0d5e5d9c870bd368120.png',2,0),(6,0,'abc','P1488982159','abc',0.00,'abc',NULL,'0.00','abc','abc','','','2017-03-08 14:09:19','2017-03-08 15:26:59',NULL,NULL,'be/be254b4a5c2de0d5e5d9c870bd368120.png',2,0),(7,0,'hello','P1488983345','hello',0.00,'hello',NULL,'0.00','hello','hello','','','2017-03-08 14:29:05','2017-03-08 15:38:01',6,7,'be/be254b4a5c2de0d5e5d9c870bd368120.png',2,0);
+INSERT INTO `product` VALUES (1,0,'','P1489223903','',0.00,'1231',NULL,'0.00','abc','123','','','2017-03-11 09:18:23','2017-03-11 09:19:15',6,7,'http://shop.cheye.com/uploads/be/be254b4a5c2de0d5e5d9c870bd368120.png',1,0,0);
 /*!40000 ALTER TABLE `product` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -261,7 +213,7 @@ CREATE TABLE `product_image` (
   `mtime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `product_image_product_id` (`product_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -270,7 +222,7 @@ CREATE TABLE `product_image` (
 
 LOCK TABLES `product_image` WRITE;
 /*!40000 ALTER TABLE `product_image` DISABLE KEYS */;
-INSERT INTO `product_image` VALUES (1,0,'','2017-03-08 14:05:15','2017-03-08 14:05:15'),(2,0,'','2017-03-08 14:05:36','2017-03-08 14:05:36'),(3,0,'','2017-03-08 14:07:59','2017-03-08 14:07:59'),(4,0,'','2017-03-08 14:07:59','2017-03-08 14:07:59'),(8,6,'be/be254b4a5c2de0d5e5d9c870bd368120.png','2017-03-08 14:28:16','2017-03-08 14:28:16'),(9,6,'0f/0f52f1ce52f93437a2e9a12e2ae1d669.png','2017-03-08 14:28:16','2017-03-08 14:28:16'),(12,7,'f1/f1addde41bba9e4450a207efb79bb679.png','2017-03-08 15:40:09','2017-03-08 15:40:09');
+INSERT INTO `product_image` VALUES (1,0,'','2017-03-08 14:05:15','2017-03-08 14:05:15'),(2,0,'','2017-03-08 14:05:36','2017-03-08 14:05:36'),(3,0,'','2017-03-08 14:07:59','2017-03-08 14:07:59'),(4,0,'','2017-03-08 14:07:59','2017-03-08 14:07:59'),(8,6,'be/be254b4a5c2de0d5e5d9c870bd368120.png','2017-03-08 14:28:16','2017-03-08 14:28:16'),(9,6,'0f/0f52f1ce52f93437a2e9a12e2ae1d669.png','2017-03-08 14:28:16','2017-03-08 14:28:16'),(12,7,'f1/f1addde41bba9e4450a207efb79bb679.png','2017-03-08 15:40:09','2017-03-08 15:40:09'),(15,1,'http://shop.cheye.com/uploads/41/4160bfc78465fa6bf9fead5d3b54d23f.png','2017-03-11 09:19:15','2017-03-11 09:19:15');
 /*!40000 ALTER TABLE `product_image` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -288,7 +240,7 @@ CREATE TABLE `recommend_product` (
   `ctime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `mtime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -297,6 +249,7 @@ CREATE TABLE `recommend_product` (
 
 LOCK TABLES `recommend_product` WRITE;
 /*!40000 ALTER TABLE `recommend_product` DISABLE KEYS */;
+INSERT INTO `recommend_product` VALUES (3,4,0,'2017-03-11 04:03:59','2017-03-11 04:03:59');
 /*!40000 ALTER TABLE `recommend_product` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -329,7 +282,7 @@ CREATE TABLE `seller` (
 
 LOCK TABLES `seller` WRITE;
 /*!40000 ALTER TABLE `seller` DISABLE KEYS */;
-INSERT INTO `seller` VALUES (1,'admin','admin','abc','abc','abc','41/4160bfc78465fa6bf9fead5d3b54d23f.png','abc','2017-03-04 06:23:30','2017-03-06 18:22:38');
+INSERT INTO `seller` VALUES (1,'admin','admin','ab','ab','ab','http://shop.cheye.com/uploads/41/4160bfc78465fa6bf9fead5d3b54d23f.png','ab','2017-03-04 06:23:30','2017-03-11 09:22:03');
 /*!40000 ALTER TABLE `seller` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -374,8 +327,10 @@ CREATE TABLE `six_product` (
   `sort` int(11) DEFAULT '0' COMMENT '分类排序',
   `ctime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `mtime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `image` char(255) COLLATE utf8mb4_bin DEFAULT '' COMMENT '图片',
+  `pcode` char(20) COLLATE utf8mb4_bin DEFAULT '' COMMENT '商品编码',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -384,6 +339,7 @@ CREATE TABLE `six_product` (
 
 LOCK TABLES `six_product` WRITE;
 /*!40000 ALTER TABLE `six_product` DISABLE KEYS */;
+INSERT INTO `six_product` VALUES (1,5,0,'2017-03-11 04:02:46','2017-03-11 04:02:46','be/be254b4a5c2de0d5e5d9c870bd368120.png','P1488982079');
 /*!40000 ALTER TABLE `six_product` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -406,9 +362,10 @@ CREATE TABLE `user` (
   `business_phone` char(50) COLLATE utf8mb4_bin DEFAULT '' COMMENT '企业电话',
   `ctime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `mtime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `status` tinyint(4) DEFAULT '1' COMMENT '用户状态 1待审核 2通过 3未通过',
   PRIMARY KEY (`id`),
   KEY `user_email_address` (`email_address`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -417,6 +374,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` VALUES (1,'sb','sb','cheye@gmail.com','','company name','location','company website','business phone','2017-03-11 10:35:30','2017-03-11 10:48:10',2);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -429,4 +387,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-03-09 16:15:42
+-- Dump completed on 2017-03-12 10:41:39
