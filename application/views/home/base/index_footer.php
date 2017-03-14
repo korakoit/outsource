@@ -52,7 +52,7 @@
 			<div class="idiv">
                 <?php if(!empty($link)):?>
                     <?php foreach($link as $k => $v):?>
-                        <i style="background-image:url(<?=$v['image']?>)"></i>
+                        <a href="<?=$v['link']?>"><i style="background-image:url(<?=$v['logo']?>)"></i></a>
                     <?php endforeach; ?>
                 <?php endif;?>
 			</div>

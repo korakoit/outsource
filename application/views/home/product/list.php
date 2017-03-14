@@ -15,8 +15,8 @@
 			 <section class="left" id="leftlist">
 				 <?php foreach($category as $k => $v):?>
                     <div class="list">
-                        <div class="title first <?php if($v['id']==$pid):?>show<?php endif;?>"><i></i><?=$v['title']?></div>
-                        <ul>
+                        <div class="title first <?php if($v['id']==$pid):?>show<?php endif;?>"><i <?php if($v['id']==$pid):?>class="active"<?php endif;?> ></i><?=$v['title']?></div>
+                        <ul <?php if($v['id']==$pid):?>class="on"<?php endif;?> >
                             <?php if(isset($v['son'])):?>
                                 <?php foreach($v['son'] as $key => $val):?>
                                 <li <?php if($val['id']==$id):?>class='show'<?php endif; ?> id="<?=$val['id']?>"><a href="/product/category/<?=$v['id']?>/<?=$val['id']?>/"><?=$val['title']?></a></li>

@@ -9,7 +9,10 @@
 	<div class="wrapper">
 		<div class="content">
 			<!-- 头部logo -->
-			<?php $this->load->view('home/base/loginheader.php');?>
+            <header class="loginheader">
+                <div class="back" onclick="window.history.go(-1);">&lt;&nbsp;&nbsp;BACK</div>
+                <a href="/login/register"> <div class="sign">sign up</div></a>
+            </header>
 			<div class="main_login">
 				<!-- 主要内容 -->
 				<section class="logo"></section>
