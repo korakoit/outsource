@@ -115,7 +115,7 @@
                                                 <?php foreach ($result as $key=>$value):?>
                                                     <tr>
                                                         <td class="hidden-480"><?=($key+1)?></td>
-                                                        <td class="hidden-480"><img src="<?=IMAGE_HOST.$value['logo']?>" style="width:30px;height: 30px"/></td>
+                                                        <td class="hidden-480"><img src="<?=$value['logo']?>" style="width:30px;height: 30px"/></td>
                                                         <td class="hidden-480"><a href="<?=$value['link']?>" target="_blank"><?=$value['link']?></a></td>
                                                         <td class="hidden-480">
                                                             <a class="btn red" onclick="deleteFriendLink('<?=$value['id']?>')">Delete</a>
@@ -254,7 +254,7 @@
                 if (result.err_code=='0000'){
                     $('#showImage').attr('src','<?=IMAGE_HOST?>'+result.path);
                     $('#showImage').show();
-                    $('input[name="logo"]').val(result.path);
+                    $('input[name="logo"]').val('<?=IMAGE_HOST?>'+result.path);
                 }else{
                     layer.msg(result.err_msg);
                 }

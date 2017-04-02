@@ -115,7 +115,7 @@ class Product extends MY_Controller
     public function beforeAdd()
     {
 
-        $data['main_list'] = array_column($this->db->get('product_category')->result_array(), 'title', 'id');
+        $data['main_list'] = array_column($this->db->where('pid',0)->get('product_category')->result_array(), 'title', 'id');
         $data['action'] = base_url('admin/product/add');
         $data['active'] = 'admin-product-index';
         $this->load->view('admin/product/edit', $data);

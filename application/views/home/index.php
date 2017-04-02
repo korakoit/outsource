@@ -15,7 +15,7 @@
           <div class="ck-slide-wrapper">
             <?php if(!empty($banner)):?>
                 <?php foreach($banner as $k => $v):?>
-                  <a class="item" href="/product/details/<?=$v['product_id']?>" alt="..." style="background-image:url(<?=$v['image']?>);"></a>
+                  <a class="item" href="/product/details/<?=$v['product_id']?>" style='background-image: url("<?=$v['image']?>")'></a>
                 <?php endforeach;?>
             <?php endif;?>
           </div>
@@ -34,9 +34,9 @@
       <section class="showgoods center">
         <h3>Commercial Restaurant Supplies & Equipment from WebstaurantStor</h3>
         <ul class="ul0">
-          <?php if(!empty($eight_product)):?>
-            <?php foreach($eight_product as $key => $val):?>
-                  <li><a href="/product/details/<?=$val['product_id']?>"><img src="<?=$val['image']?>" width="321" height="229"></a></li>
+          <?php if(!empty($six_product)):?>
+            <?php foreach($six_product as $key => $val):?>
+                  <li><a href="/product/details/<?=$val['id']?>"><img src="<?=$val['image']?>" width="325" height="225"></a></li>
             <?php endforeach;?>
           <?php endif;?>
         </ul>
@@ -50,8 +50,8 @@
            <?php if(!empty($recommend_product)):?>
               <?php foreach($recommend_product as $key => $val):?>
                 <li>
-                  <a href="/product/details/<?=$val['product_id']?>" target="_black">
-                    <div style="background-image:url(<?=$val['image']?>)"></div>
+                  <a href="/product/details/<?=$val['product_id']?>" target="_blank">
+                    <div style="background-image:url('<?=$val['image']?>')"></div>
                     <p class="p0"><?=$val['name']?></p>
                     <p class="p1"><?=$val['price']?></p>
                     <p class="p2"><i></i><i></i><i></i><i></i></p>
@@ -72,7 +72,7 @@
          <?php if(!empty($six_product)):?>
          <?php foreach($six_product as $key => $val):?>
             <li>
-                 <div class="img" style="background-image:url(<?=$val['image']?>)"></div>
+                 <div class="img" style="background-image:url('<?=$val['image']?>')"></div>
                  <h2><?=$val['name']?></h2>
                  <p><?=$val['title']?></p>
                  <div class="hr"></div>

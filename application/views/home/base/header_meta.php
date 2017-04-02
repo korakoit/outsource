@@ -5,6 +5,7 @@
 <meta name="keywords" content="<?=$keywords?>"/>
 <!-- <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" /> -->
 <link rel="stylesheet" type="text/css" href="<?=STATIC_FILE_HOST?>static/css/common.css">
+<link rel="shortcut icon" href="<?=STATIC_FILE_HOST?>assets/image/WechatIMG1.jpeg" />
 <!--[if lt IE 9]>
     <script src="<?=STATIC_FILE_HOST?>static/commonJs/html5.min.js"></script>
     <script src="<?=STATIC_FILE_HOST?>static/commonJs/jquery.placeholder.min.js"></script>

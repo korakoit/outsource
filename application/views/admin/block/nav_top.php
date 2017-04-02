@@ -7,7 +7,7 @@
 			<div class="container-fluid">
 				<!-- BEGIN LOGO -->
 				<a class="brand" href="#">
-				<img src="<?=STATIC_FILE_HOST?>assets/image/" alt="" />
+				<img src="<?=STATIC_FILE_HOST?>assets/image/WechatIMG1.jpeg" alt="" style="width: 20px;height: 20px"/>
 				</a>
 				<!-- END LOGO -->
 				<!-- BEGIN RESPONSIVE MENU TOGGLER -->

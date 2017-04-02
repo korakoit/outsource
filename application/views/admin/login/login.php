@@ -38,6 +38,9 @@
 
     <link href="<?=STATIC_FILE_HOST?>assets/css/uniform.default.css" rel="stylesheet" type="text/css"/>
 
+    <link rel="shortcut icon" href="<?=STATIC_FILE_HOST?>assets/image/WechatIMG1.jpeg" />
+
+
     <!-- END GLOBAL MANDATORY STYLES -->
 
     <!-- BEGIN PAGE LEVEL STYLES -->

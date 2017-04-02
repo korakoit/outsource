@@ -113,7 +113,7 @@ v
                                                 <?php foreach ($result as $key=>$value):?>
                                                     <tr>
                                                         <td class="hidden-480"><?=($key+1)?></td>
-                                                        <td class="hidden-480"><img src="<?=IMAGE_HOST.$value['image']?>" style="width:30px;height: 30px"/></td>
+                                                        <td class="hidden-480"><img src="<?=$value['image']?>" style="width:30px;height: 30px"/></td>
                                                         <td class="hidden-480"><?=$value['name']?></td>
                                                         <td class="hidden-480"><?=$value['pcode']?></td>
                                                         <td class="hidden-480">

@@ -112,7 +112,7 @@
                                                 <?php foreach ($result as $key=>$value):?>
                                                     <tr>
                                                         <td class="hidden-480"><?=($key+1)?></td>
-                                                        <td class="hidden-480"><img src="<?=IMAGE_HOST.$value['image']?>" style="width:30px;height: 30px"/></td>
+                                                        <td class="hidden-480"><img src="<?=$value['image']?>" style="width:30px;height: 30px"/></td>
                                                         <td class="hidden-480"><?=$value['name']?></td>
                                                         <td class="hidden-480"><?=$value['pcode']?></td>
                                                         <td class="hidden-480">
@@ -241,6 +241,7 @@
         $("#image").uploadify({
             height        : 27,
             width         : 80,
+            formData      : {'width':'325','height':'225'},
             fileName      : "image",               //提交到服务器的文件名
             maxFileCount: 1,                //上传文件个数（多个时修改此处
             returnType    : 'json',              //服务返回数据
@@ -257,7 +258,7 @@
                 if (result.err_code=='0000'){
                     $('#showImage').attr('src','<?=IMAGE_HOST?>'+result.path);
                     $('#showImage').show();
-                    $('input[name="image"]').val(result.path);
+                    $('input[name="image"]').val('<?=IMAGE_HOST?>'+result.path);
                 }else{
                     layer.msg(result.err_msg);
                 }

@@ -20,7 +20,7 @@
                         <?php foreach($pic_list as $k => $v):?>
                             <li class="on">
                                 <a href='<?=$v['link']?>'>
-                                    <div class="img" style="background-image:url(<?=$v['link']?>);"></div>
+                                    <div class="img" style="background-size:contain;background-image:url(<?=$v['link']?>);"></div>
                                 </a>
                             </li>
                         <?php endforeach;?>

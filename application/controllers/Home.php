@@ -12,10 +12,10 @@ class Home extends MY_Controller
     public function index(){
         $banner = $this->db->get('banner')->result_array();
         $data['banner'] = $banner;
-        $six_product = $this->db->get('six_product')->result_array();
-        $data['six_product'] = $this->product_detail($six_product);
-        $eight_product = $this->db->get('eight_product')->result_array();
-        $data['eight_product'] = $this->product_detail($eight_product);
+        $data['six_product'] = $this->db->get('six_product')->result_array();
+//        $data['six_product'] = $this->product_detail($six_product);
+//        $eight_product = $this->db->get('eight_product')->result_array();
+//        $data['eight_product'] = $this->product_detail($eight_product);
         $recommend_product = $this->db->get('recommend_product')->result_array();
         $data['recommend_product'] = $this->product_detail($recommend_product);
         $data['category'] = $this->public_category();

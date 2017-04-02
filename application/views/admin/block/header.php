@@ -35,7 +35,7 @@
     <link href="<?=STATIC_FILE_HOST?>assets/css/list_reset.css" rel="stylesheet" type="text/css" media="screen"/>
    <script src="<?=STATIC_FILE_HOST?>assets/js/jquery-1.10.1.min.js" type="text/javascript"></script>
 	<!-- END PAGE LEVEL STYLES -->
-	<link rel="shortcut icon" href="<?=STATIC_FILE_HOST?>assets/image/" />
+	<link rel="shortcut icon" href="<?=STATIC_FILE_HOST?>assets/image/WechatIMG1.jpeg" />
 	<script type="text/javascript">
 		//全局的JS路径
 		var base_url = "<?=STATIC_FILE_HOST?>";
