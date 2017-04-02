@@ -15,15 +15,15 @@
 					<ul>
 						<li>
 							<h4>EMAIL US</h4>
-							<p>info@gleadkitchen.com</p>
+							<p><?=$seller['email_address']?></p>
 						</li>
 						<li>
 							<h4>REACH US</h4>
-							<p>+86 (0)20 3997 8089 </br>Monday-Saturday </br>08:30-18:00 (UTC +08:00)</p>
+							<p><?=$seller['business_phone']?></p>
 						</li>
 						<li>
 							<h4>VISIT US</h4>
-							<p>Yiheng Road 7, Xingye Road  West, Chen Chung Village,  Shawan Town, Panyu, </br>Guangzhou, PRC 411500</p>
+							<p><?=$seller['location']?></p>
 						</li>
 					</ul>
 				</div>
@@ -53,6 +53,8 @@
                 <?php if(!empty($link)):?>
                     <?php foreach($link as $k => $v):?>
                         <a href="<?=$v['link']?>"><i style="background-image:url(<?=$v['logo']?>)"></i></a>
+						<a href="<?=$v['link']?>"><i style="background-image:url(<?=$v['logo']?>)"></i></a>
+						<a href="<?=$v['link']?>"><i style="background-image:url(<?=$v['logo']?>)"></i></a>
                     <?php endforeach; ?>
                 <?php endif;?>
 			</div>

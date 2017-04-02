@@ -239,6 +239,7 @@
             height        : 27,
             width         : 80,
             fileName      : "image",               //提交到服务器的文件名
+            formData      : {'rate':'4:3'},
             maxFileCount: 1,                //上传文件个数（多个时修改此处
             returnType    : 'json',              //服务返回数据
             allowedTypes: 'jpg,jpeg,png,gif',  //允许上传的文件式

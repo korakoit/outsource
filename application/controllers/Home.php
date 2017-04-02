@@ -13,11 +13,9 @@ class Home extends MY_Controller
         $banner = $this->db->get('banner')->result_array();
         $data['banner'] = $banner;
         $data['six_product'] = $this->db->get('six_product')->result_array();
-//        $data['six_product'] = $this->product_detail($six_product);
-//        $eight_product = $this->db->get('eight_product')->result_array();
-//        $data['eight_product'] = $this->product_detail($eight_product);
         $recommend_product = $this->db->get('recommend_product')->result_array();
         $data['recommend_product'] = $this->product_detail($recommend_product);
+        $data['home_products'] = $this->db->where('is_home',1)->get('product')->result_array();
         $data['category'] = $this->public_category();
         $data['link'] = $this->public_friend();
         $data['title'] = '';

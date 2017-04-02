@@ -50,7 +50,7 @@
            <?php if(!empty($recommend_product)):?>
               <?php foreach($recommend_product as $key => $val):?>
                 <li>
-                  <a href="/product/details/<?=$val['product_id']?>" target="_blank">
+                  <a href="/product/details/<?=$val['id']?>" target="_blank">
                     <div style="background-image:url('<?=$val['image']?>')"></div>
                     <p class="p0"><?=$val['name']?></p>
                     <p class="p1"><?=$val['price']?></p>
@@ -69,10 +69,12 @@
       </section>
       <section class="showtext center">
         <ul>
-         <?php if(!empty($six_product)):?>
-         <?php foreach($six_product as $key => $val):?>
+         <?php if(!empty($home_products)):?>
+         <?php foreach($home_products as $key => $val):?>
             <li>
-                 <div class="img" style="background-image:url('<?=$val['image']?>')"></div>
+                 <div class="img" >
+                   <img src="<?=$val['image']?>" />
+                 </div>
                  <h2><?=$val['name']?></h2>
                  <p><?=$val['title']?></p>
                  <div class="hr"></div>

@@ -34,6 +34,7 @@ class About extends MY_Controller
         $data['bre'] = '<a href="/home">Home Page</a><span>&gt;</span><a class="active">Contact Us</a>';
         $data['link'] = $this->public_friend();
         $data['category'] = $this->public_category();
+        $data['seller'] = $this->db->get('seller')->row_array();
         $this->load->view('home/about/contactus',$data);
     }
 

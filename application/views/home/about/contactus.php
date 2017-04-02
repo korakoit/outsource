@@ -20,15 +20,15 @@
 		<ul>
 			<li>
 				<div></div>
-				<p class="lip">Office Tel.: 0086 (0) 20-3997 8089 Mobile No.: 0086 137 6077 3620</p>
+				<p class="lip">Office Tel.: <?=$seller['business_phone']?></p>
 			</li>
 			<li class="sec">
 				<div></div>
-				<p class="lip">Email: info@gleadkitchen.com</p>
+				<p class="lip">Email: <?=$seller['email_address']?></p>
 			</li>
 			<li class="thirds">
 				<div></div>
-				<p class="lip">Address: Yiheng Road 7, Xingye Road West, Chen Chung Village, Shawan Town, Panyu District, Guangzhou, PRC 411500 </p>
+				<p class="lip">Address: <?=$seller['location']?></p>
 			</li>
 		</ul>
 	</section>

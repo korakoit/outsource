@@ -31,7 +31,15 @@ class Upload extends MY_Controller
 
         $width = $this->input->post('width', true);
         $height = $this->input->post('height', true);
-        $this->checkWidthHeight($_FILES['Filedata']['tmp_name'], $width, $height);
+        $rate = $this->input->post('rate', true);
+
+        if (!empty($width) || !empty($height)) {
+            $this->checkWidthHeight($_FILES['Filedata']['tmp_name'], $width, $height);
+        }
+
+        if (!empty($rate)) {
+            $this->checkRate($_FILES['Filedata']['tmp_name'], $rate);
+        }
 
         $md5_str = md5_file($_FILES['Filedata']['tmp_name']);
         $upload_path = UPLOAD_PATH . '/' . substr($md5_str, 0, 2) . '/';
@@ -96,15 +104,33 @@ class Upload extends MY_Controller
     {
         $info = getimagesize($file);
 
-        if ($width){
-            if($info[0]!=$width) {
-                $this->jsonOutput(['err_code'=>'0001','err_msg'=>"Image Width Must Be {$width}"]);
+        if ($width) {
+            if ($info[0] != $width) {
+                $this->jsonOutput(['err_code' => '0001', 'err_msg' => "Image Width Must Be {$width}"]);
             }
         }
 
-        if ($height){
-            if($info[1]!=$height){
-                $this->jsonOutput(['err_code'=>'0001','err_msg'=>"Image Width Must Be {$height}"]);
+        if ($height) {
+            if ($info[1] != $height) {
+                $this->jsonOutput(['err_code' => '0001', 'err_msg' => "Image Width Must Be {$height}"]);
+            }
+        }
+    }
+
+    private function checkRate($file, $rate)
+    {
+
+        if (!empty($rate)) {
+            $info = getimagesize($file);
+            if (strpos($rate,':')) {
+                $check_info = explode(':',$rate);
+                if (bcdiv($check_info[0],$check_info[1],0)!=bcdiv($info[0],$info[1],0)) {
+                    $this->jsonOutput(['err_code' => '0001', 'err_msg' => "Width:Height Must Be {$rate}"]);
+                }
+            }else {
+                if (intval($rate)!=bcdiv($info[0],$info[1],0)) {
+                    $this->jsonOutput(['err_code' => '0001', 'err_msg' => "Width:Height Must Be {$rate}"]);
+                }
             }
         }
     }
