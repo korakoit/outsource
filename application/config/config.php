@@ -17,7 +17,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | environments.
 |
 */
-$config['base_url'] = 'http://shop.cheye.com';
+$config['base_url'] = 'http://www.cnglead.com';
 
 /*
 |--------------------------------------------------------------------------

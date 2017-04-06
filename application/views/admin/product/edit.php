@@ -365,7 +365,7 @@
             buttonText   : 'Select File',
             fileSizeLimit : '2048KB',
             swf           : '<?=STATIC_FILE_HOST?>assets/plugin/uploadify/uploadify.swf',
-            uploader      : '/admin/upload/uploadImage',
+            uploader      : '/admin/upload/uploadFile',
             onUploadSuccess:function(file,data,response){
                 $('#brochure-queue').remove();
                 var result = JSON.parse(data);
